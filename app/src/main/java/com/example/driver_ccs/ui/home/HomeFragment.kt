@@ -13,7 +13,7 @@ import com.example.driver_ccs.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private lateinit  var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,13 +22,7 @@ class HomeFragment : Fragment() {
     ): View {
         val window: Window = requireActivity().window
         window.statusBarColor = resources.getColor(R.color.orange)
-        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }
