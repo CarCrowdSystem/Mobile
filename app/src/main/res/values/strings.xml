@@ -12,5 +12,6 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="login">Login</string>
     <string name="cadastro">Cadastro</string>
+    <string name="historic">Historic</string>
 
 </resources>
