@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
+        android:id="@+id/nav_historic"
+        android:name="com.example.driver_ccs.ui.historico.HistoricFragment"
+        android:label="Historic"
+        tools:layout="@layout/fragment_historic" />
+
+    <fragment
         android:id="@+id/nav_login"
         android:name="com.example.driver_ccs.ui.login.LoginFragment"
         android:label="@string/login"
