@@ -5,9 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentLoginBinding
@@ -15,20 +15,21 @@ import com.example.driver_ccs.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var viewModel : LoginViewModel
+    private val viewModel : LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val window: Window = requireActivity().window
+        window.statusBarColor = resources.getColor(R.color.orange)
         setListener()
         observe()
     }
