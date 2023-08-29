@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.HorizontalScrollView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
@@ -35,6 +36,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
         val window: Window = requireActivity().window
         window.statusBarColor = resources.getColor(R.color.orange)
         binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -62,7 +64,6 @@ class HomeFragment : Fragment() {
 
         viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
             if (!logged) {
-//               val action = HomeFragmentDirections.actionNavHomeToNavLogin()
                 findNavController().navigate(R.id.action_nav_home_to_nav_login)
             }
         }

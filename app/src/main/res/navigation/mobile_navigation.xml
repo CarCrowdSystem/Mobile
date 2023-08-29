@@ -9,10 +9,12 @@
         android:id="@+id/nav_home"
         android:name="com.example.driver_ccs.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_nav_login"
-            app:destination="@id/nav_login" />
+            app:destination="@id/nav_login"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -37,10 +39,12 @@
         android:id="@+id/nav_login"
         android:name="com.example.driver_ccs.ui.login.LoginFragment"
         android:label="@string/login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_nav_login_to_nav_home"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_nav_login_to_nav_cadastro"
             app:destination="@id/nav_cadastro" />
@@ -48,14 +52,8 @@
 
     <fragment
         android:id="@+id/nav_cadastro"
-        android:name="com.example.driver_ccs.ui.login.LoginFragment"
+        android:name="com.example.driver_ccs.ui.cadastro.CadastroFragment"
         android:label="@string/cadastro"
-        tools:layout="@layout/fragment_cadastro"
-        >
-        <action
-            android:id="@+id/action_nav_cadastro_to_nav_login"
-            app:destination="@id/nav_login"
-            app:popUpTo="@id/nav_login"/>
-    </fragment>
+        tools:layout="@layout/fragment_cadastro" />
 
 </navigation>
