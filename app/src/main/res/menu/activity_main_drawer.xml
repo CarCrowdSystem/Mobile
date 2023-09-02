@@ -20,5 +20,10 @@
             android:id="@+id/nav_historic"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/historic" />
+
+        <item
+            android:id="@+id/nav_new_car"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Novo veiculo" />
     </group>
 </menu>
