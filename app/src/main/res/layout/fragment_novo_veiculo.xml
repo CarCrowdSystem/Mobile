@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/tituloTela"
@@ -10,6 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Adicionar"
         android:textSize="25dp"
+        android:textColor="@color/componet_text"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp"
         android:textStyle="bold"
@@ -18,73 +20,79 @@
 
     <EditText
         android:id="@+id/campoMarca"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloTela"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:paddingStart="22dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/edit_style"
         android:text="Marca"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloTela" />
 
     <EditText
         android:id="@+id/campoModelo"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="40dp"
-        android:text="Modelo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/campoMarca" />
-
-    <EditText
-        android:id="@+id/campoPlaca"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:text="Placa"
+        android:background="@drawable/edit_style"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:paddingStart="22dp"
+        android:text="Modelo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoMarca" />
 
+    <EditText
+        android:id="@+id/campoPlaca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:paddingStart="22dp"
+        android:background="@drawable/edit_style"
+        android:text="Placa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/campoModelo" />
+
     <Button
         android:id="@+id/buttonCadastrarVeiculo"
-        android:layout_width="wrap_content"
+        style="@style/DriverButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="40dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/campoModelo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/campoPlaca" />
 
     <TextView
         android:id="@+id/titulo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/componet_text"
         android:text="Seus veículos"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoPlaca"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="60dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/buttonCadastrarVeiculo" />
 
-    <EditText
-        android:id="@+id/veiculo1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_historic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Renault Clio RL - DUN1L28"
-        android:layout_marginTop="20dp"
-        android:layout_margin="40dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo2" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo2"
+        tools:listitem="@layout/item_novo_veiculo"/>
 
-    <EditText
-        android:id="@+id/veiculo2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:text="Mitsubishi Lancer MT - BDU7I38"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/veiculo1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
