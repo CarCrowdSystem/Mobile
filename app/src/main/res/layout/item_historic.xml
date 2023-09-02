@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -13,18 +13,124 @@
         android:background="@drawable/item_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_location_preview"
+        android:layout_width="124dp"
+        android:layout_height="80dp"
+        android:layout_margin="12dp"
+        android:src="@drawable/ic_label_location"
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toTopOf="@id/v_layout" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/cadastro"
-        android:textSize="32sp"
-        android:textAlignment="center"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/component_text"
+        android:text="Car park Car park Car park Car park"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/iv_location_preview"
+        app:layout_constraintTop_toTopOf="@id/iv_location_preview" />
+
+    <ImageView
+        android:id="@+id/iv_at_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/ic_at_location"
+        app:layout_constraintBottom_toBottomOf="@id/iv_location_preview"
+        app:layout_constraintStart_toEndOf="@id/iv_location_preview" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Rua consolação Rua consolação, 123 - Bairro, Cidade, SP"
+        android:textSize="14sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/iv_at_location"
+        app:layout_constraintTop_toTopOf="@id/iv_at_location" />
+
+    <TextView
+        android:id="@+id/tv_entrance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Entrada"
+        android:textSize="14sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintEnd_toStartOf="@id/tv_spot_used"
         app:layout_constraintStart_toStartOf="@id/v_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/v_layout"
-        app:layout_constraintBottom_toBottomOf="@id/v_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_location_preview" />
+
+    <TextView
+        android:id="@+id/tv_time_spend_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="07h55"
+        android:textSize="12sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintEnd_toEndOf="@id/tv_entrance"
+        app:layout_constraintStart_toStartOf="@id/tv_entrance"
+        app:layout_constraintTop_toBottomOf="@id/tv_entrance" />
+
+    <TextView
+        android:id="@+id/tv_spot_used"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vaga utilizada"
+        android:textSize="14sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintEnd_toStartOf="@id/tv_total"
+        app:layout_constraintStart_toEndOf="@id/tv_entrance"
+        app:layout_constraintTop_toTopOf="@id/tv_entrance" />
+
+    <TextView
+        android:id="@+id/tv_spot_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A08"
+        android:textSize="12sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintEnd_toEndOf="@id/tv_spot_used"
+        app:layout_constraintStart_toStartOf="@id/tv_spot_used"
+        app:layout_constraintTop_toBottomOf="@id/tv_spot_used" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textSize="14sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/tv_spot_used"
+        app:layout_constraintTop_toTopOf="@id/tv_spot_used" />
+
+    <TextView
+        android:id="@+id/tv_total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$ 20,00"
+        android:textSize="12sp"
+        android:textColor="@color/component_text"
+        app:layout_constraintStart_toStartOf="@id/tv_total"
+        app:layout_constraintTop_toBottomOf="@id/tv_total" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_check_out"
+        style="@style/DriverOrangeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check out"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toStartOf="@id/v_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

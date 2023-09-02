@@ -6,11 +6,19 @@ import androidx.lifecycle.ViewModel
 
 class HistoricViewModel: ViewModel() {
 
-    private var _historicList = MutableLiveData<List<String>>()
-    val historicList : LiveData<List<String>> = _historicList
+    private var _historicList = MutableLiveData<List<ParkinglLot>>()
+    val historicList : LiveData<List<ParkinglLot>> = _historicList
 
     fun getHistoric() {
-        _historicList.value = listOf("Nome_um", "Nome_dois", "Nome_três", "Nome_quatro", "Nome_cinco")
+        _historicList.value =
+            listOf(
+                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
+                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
+                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
+                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
+                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00")
+            )
     }
-
 }
+
+data class ParkinglLot(val nome: String, val endereco: String, val tempo: String, val vaga: String, val total: String)

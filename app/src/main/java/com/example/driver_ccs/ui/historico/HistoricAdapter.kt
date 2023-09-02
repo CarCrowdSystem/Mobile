@@ -7,7 +7,7 @@ import com.example.driver_ccs.databinding.ItemHistoricBinding
 
 class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolder>() {
 
-    private var historicList = emptyList<String>()
+    private var historicList = emptyList<ParkinglLot>()
 
     class HistoricViewHolder(val binding: ItemHistoricBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -19,14 +19,18 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
     override fun onBindViewHolder(holder: HistoricViewHolder, position: Int) {
         holder.binding.apply {
             if(!historicList.isNullOrEmpty()){
-                tvName.text = historicList[position]
+                tvName.text = historicList[position].nome
+                tvAddress.text = historicList[position].endereco
+                tvTimeSpendIn.text = historicList[position].tempo
+                tvSpotTag.text = historicList[position].vaga
+                tvTotal.text = historicList[position].total
             }
         }
     }
 
     override fun getItemCount() = historicList.size
 
-    fun updateHistoric(list: List<String>){
+    fun updateHistoric(list: List<ParkinglLot>){
         this.historicList = list
         notifyDataSetChanged()
     }

@@ -21,12 +21,16 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val viewModel : LoginViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    ): View {
         binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

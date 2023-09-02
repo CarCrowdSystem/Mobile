@@ -6,4 +6,6 @@
     <dimen name="nv_header_height_new">200dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="relative_layout">32dp</dimen>
 </resources>

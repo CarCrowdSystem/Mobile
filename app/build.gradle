@@ -62,7 +62,7 @@ dependencies {
     //Koin
 //    implementation "org.koin:koin-android:3.1.2"
 //    implementation "org.koin:koin-android-viewmodel:3.1.2"
-    implementation "io.insert-koin:koin-android:3.3.2"
+    implementation 'io.insert-koin:koin-android:3.4.3'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
