@@ -8,33 +8,44 @@
     <View
         android:id="@+id/bg_user_pic"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="222dp"
         android:background="@drawable/bg_profile_pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_user_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bg_user_pic"
+        app:srcCompat="@drawable/rectangle_9" />
+
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/tv_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@id/bg_user_pic"
         android:layout_marginBottom="20dp"
-        android:text="Lara Croft"
+        android:text="@string/label_user_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         android:textStyle="bold"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/bg_user_pic" />
 
     <EditText
         android:id="@+id/et_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
-        android:paddingStart="22dp"
-        android:text="Nome Completo"
+        android:paddingHorizontal="22sp"
+        android:text="@string/label_full_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bg_user_pic" />
@@ -44,11 +55,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
-        android:paddingStart="22dp"
-        android:text="CPF"
+        android:paddingHorizontal="22sp"
+        android:text="@string/label_cpf"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_name" />
@@ -58,11 +69,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
-        android:paddingStart="22dp"
-        android:text="Email"
+        android:paddingHorizontal="22sp"
+        android:text="@string/label_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_cpf" />
@@ -72,77 +83,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
-        android:paddingStart="22dp"
-        android:text="Telefone"
+        android:paddingHorizontal="22sp"
+        android:text="@string/label_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_email" />
 
-    <TextView
-        android:id="@+id/btn_user_saveinfo"
+    <Button
+        android:id="@+id/btn_user_save_info"
+        style="@style/DriverButton.save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_style"
-        android:backgroundTint="#0AD772"
+        android:layout_marginTop="14dp"
+        android:text="@string/label_save"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:clickable="true"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:paddingStart="22dp"
-        android:text="Salvar"
-        android:textAlignment="center"
-        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_telefone" />
 
-    <TextView
-        android:id="@+id/btn_addcar"
-        android:layout_width="170dp"
+    <Button
+        android:id="@+id/btn_add_car"
+        style="@style/DriverButton.save.car"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_style"
-        android:backgroundTint="#ff8000"
-        android:textColor="@color/white"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/label_add_car"
         android:textStyle="bold"
-        android:clickable="true"
-        android:padding="16dp"
-        android:text="Adicionar veículo"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@id/btn_user_saveinfo"
-        app:layout_constraintTop_toBottomOf="@id/btn_user_saveinfo" />
+        app:layout_constraintEnd_toStartOf="@id/btn_edit_password"
+        app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
+        app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
 
-    <TextView
-        android:id="@+id/edit_psswrd"
-        android:layout_width="170dp"
+    <Button
+        android:id="@+id/btn_edit_password"
+        style="@style/DriverButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_style"
-        android:backgroundTint="#111018"
-        android:textColor="@color/white"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/label_change_password"
         android:textStyle="bold"
-        android:clickable="true"
-        android:padding="16dp"
-        android:text="Alterar senha"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@id/btn_user_saveinfo"
-        app:layout_constraintTop_toBottomOf="@id/btn_user_saveinfo" />
-
-    <ImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="155dp"
-        android:layout_height="143dp"
-        app:layout_constraintBottom_toTopOf="@id/user_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bg_user_pic"
-        app:srcCompat="@drawable/rectangle_9" />
+        app:layout_constraintEnd_toEndOf="@id/btn_user_save_info"
+        app:layout_constraintStart_toEndOf="@id/btn_add_car"
+        app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

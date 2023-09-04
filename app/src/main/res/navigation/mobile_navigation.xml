@@ -37,9 +37,9 @@
 
     <fragment
         android:id="@+id/nav_new_car"
-        android:name="com.example.driver_ccs.ui.historico.HistoricFragment"
+        android:name="com.example.driver_ccs.ui.novo_veiculo.NewCarFragment"
         android:label="Novo veiculo"
-        tools:layout="@layout/fragment_novo_veiculo" />
+        tools:layout="@layout/fragment_new_vehicle" />
 
     <fragment
         android:id="@+id/nav_login"
@@ -61,5 +61,11 @@
         android:name="com.example.driver_ccs.ui.cadastro.CadastroFragment"
         android:label="@string/cadastro"
         tools:layout="@layout/fragment_cadastro" />
+
+    <fragment
+        android:id="@+id/nav_user_profile"
+        android:name="com.example.driver_ccs.ui.user_profile.UserProfileFragment"
+        android:label="@string/user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 
 </navigation>

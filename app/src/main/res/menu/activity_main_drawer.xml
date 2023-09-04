@@ -24,6 +24,11 @@
         <item
             android:id="@+id/nav_new_car"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Novo veiculo" />
+            android:title="@string/new_vehicle" />
+
+        <item
+            android:id="@+id/nav_user_profile"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/user_profile" />
     </group>
 </menu>

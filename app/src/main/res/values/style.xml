@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DriverButton" parent="Widget.Material3.Button">
-        <item name="backgroundTint">@color/black</item>
+        <item name="backgroundTint">#111018</item>
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">13dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">32dp</item>
+    </style>
+
+    <style name="DriverButton.save" parent="Widget.Material3.Button">
+        <item name="backgroundTint">#0AD772</item>
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">13dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">32dp</item>
+    </style>
+
+    <style name="DriverButton.save.car" parent="Widget.Material3.Button">
+        <item name="backgroundTint">#FF8000</item>
         <item name="android:paddingTop">13dp</item>
         <item name="android:paddingBottom">13dp</item>
         <item name="android:textSize">18sp</item>
