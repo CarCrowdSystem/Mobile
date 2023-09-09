@@ -1,29 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="4dp">
 
     <View
         android:id="@+id/v_layout"
-        android:layout_width="356dp"
-        android:layout_height="168dp"
+        android:layout_width="380dp"
+        android:layout_height="188dp"
         android:background="@drawable/item_style"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_location_preview"
+        android:layout_width="124dp"
+        android:layout_height="80dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_label_location"
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toTopOf="@id/v_layout" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/cadastro"
-        android:textSize="32sp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@id/v_layout"
+        android:layout_marginTop="2dp"
+        android:text="Car park Car park Car park"
+        android:textColor="@color/component_text"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
-        app:layout_constraintTop_toTopOf="@id/v_layout"
-        app:layout_constraintBottom_toBottomOf="@id/v_layout"/>
+        app:layout_constraintStart_toEndOf="@id/iv_location_preview"
+        app:layout_constraintTop_toTopOf="@id/iv_location_preview" />
+
+    <ImageView
+        android:id="@+id/iv_at_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_at_location"
+        app:layout_constraintBottom_toBottomOf="@id/iv_location_preview"
+        app:layout_constraintStart_toEndOf="@id/iv_location_preview" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/label_address"
+        android:textColor="@color/component_text"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/iv_at_location"
+        app:layout_constraintTop_toTopOf="@id/iv_at_location" />
+
+    <TextView
+        android:id="@+id/tv_price_until"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Valor até 1h"
+        android:textColor="@color/component_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_spots_available"
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+    <TextView
+        android:id="@+id/tv_price_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$ 00,00"
+        android:textColor="@color/component_text"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_price_until"
+        app:layout_constraintStart_toStartOf="@id/tv_price_until"
+        app:layout_constraintTop_toBottomOf="@id/tv_price_until" />
+
+    <TextView
+        android:id="@+id/tv_spots_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vagas disponíveis"
+        android:textColor="@color/component_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_distance"
+        app:layout_constraintStart_toEndOf="@id/tv_price_until"
+        app:layout_constraintTop_toTopOf="@id/tv_price_until" />
+
+    <TextView
+        android:id="@+id/tv_spots_available_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10/100"
+        android:textColor="@color/component_text"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_spots_available"
+        app:layout_constraintStart_toStartOf="@id/tv_spots_available"
+        app:layout_constraintTop_toBottomOf="@id/tv_spots_available" />
+
+    <TextView
+        android:id="@+id/tv_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distância"
+        android:textColor="@color/component_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/tv_spots_available"
+        app:layout_constraintTop_toTopOf="@id/tv_spots_available" />
+
+    <TextView
+        android:id="@+id/tv_distance_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2km"
+        android:textColor="@color/component_text"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tv_distance"
+        app:layout_constraintTop_toBottomOf="@id/tv_distance" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_go_to"
+        style="@style/DriverButton.save.car"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginBottom="4dp"
+        android:text="Ir até lá"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toStartOf="@id/mbt_booking"
+        app:layout_constraintStart_toStartOf="@id/v_layout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_booking"
+        style="@style/DriverButton.save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="4dp"
+        android:text="Agendar agora"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/mbt_go_to" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

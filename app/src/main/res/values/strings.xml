@@ -15,6 +15,7 @@
     <string name="historic">Historic</string>
     <string name="user_profile">Profile</string>
     <string name="new_vehicle">New vehicle</string>
+    <string name="logout">Logout</string>
 
     <string name="label_user_name">Lara Croft</string>
     <string name="label_full_name">Nome Completo</string>
@@ -24,5 +25,6 @@
     <string name="label_save">Salvar</string>
     <string name="label_add_car">Adicionar veículo</string>
     <string name="label_change_password">Alterar senha</string>
+    <string name="label_address">Rua consolação Rua consolação, 123 - Bairro, Cidade, SP</string>
 
 </resources>

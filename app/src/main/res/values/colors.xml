@@ -9,8 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="component_text">#FF000000</color>
-
-    <color name="orange">#FFFF8000</color>
-
+    <color name="component">#FFFF8000</color>
     <color name="component_item">#858585</color>
+    <color name="component_button_default">#111018</color>
+    <color name="component_button_save">#0AD772</color>
 </resources>
