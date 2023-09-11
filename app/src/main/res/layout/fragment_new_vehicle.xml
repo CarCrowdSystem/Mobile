@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adicionar"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColor="@color/component_text"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoPlaca" />
+        app:layout_constraintTop_toBottomOf="@id/campoPlaca" />
 
     <TextView
         android:id="@+id/titulo2"
@@ -83,7 +83,7 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCadastrarVeiculo" />
+        app:layout_constraintTop_toBottomOf="@id/buttonCadastrarVeiculo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_historic"

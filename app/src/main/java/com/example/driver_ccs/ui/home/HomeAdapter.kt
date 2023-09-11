@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.driver_ccs.databinding.ItemEstacionamantosBinding
-import com.example.driver_ccs.ui.historico.HistoricAdapter
 
 class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.ParkingLotViewHolder>() {
 
-    private var parkingLotsList = emptyList<String>()
+    private var parkingLotsList = emptyList<ParkinglLotHome>()
 
     class ParkingLotViewHolder(val binding: ItemEstacionamantosBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -19,13 +18,17 @@ class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.ParkingLotViewHolder>() {
 
     override fun onBindViewHolder(holder: ParkingLotViewHolder, position: Int) {
         holder.binding.apply {
-            tvName.text = parkingLotsList[position]
+            tvName.text = parkingLotsList[position].nome
+            tvAddress.text = parkingLotsList[position].endereco
+            tvPriceValue.text = parkingLotsList[position].valorHora
+            tvSpotsAvailableValue.text = parkingLotsList[position].vagasDisponiveis
+            tvDistanceValue.text = parkingLotsList[position].distancia
         }
     }
 
     override fun getItemCount() = parkingLotsList.size
 
-    fun update(list: List<String>) {
+    fun update(list: List<ParkinglLotHome>) {
         this.parkingLotsList = list
         notifyDataSetChanged()
     }

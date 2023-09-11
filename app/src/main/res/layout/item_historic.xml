@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textColor="@color/component_text"
-        android:text="Car park Car park Car park Car park"
+        android:text="Car park Car park Car park"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintStart_toEndOf="@id/iv_location_preview"
@@ -40,7 +40,7 @@
         android:id="@+id/iv_at_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_at_location"
         app:layout_constraintBottom_toBottomOf="@id/iv_location_preview"
         app:layout_constraintStart_toEndOf="@id/iv_location_preview" />
@@ -61,7 +61,7 @@
         android:id="@+id/tv_entrance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:text="Entrada"
         android:textSize="14sp"
         android:textColor="@color/component_text"
@@ -125,7 +125,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbt_check_out"
-        style="@style/DriverOrangeButton"
+        style="@style/DriverButton.save.car"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Check out"

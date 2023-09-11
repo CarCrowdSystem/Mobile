@@ -6,24 +6,34 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_home"
             android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+<!--        <item-->
+<!--            android:id="@+id/nav_gallery"-->
+<!--            android:icon="@drawable/ic_menu_gallery"-->
+<!--            android:title="@string/menu_gallery" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/ic_menu_slideshow"-->
+<!--            android:title="@string/menu_slideshow" />-->
         <item
             android:id="@+id/nav_historic"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_history"
             android:title="@string/historic" />
 
         <item
             android:id="@+id/nav_new_car"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Novo veiculo" />
+            android:icon="@drawable/ic_menu_car"
+            android:title="@string/new_vehicle" />
+
+        <item
+            android:id="@+id/nav_user_profile"
+            android:icon="@drawable/ic_menu_profile"
+            android:title="@string/user_profile" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="@string/logout" />
     </group>
 </menu>

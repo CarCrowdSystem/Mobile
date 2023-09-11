@@ -1,7 +1,7 @@
 package com.example.driver_ccs
 
 import android.app.Application
-import com.example.driver_ccs.data.di.DependencyModule
+import com.example.driver_ccs.di.DependencyModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

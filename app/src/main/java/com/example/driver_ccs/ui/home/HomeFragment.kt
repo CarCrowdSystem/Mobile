@@ -1,33 +1,25 @@
 package com.example.driver_ccs.ui.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.HorizontalScrollView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentHomeBinding
-import com.example.driver_ccs.ui.login.LoginFragment
+import com.example.driver_ccs.extensions.viewBinding
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private val binding: FragmentHomeBinding by viewBinding()
     private val adapter: HomeAdapter by lazy { HomeAdapter() }
     private val viewModel: HomeViewModel by viewModels()
 
@@ -38,8 +30,7 @@ class HomeFragment : Fragment() {
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         val window: Window = requireActivity().window
-        window.statusBarColor = resources.getColor(R.color.orange)
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        window.statusBarColor = resources.getColor(R.color.component)
         return binding.root
     }
 

@@ -14,11 +14,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentLoginBinding
+import com.example.driver_ccs.extensions.viewBinding
 import com.example.driver_ccs.ui.home.HomeFragmentDirections
 
 class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+    private val binding: FragmentLoginBinding by viewBinding()
     private val viewModel : LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,14 +32,13 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window: Window = requireActivity().window
-        window.statusBarColor = resources.getColor(R.color.orange)
+        window.statusBarColor = resources.getColor(R.color.component)
         setListener()
         observe()
     }
