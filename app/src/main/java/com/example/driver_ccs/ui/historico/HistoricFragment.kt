@@ -10,11 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.databinding.FragmentHistoricBinding
+import com.example.driver_ccs.extensions.viewBinding
 import kotlinx.coroutines.launch
 
 class HistoricFragment : Fragment() {
 
-    private lateinit var binding: FragmentHistoricBinding
+    private val binding: FragmentHistoricBinding by viewBinding()
     private val viewModel: HistoricViewModel by viewModels()
     private val adapter: HistoricAdapter by lazy { HistoricAdapter() }
 
@@ -24,7 +25,6 @@ class HistoricFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        binding = FragmentHistoricBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

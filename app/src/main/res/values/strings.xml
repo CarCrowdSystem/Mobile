@@ -26,5 +26,6 @@
     <string name="label_add_car">Adicionar veículo</string>
     <string name="label_change_password">Alterar senha</string>
     <string name="label_address">Rua consolação Rua consolação, 123 - Bairro, Cidade, SP</string>
+    <string name="label_password">Senha</string>
 
 </resources>

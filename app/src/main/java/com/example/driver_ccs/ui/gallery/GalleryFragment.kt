@@ -9,18 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.driver_ccs.databinding.FragmentGalleryBinding
+import com.example.driver_ccs.extensions.viewBinding
 
 class GalleryFragment : Fragment() {
 
-    private lateinit var binding: FragmentGalleryBinding
+    private val binding: FragmentGalleryBinding by viewBinding()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        binding = FragmentGalleryBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 }
