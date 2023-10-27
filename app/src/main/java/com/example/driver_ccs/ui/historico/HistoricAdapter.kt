@@ -18,7 +18,7 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
 
     override fun onBindViewHolder(holder: HistoricViewHolder, position: Int) {
         holder.binding.apply {
-            if(!historicList.isNullOrEmpty()){
+            if(historicList.isNotEmpty()){
                 tvName.text = historicList[position].nome
                 tvAddress.text = historicList[position].endereco
                 tvTimeSpendIn.text = historicList[position].tempo
@@ -34,5 +34,4 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
         this.historicList = list
         notifyDataSetChanged()
     }
-
 }

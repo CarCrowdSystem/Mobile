@@ -57,6 +57,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    //Google maps
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     //Koin
@@ -89,4 +90,7 @@ dependencies {
     // DataStore Preferences
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation 'androidx.preference:preference-ktx:1.2.1'
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 }

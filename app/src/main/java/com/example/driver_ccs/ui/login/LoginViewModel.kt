@@ -1,36 +1,37 @@
 package com.example.driver_ccs.ui.login
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.driver_ccs.data.SecurityPreferences
+import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.login.LoginRepository
-import kotlinx.coroutines.launch
+import com.example.driver_ccs.data.remote.model.LoginModel
+import com.example.driver_ccs.data.remote.model.ValidationModel
 
 class LoginViewModel(
-    application: Application,
-    private val loginRepository: LoginRepository
+    application: Application
 ) : AndroidViewModel(application) {
 
     private val securityPreferences = SecurityPreferences(application.applicationContext)
+    private val loginRepository = LoginRepository(application.applicationContext)
 
-    private var _login = MutableLiveData<Boolean>()
-    val login: LiveData<Boolean> = _login
+    private var _login = MutableLiveData<ValidationModel>()
+    val login: LiveData<ValidationModel> = _login
 
     fun doLogin(email: String, password: String) {
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            viewModelScope.launch {
-//                val resource = loginRepository.login(email, password)
-                securityPreferences.store("email", email)
-                securityPreferences.store("password", password)
+        loginRepository.login(email, password, object : ApiListener<LoginModel> {
+            override fun onSuccess(result: LoginModel) {
 
-                _login.value = true
+//                TODO() Salvar dados do user que retorna da api, no sharedPreference
+
+                _login.value = ValidationModel()
             }
-        }
-    }
 
+            override fun onFailure(message: String) {
+                _login.value = ValidationModel(message)
+            }
+        })
+    }
 }

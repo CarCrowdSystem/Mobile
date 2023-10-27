@@ -63,23 +63,23 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_logout -> {
-                    // Call your method when the "Logout" menu item is clicked
-                    logout()
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                    true
-                }
-                // Handle other menu items if needed
-                else -> false
-            }
-        }
+//        navView.setNavigationItemSelectedListener { menuItem ->
+//            when (menuItem.itemId) {
+//                R.id.nav_logout -> {
+//                    // Call your method when the "Logout" menu item is clicked
+//                    logout()
+//                    drawerLayout.closeDrawer(GravityCompat.START)
+//                    true
+//                }
+//                // Handle other menu items if needed
+//                else -> false
+//            }
+//        }
     }
 
-    private fun logout(){
-        Log.d("***teste", "Logout")
-
-        findNavController(R.id.action_nav_home_to_nav_login)
-    }
+//    private fun logout(){
+//        Log.d("***teste", "Logout")
+//
+//        findNavController(R.id.action_nav_home_to_nav_login)
+//    }
 }
