@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_email" />
 
     <Button
-        android:id="@+id/bt_do_login"
+        android:id="@+id/bt_do_cadastro"
         style="@style/DriverButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Já tem conta? Entre aqui"
-        app:layout_constraintEnd_toEndOf="@id/bt_do_login"
-        app:layout_constraintStart_toStartOf="@id/bt_do_login"
-        app:layout_constraintTop_toBottomOf="@id/bt_do_login" />
+        app:layout_constraintEnd_toEndOf="@id/bt_do_cadastro"
+        app:layout_constraintStart_toStartOf="@id/bt_do_cadastro"
+        app:layout_constraintTop_toBottomOf="@id/bt_do_cadastro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

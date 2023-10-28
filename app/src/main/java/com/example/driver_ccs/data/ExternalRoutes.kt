@@ -3,6 +3,7 @@ package com.example.driver_ccs.data
 class ExternalRoutes {
 
     companion object {
-        val ccsApi : String = "ec2-52-70-63-183.compute-1.amazonaws.com"
+        const val ccsApi : String = "https://ccs-grupo7.ddnsking.com/ccs-dev/"
+        const val localCcsAPi : String = "http://localhost:8080/ccs-dev/"
     }
 }

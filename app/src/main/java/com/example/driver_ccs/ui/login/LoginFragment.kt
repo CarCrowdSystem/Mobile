@@ -6,24 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentLoginBinding
 import com.example.driver_ccs.extensions.viewBinding
-import com.example.driver_ccs.ui.home.HomeFragmentDirections
 
 class LoginFragment : Fragment() {
 
     private val binding: FragmentLoginBinding by viewBinding()
-    private val viewModel : LoginViewModel by viewModels()
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
     }
 
@@ -39,13 +39,13 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val window: Window = requireActivity().window
         window.statusBarColor = resources.getColor(R.color.component)
-        setListener()
         observe()
+        setListener()
     }
 
     private fun setListener(){
         binding.btDoLogin.setOnClickListener {
-            val email = binding.etEmail .text.toString()
+            val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             viewModel.doLogin(email, password)
         }
@@ -57,13 +57,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun observe() {
-        viewModel.login.observe(viewLifecycleOwner) {
-            if(it == true){
+        viewModel.login.observe(viewLifecycleOwner) { userStatus ->
+            if(userStatus.showStatus()) {
                 Log.d("***Teste login", "logged")
                 goNextScreen()
+            } else {
+                Toast.makeText(context, userStatus.showMessage(), Toast.LENGTH_LONG).show()
             }
-
-            Log.d("***Teste login", "error")
         }
     }
 

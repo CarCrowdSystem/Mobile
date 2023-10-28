@@ -1,17 +1,17 @@
 package com.example.driver_ccs.data.remote.login
 
-import com.example.driver_ccs.utils.Resource
-import com.example.driver_ccs.data.remote.login.network.LoginService
+import android.content.Context
+import com.example.driver_ccs.data.remote.BaseRepository
+import com.example.driver_ccs.data.remote.RetrofitClient
+import com.example.driver_ccs.data.remote.listener.ApiListener
+import com.example.driver_ccs.data.remote.login.network.ILoginService
+import com.example.driver_ccs.data.remote.model.LoginModel
 
-class LoginRepository(private val service: LoginService) {
+class LoginRepository(context: Context) : BaseRepository(context) {
 
-    suspend fun login(email: String, password: String) : String {
-        val resource = service.login(email, password)
+    private val remote = RetrofitClient.getService(ILoginService::class.java)
 
-        if(resource is Resource.Success) {
-            return resource.data
-        }
-
-        return ""
+    fun login(email: String, password: String, listener: ApiListener<LoginModel>) {
+        executeCall(remote.login(LoginModel(email, password)), listener)
     }
 }

@@ -1,12 +1,13 @@
 package com.example.driver_ccs.ui.home
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.driver_ccs.data.SecurityPreferences
 
-class HomeViewModel(application: Application) : AndroidViewModel(application)  {
+class   HomeViewModel(application: Application) : AndroidViewModel(application)  {
 
     private val _listParking = MutableLiveData<List<ParkinglLotHome>>()
     val listParking : LiveData<List<ParkinglLotHome>> =  _listParking
@@ -29,7 +30,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application)  {
 
     fun verifyLoggedUser() {
         val email = securityPreferences.get("email")
-        val password = securityPreferences.get("password")
+        val password = securityPreferences.get("senha")
 
         _userLogged.value = (email.isNotEmpty() && password.isNotEmpty())
     }

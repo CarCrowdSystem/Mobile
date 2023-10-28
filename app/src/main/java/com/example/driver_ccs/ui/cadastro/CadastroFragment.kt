@@ -23,4 +23,23 @@ class CadastroFragment: Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListener()
+    }
+
+    private fun setListener() {
+        binding.btDoCadastro.setOnClickListener {
+            handleSave()
+        }
+    }
+
+    private fun handleSave() {
+        val name = binding.etName.text.toString()
+        val email = binding.etEmail.text.toString()
+        val senha = binding.etPassword.text.toString()
+
+        viewModel.cadastro(name, email, senha)
+    }
 }
