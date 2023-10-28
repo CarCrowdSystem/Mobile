@@ -61,9 +61,9 @@ class LoginFragment : Fragment() {
             if(userStatus.showStatus()) {
                 Log.d("***Teste login", "logged")
                 goNextScreen()
+            } else {
+                Toast.makeText(context, userStatus.showMessage(), Toast.LENGTH_LONG).show()
             }
-
-            Toast.makeText(context, userStatus.showMessage(), Toast.LENGTH_LONG).show()
         }
     }
 

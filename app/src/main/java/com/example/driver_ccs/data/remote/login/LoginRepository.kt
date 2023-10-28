@@ -12,6 +12,6 @@ class LoginRepository(context: Context) : BaseRepository(context) {
     private val remote = RetrofitClient.getService(ILoginService::class.java)
 
     fun login(email: String, password: String, listener: ApiListener<LoginModel>) {
-        executeCall(remote.login(email, password), listener)
+        executeCall(remote.login(LoginModel(email, password)), listener)
     }
 }

@@ -14,6 +14,6 @@ class CadastroRepository(context: Context): BaseRepository(context) {
     private val remote = RetrofitClient.getService(ICadastroService::class.java)
 
     fun cadastro(nome: String, email: String, senha: String, listener: ApiListener<CadastroModel>) {
-        executeCall(remote.cadastro(nome, email, senha), listener)
+        executeCall(remote.cadastro(CadastroModel(email, nome, senha)), listener)
     }
 }

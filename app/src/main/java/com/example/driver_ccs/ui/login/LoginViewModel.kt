@@ -1,6 +1,7 @@
 package com.example.driver_ccs.ui.login
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -23,8 +24,12 @@ class LoginViewModel(
     fun doLogin(email: String, password: String) {
         loginRepository.login(email, password, object : ApiListener<LoginModel> {
             override fun onSuccess(result: LoginModel) {
+                Log.d("***doLogin", "$email, $password")
 
-//                TODO() Salvar dados do user que retorna da api, no sharedPreference
+                securityPreferences.store("email", email)
+                securityPreferences.store("senha", password)
+
+                //TODO() Salvar dados do user que retorna da api, no sharedPreference
 
                 _login.value = ValidationModel()
             }
