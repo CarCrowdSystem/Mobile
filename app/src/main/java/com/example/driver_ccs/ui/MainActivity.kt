@@ -1,10 +1,7 @@
 package com.example.driver_ccs.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,7 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.ActivityMainBinding
@@ -74,7 +70,6 @@ class MainActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener { menuItem ->
             if(menuItem.itemId == R.id.nav_logout) {
-                Log.d("***Logout", "teste")
                 mainViewModel.logout()
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_nav_home_to_nav_login)
                 NavigationUI.onNavDestinationSelected(menuItem, navController)

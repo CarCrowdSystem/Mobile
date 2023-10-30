@@ -24,7 +24,7 @@
         <item name="cornerRadius">32dp</item>
     </style>
 
-    <style name="DriverButtonLaranja" parent="Widget.Material3.Button">
+    <style name="DriverButton.default" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/component</item>
         <item name="android:paddingTop">13dp</item>
         <item name="android:paddingBottom">13dp</item>

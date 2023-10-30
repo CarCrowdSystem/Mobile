@@ -27,5 +27,12 @@
     <string name="label_change_password">Alterar senha</string>
     <string name="label_address">Rua consolação Rua consolação, 123 - Bairro, Cidade, SP</string>
     <string name="label_password">Senha</string>
+    <string name="label_marca">Marca</string>
+    <string name="label_model">Modelo</string>
+    <string name="label_plate">Placa</string>
+    <string name="label_your_cars">Seus veículos</string>
+    <string name="label_add">Adicionar</string>
+    <string name="label_cadastrar">Cadastrar</string>
+    <string name="label_already_have_account">Já tem conta? Entre aqui</string>
 
 </resources>

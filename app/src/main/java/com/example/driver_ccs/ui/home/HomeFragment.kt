@@ -51,12 +51,12 @@ class HomeFragment : Fragment() {
             viewModel.listParking.observe(viewLifecycleOwner){
                 adapter.update(it)
             }
-
-            viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
-                if(!logged) {
-                    findNavController().navigate(R.id.action_nav_home_to_nav_login)
-                }
-            }
+// Mock para entrar sem login
+//            viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
+//                if(!logged) {
+//                    findNavController().navigate(R.id.action_nav_home_to_nav_login)
+//                }
+//            }
         }
     }
 }
