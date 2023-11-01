@@ -16,6 +16,7 @@ import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentLoginBinding
 import com.example.driver_ccs.extensions.toggle
 import com.example.driver_ccs.extensions.viewBinding
+import com.google.android.material.snackbar.Snackbar
 
 class LoginFragment : Fragment() {
 
@@ -59,9 +60,19 @@ class LoginFragment : Fragment() {
     private fun observe() {
         viewModel.login.observe(viewLifecycleOwner) { userStatus ->
             if(userStatus.showStatus()) {
-                goNextScreen()
+//                goNextScreen()
+                findNavController().navigate(R.id.action_nav_login_to_nav_home)
             } else {
-                Toast.makeText(context, userStatus.showMessage(), Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_nav_login_to_nav_error)
+//                val snackbar = Snackbar.make(
+//                    binding.root,
+//                    "Erro no login",
+//                    Snackbar.LENGTH_LONG
+//                )
+//
+//                snackbar.setAction("Tentar novamente") {  }
+//
+//                snackbar.show()
                 displayView(true)
             }
         }

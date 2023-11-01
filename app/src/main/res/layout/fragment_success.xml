@@ -22,18 +22,18 @@
         android:layout_marginTop="32dp"
         android:textSize="22sp"
         android:textAlignment="center"
-        android:text="Cadastro realizado com sucesso!"
+        android:text="@string/label_success_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_image_status" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_withdraw_success"
-        style="@style/DriverGreenButton"
+        style="@style/DriverButton.green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Beleza"
+        android:text="@string/label_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

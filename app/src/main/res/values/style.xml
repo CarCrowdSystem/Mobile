@@ -40,8 +40,16 @@
         <item name="cornerRadius">32dp</item>
     </style>
 
-    <style name="DriverGreenButton" parent="Widget.Material3.Button">
+    <style name="DriverButton.green" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/component_success</item>
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">13dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="DriverButton.orange" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/component</item>
         <item name="android:paddingTop">13dp</item>
         <item name="android:paddingBottom">13dp</item>
         <item name="android:textSize">18sp</item>

@@ -44,7 +44,7 @@ class CadastroFragment: Fragment() {
             if(it.showStatus()) {
                 findNavController().navigate(R.id.action_nav_cadastro_to_nav_success)
             } else {
-                findNavController().navigate(R.id.action_nav_cadastro_to_nav_error)
+                findNavController().navigate(R.id.action_nav_cadastro_to_nav_error_register)
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

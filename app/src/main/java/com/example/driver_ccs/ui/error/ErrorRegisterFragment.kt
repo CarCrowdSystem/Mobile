@@ -10,11 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentErrorBinding
+import com.example.driver_ccs.databinding.FragmentRegisterErrorBinding
 import com.example.driver_ccs.extensions.viewBinding
 
-class ErrorFragment: Fragment() {
+class ErrorRegisterFragment: Fragment() {
 
-    private val binding: FragmentErrorBinding by viewBinding()
+    private val binding: FragmentRegisterErrorBinding by viewBinding()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +35,7 @@ class ErrorFragment: Fragment() {
 
     private fun setListener() {
         binding.btWithdrawTryAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_error_to_nav_login)
+            findNavController().navigate(R.id.action_nav_error_register_to_nav_cadastro)
         }
     }
 }

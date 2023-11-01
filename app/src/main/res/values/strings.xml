@@ -34,5 +34,9 @@
     <string name="label_add">Adicionar</string>
     <string name="label_cadastrar">Cadastrar</string>
     <string name="label_already_have_account">Já tem conta? Entre aqui</string>
+    <string name="label_try_again">Tentar novamente</string>
+    <string name="label_success_register">Cadastro realizado com sucesso!</string>
+    <string name="label_right">Beleza</string>
+    <string name="label_error_message">Erro ao tentar cadastrar</string>
 
 </resources>
