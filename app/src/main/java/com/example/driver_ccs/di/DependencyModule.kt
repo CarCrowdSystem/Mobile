@@ -13,6 +13,6 @@ object DependencyModule {
     val moduleApp = module {
         viewModel { LoginViewModel(get()) }
         viewModel { CadastroViewModel(get()) }
-        viewModel { UserProfileViewModel()}
+        viewModel { UserProfileViewModel(get())}
     }
 }

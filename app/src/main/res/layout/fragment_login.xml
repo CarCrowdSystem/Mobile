@@ -4,12 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@style/DriverProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="match_parent"
         android:layout_height="256dp"
         android:layout_margin="32dp"
         android:src="@drawable/new_app_logo"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +38,7 @@
         android:inputType="textWebEmailAddress"
         android:padding="16dp"
         android:paddingHorizontal="22dp"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
     <EditText
@@ -38,6 +52,7 @@
         android:inputType="textPassword"
         android:padding="16dp"
         android:paddingHorizontal="22dp"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/et_email" />
 
     <TextView
@@ -48,6 +63,7 @@
         android:text="Esqueci a senha"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@id/et_password"
         app:layout_constraintTop_toBottomOf="@id/et_password" />
 
@@ -59,6 +75,7 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
         android:text="Entrar"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/tv_forget_password" />
 
     <Button
@@ -70,6 +87,7 @@
         android:padding="4dp"
         android:text="Não tem conta? Registri-se aqui"
         android:textColor="@color/black"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@id/bt_do_login"
         app:layout_constraintStart_toStartOf="@id/bt_do_login"
         app:layout_constraintTop_toBottomOf="@id/bt_do_login" />

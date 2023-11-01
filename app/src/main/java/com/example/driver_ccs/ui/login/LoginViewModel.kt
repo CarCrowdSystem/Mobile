@@ -21,9 +21,15 @@ class LoginViewModel(
     private var _login = MutableLiveData<ValidationModel>()
     val login: LiveData<ValidationModel> = _login
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun doLogin(email: String, password: String) {
+        _isLoading.value = true
+
         loginRepository.login(email, password, object : ApiListener<LoginModel> {
             override fun onSuccess(result: LoginModel) {
+                _isLoading.value = false
 
                 securityPreferences.store("email", email)
                 securityPreferences.store("senha", password)
@@ -32,6 +38,8 @@ class LoginViewModel(
             }
 
             override fun onFailure(message: String) {
+                _isLoading.value = false
+
                 _login.value = ValidationModel(message)
             }
         })

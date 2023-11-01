@@ -1,7 +1,6 @@
 package com.example.driver_ccs.data.remote
 
 import android.content.Context
-import com.example.driver_ccs.R
 import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.google.gson.Gson
 import retrofit2.Call
@@ -15,10 +14,12 @@ open class BaseRepository(val context: Context) {
     fun <T> executeCall(call: Call<T>, listener: ApiListener<T>) {
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                if (response.code() == 200) {
+                if (response.code() in 200..299) {
                     response.body()?.let { listener.onSuccess(it) }
-                } else {
+                } else if (response.code() in 400..499){
                     listener.onFailure(failResponse("Error"))
+                } else {
+                    listener.onFailure(failResponse("Server error"))
                 }
             }
 

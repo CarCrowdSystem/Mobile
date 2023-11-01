@@ -42,6 +42,12 @@
         tools:layout="@layout/fragment_new_vehicle" />
 
     <fragment
+        android:id="@+id/nav_user_profile"
+        android:name="com.example.driver_ccs.ui.user_profile.UserProfileFragment"
+        android:label="@string/user_profile"
+        tools:layout="@layout/fragment_user_profile" />
+
+    <fragment
         android:id="@+id/nav_login"
         android:name="com.example.driver_ccs.ui.login.LoginFragment"
         android:label="@string/login"
@@ -60,12 +66,34 @@
         android:id="@+id/nav_cadastro"
         android:name="com.example.driver_ccs.ui.cadastro.CadastroFragment"
         android:label="@string/cadastro"
-        tools:layout="@layout/fragment_cadastro" />
+        tools:layout="@layout/fragment_cadastro" >
+        <action
+            android:id="@+id/action_nav_cadastro_to_nav_success"
+            app:destination="@id/nav_success" />
+        <action
+            android:id="@+id/action_nav_cadastro_to_nav_error"
+            app:destination="@id/nav_error" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_user_profile"
-        android:name="com.example.driver_ccs.ui.user_profile.UserProfileFragment"
-        android:label="@string/user_profile"
-        tools:layout="@layout/fragment_user_profile" />
+        android:id="@+id/nav_success"
+        android:name="com.example.driver_ccs.ui.success.SuccessFragment"
+        android:label="Success"
+        tools:layout="@layout/fragment_success" >
+        <action
+            android:id="@+id/action_nav_success_to_nav_login"
+            app:destination="@id/nav_login"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true"/>
+    </fragment>
 
+    <fragment
+        android:id="@+id/nav_error"
+        android:name="com.example.driver_ccs.ui.success.SuccessFragment"
+        android:label="Success"
+        tools:layout="@layout/fragment_error" >
+        <action
+            android:id="@+id/action_nav_error_to_nav_cadastro"
+            app:destination="@id/nav_cadastro" />
+    </fragment>
 </navigation>
