@@ -10,9 +10,9 @@
     <color name="danger">#D81F47</color>
 
     <color name="component_text">#FF000000</color>
-    <color name="component">#FFFF8000</color>
+    <color name="component">#EB5E28</color>
     <color name="component_item">#858585</color>
-    <color name="component_button_default">#111018</color>
+    <color name="component_button">#111018</color>
     <color name="component_button_save">#0AD772</color>
     <color name="component_success">#0DA051</color>
     <color name="component_card_view">#FFFFFFFF</color>

@@ -8,16 +8,16 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="success">Success</string>
+    <string name="error">Error</string>
     <string name="login">Login</string>
-    <string name="cadastro">Cadastro</string>
+    <string name="register">Cadastro</string>
     <string name="historic">Historic</string>
     <string name="user_profile">Profile</string>
     <string name="new_vehicle">New vehicle</string>
     <string name="logout">Logout</string>
 
-    <string name="label_user_name">Lara Croft</string>
+    <string name="label_user_name">Dave Mustaine</string>
     <string name="label_full_name">Nome Completo</string>
     <string name="label_cpf">CPF</string>
     <string name="label_email">Email</string>
@@ -38,5 +38,20 @@
     <string name="label_success_register">Cadastro realizado com sucesso!</string>
     <string name="label_right">Beleza</string>
     <string name="label_error_message">Erro ao tentar cadastrar</string>
+    <string name="label_check_out">Check out</string>
+    <string name="label_total_value">R$ 20,00</string>
+    <string name="label_total">Total</string>
+    <string name="label_park_name">Car parking lot</string>
+    <string name="label_spot">A08</string>
+    <string name="label_spot_in_use">Vaga utilizada</string>
+    <string name="label_hour">07h55</string>
+    <string name="label_enter">Entrada</string>
+    <string name="label_value_per_hour">Valor até 1h</string>
+    <string name="label_spots_available">Vagas disponíveis</string>
+    <string name="label_amount_of_spots">10/100</string>
+    <string name="label_book_now">Agendar agora</string>
+    <string name="label_go_to">Ir até lá</string>
+    <string name="label_km_distance">2km</string>
+    <string name="label_distance">Distância</string>
 
 </resources>

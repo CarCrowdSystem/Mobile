@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -9,7 +8,7 @@
     <View
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="208dp"
         android:background="@drawable/item_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +28,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:text="@string/label_park_name"
+        android:textAlignment="center"
         android:textColor="@color/component_text"
-        android:text="Car park Car park Car park"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintBottom_toTopOf="@id/tv_address"
         app:layout_constraintStart_toEndOf="@id/iv_location_preview"
         app:layout_constraintTop_toTopOf="@id/iv_location_preview" />
 
@@ -50,9 +51,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="Rua consolação Rua consolação, 123 - Bairro, Cidade, SP"
-        android:textSize="14sp"
+        android:text="@string/label_address"
         android:textColor="@color/component_text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintStart_toEndOf="@id/iv_at_location"
         app:layout_constraintTop_toTopOf="@id/iv_at_location" />
@@ -62,9 +63,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Entrada"
-        android:textSize="14sp"
+        android:text="@string/label_enter"
         android:textColor="@color/component_text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/tv_spot_used"
         app:layout_constraintStart_toStartOf="@id/v_layout"
         app:layout_constraintTop_toBottomOf="@id/iv_location_preview" />
@@ -73,9 +74,9 @@
         android:id="@+id/tv_time_spend_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="07h55"
-        android:textSize="12sp"
+        android:text="@string/label_hour"
         android:textColor="@color/component_text"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/tv_entrance"
         app:layout_constraintStart_toStartOf="@id/tv_entrance"
         app:layout_constraintTop_toBottomOf="@id/tv_entrance" />
@@ -84,9 +85,9 @@
         android:id="@+id/tv_spot_used"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vaga utilizada"
-        android:textSize="14sp"
+        android:text="@string/label_spot_in_use"
         android:textColor="@color/component_text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/tv_total"
         app:layout_constraintStart_toEndOf="@id/tv_entrance"
         app:layout_constraintTop_toTopOf="@id/tv_entrance" />
@@ -95,9 +96,9 @@
         android:id="@+id/tv_spot_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A08"
-        android:textSize="12sp"
+        android:text="@string/label_spot"
         android:textColor="@color/component_text"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/tv_spot_used"
         app:layout_constraintStart_toStartOf="@id/tv_spot_used"
         app:layout_constraintTop_toBottomOf="@id/tv_spot_used" />
@@ -106,9 +107,9 @@
         android:id="@+id/tv_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total"
-        android:textSize="14sp"
+        android:text="@string/label_total"
         android:textColor="@color/component_text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintStart_toEndOf="@id/tv_spot_used"
         app:layout_constraintTop_toTopOf="@id/tv_spot_used" />
@@ -117,18 +118,19 @@
         android:id="@+id/tv_total_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R$ 20,00"
-        android:textSize="12sp"
+        android:text="@string/label_total_value"
         android:textColor="@color/component_text"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@id/tv_total"
         app:layout_constraintTop_toBottomOf="@id/tv_total" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbt_check_out"
-        style="@style/DriverButton.save.car"
+        style="@style/DriverButton.default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check out"
+        android:layout_marginBottom="4dp"
+        android:text="@string/label_check_out"
         app:layout_constraintBottom_toBottomOf="@id/v_layout"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintStart_toStartOf="@id/v_layout" />

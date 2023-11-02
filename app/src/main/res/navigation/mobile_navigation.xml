@@ -18,21 +18,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.driver_ccs.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.driver_ccs.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/nav_historic"
         android:name="com.example.driver_ccs.ui.historico.HistoricFragment"
-        android:label="Historic"
+            android:label="@string/historic"
         tools:layout="@layout/fragment_historic" />
 
     <fragment
@@ -68,7 +56,7 @@
     <fragment
         android:id="@+id/nav_cadastro"
         android:name="com.example.driver_ccs.ui.cadastro.CadastroFragment"
-        android:label="@string/cadastro"
+        android:label="@string/register"
         tools:layout="@layout/fragment_cadastro" >
         <action
             android:id="@+id/action_nav_cadastro_to_nav_success"
@@ -81,7 +69,7 @@
     <fragment
         android:id="@+id/nav_success"
         android:name="com.example.driver_ccs.ui.success.SuccessFragment"
-        android:label="Success"
+        android:label="@string/success"
         tools:layout="@layout/fragment_success" >
         <action
             android:id="@+id/action_nav_success_to_nav_login"
@@ -91,7 +79,7 @@
     <fragment
         android:id="@+id/nav_error"
         android:name="com.example.driver_ccs.ui.error.ErrorFragment"
-        android:label="Login Error"
+        android:label="@string/error"
         tools:layout="@layout/fragment_error" >
         <action
             android:id="@+id/action_nav_error_to_nav_login"
@@ -101,7 +89,7 @@
     <fragment
         android:id="@+id/nav_error_register"
         android:name="com.example.driver_ccs.ui.error.ErrorRegisterFragment"
-        android:label="Register Error"
+        android:label="@string/error"
         tools:layout="@layout/fragment_register_error" >
         <action
             android:id="@+id/action_nav_error_register_to_nav_cadastro"

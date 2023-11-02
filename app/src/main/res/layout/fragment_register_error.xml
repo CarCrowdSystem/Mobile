@@ -28,7 +28,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_withdraw_try_again"
-        style="@style/DriverButton.orange"
+        style="@style/DriverButton.default"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
