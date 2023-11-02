@@ -23,13 +23,14 @@
         android:textSize="22sp"
         android:textAlignment="center"
         android:text="Error ao efetuar o login"
+        android:textColor="@color/component_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_image_status" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_withdraw_try_again"
-        style="@style/DriverButton.orange"
+        style="@style/DriverButton.default"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bg_user_pic"
-        app:srcCompat="@drawable/rectangle_9" />
+        app:srcCompat="@drawable/ic_person" />
 
     <TextView
         android:id="@+id/tv_user_name"
@@ -40,7 +40,7 @@
         android:id="@+id/et_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
@@ -54,7 +54,7 @@
         android:id="@+id/et_user_cpf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
@@ -68,7 +68,7 @@
         android:id="@+id/et_user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
@@ -82,7 +82,7 @@
         android:id="@+id/et_user_telefone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
         android:padding="16dp"
@@ -94,27 +94,24 @@
 
     <Button
         android:id="@+id/btn_user_save_info"
-        style="@style/DriverButton.save"
+        style="@style/DriverButton.green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="40dp"
         android:layout_marginTop="14dp"
         android:text="@string/label_save"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_telefone" />
 
     <Button
         android:id="@+id/btn_add_car"
-        style="@style/DriverButton.save.car"
+        style="@style/DriverButton.default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="2dp"
         android:text="@string/label_add_car"
-        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/btn_edit_password"
         app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
         app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
@@ -127,7 +124,6 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="14dp"
         android:text="@string/label_change_password"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/btn_user_save_info"
         app:layout_constraintStart_toEndOf="@id/btn_add_car"
         app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />

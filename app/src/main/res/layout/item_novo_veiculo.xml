@@ -57,7 +57,7 @@
         android:layout_height="32dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/lixeira_icon"
+        android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_modelo"
@@ -66,11 +66,11 @@
     <View
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginTop="8dp"
         android:background="@color/component_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+        app:layout_constraintBottom_toTopOf="@id/tv_marca"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

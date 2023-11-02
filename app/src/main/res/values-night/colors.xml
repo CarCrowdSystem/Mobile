@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="component_text">#FFFFFFFF</color>
-    <color name="component_card_view">#000310</color>
+    <color name="component_card_view">#000209</color>
+    <color name="component_button">@color/component</color>
 </resources>
