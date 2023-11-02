@@ -19,6 +19,9 @@ class NewCarViewModel(
     private var _carData = MutableLiveData<CarResponseModel>()
     val carData: LiveData<CarResponseModel> = _carData
 
+    private var _carsListData = MutableLiveData<List<Cars>>()
+    val carsListData : LiveData<List<Cars>> = _carsListData
+
     fun getCarData(plate: String) {
         newCarRepository.getCarData(plate, object : ApiListener<CarResponseModel> {
             override fun onSuccess(result: CarResponseModel) {
@@ -30,4 +33,15 @@ class NewCarViewModel(
             }
         })
     }
+
+    fun getCarsList() {
+        _carsListData.value =
+            listOf(
+                Cars("Nissan","Skyline","1234567"),
+                Cars("Mitsubishi","Lancer","6969xxx"),
+                Cars("Audi","R8","7654321")
+            )
+    }
 }
+
+data class Cars(val marca: String, val modelo: String, val placa: String)

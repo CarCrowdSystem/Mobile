@@ -2,5 +2,5 @@
 <resources>
 
     <color name="component_text">#FFFFFFFF</color>
-
+    <color name="component_card_view">#000310</color>
 </resources>

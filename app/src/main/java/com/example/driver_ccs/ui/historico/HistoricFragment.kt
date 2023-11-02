@@ -46,5 +46,4 @@ class HistoricFragment : Fragment() {
             }
         }
     }
-
 }

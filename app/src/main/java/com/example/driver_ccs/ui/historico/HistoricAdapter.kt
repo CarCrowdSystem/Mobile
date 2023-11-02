@@ -9,7 +9,8 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
 
     private var historicList = emptyList<ParkinglLot>()
 
-    class HistoricViewHolder(val binding: ItemHistoricBinding) : RecyclerView.ViewHolder(binding.root)
+    class HistoricViewHolder(val binding: ItemHistoricBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoricViewHolder {
         val item = ItemHistoricBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,7 +19,7 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
 
     override fun onBindViewHolder(holder: HistoricViewHolder, position: Int) {
         holder.binding.apply {
-            if(historicList.isNotEmpty()){
+            if (historicList.isNotEmpty()) {
                 tvName.text = historicList[position].nome
                 tvAddress.text = historicList[position].endereco
                 tvTimeSpendIn.text = historicList[position].tempo
@@ -30,7 +31,7 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
 
     override fun getItemCount() = historicList.size
 
-    fun updateHistoric(list: List<ParkinglLot>){
+    fun updateHistoric(list: List<ParkinglLot>) {
         this.historicList = list
         notifyDataSetChanged()
     }

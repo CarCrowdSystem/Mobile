@@ -15,4 +15,5 @@
     <color name="component_button_default">#111018</color>
     <color name="component_button_save">#0AD772</color>
     <color name="component_success">#0DA051</color>
+    <color name="component_card_view">#FFFFFFFF</color>
 </resources>

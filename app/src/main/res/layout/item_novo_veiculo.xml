@@ -3,50 +3,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:layout_marginHorizontal="15dp">
+    android:layout_marginHorizontal="15dp"
+    android:padding="10dp">
 
     <ImageView
-        android:id="@+id/image_lixo_2"
+        android:id="@+id/iv_car"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_car"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_marca"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_name"
-        app:layout_constraintTop_toTopOf="@id/tv_name"
-        app:layout_constraintBottom_toBottomOf="@id/tv_name"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_marca"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="22dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_lixo_2"
-        app:layout_constraintEnd_toStartOf="@id/image_lixo"
-        android:text="Mitsubishi Lancer MT - BDU7I38"
-        android:textSize="22sp"/>
+        android:text="@string/label_marca"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_modelo"
+        app:layout_constraintStart_toEndOf="@id/iv_car"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_modelo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_model"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/iv_lixo"
+        app:layout_constraintStart_toEndOf="@id/tv_marca"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_placa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_plate"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_marca"
+        app:layout_constraintStart_toStartOf="@id/tv_marca"
+        app:layout_constraintTop_toBottomOf="@id/tv_marca" />
 
     <ImageView
-        android:id="@+id/image_lixo"
+        android:id="@+id/iv_lixo"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/lixeira_icon"
-        app:layout_constraintBottom_toBottomOf="@id/tv_name"
-        app:layout_constraintStart_toEndOf="@id/tv_name"
-        app:layout_constraintTop_toTopOf="@id/tv_name"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_modelo"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/component_text"
         android:layout_marginTop="8dp"
+        android:background="@color/component_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name" />

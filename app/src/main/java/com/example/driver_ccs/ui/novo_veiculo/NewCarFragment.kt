@@ -10,14 +10,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentNewVehicleBinding
 import com.example.driver_ccs.extensions.viewBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class NewCarFragment : Fragment() {
 
     private val binding: FragmentNewVehicleBinding by viewBinding()
     private lateinit var viewModel: NewCarViewModel
+    private val adapter: NewCarAdapter by lazy { NewCarAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +42,22 @@ class NewCarFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val window: Window = requireActivity().window
         window.statusBarColor = resources.getColor(R.color.component)
+        viewModel.getCarsList()
         observe()
         setListener()
+        setupRecyclerView()
     }
 
-    private fun setListener(){
+    private fun setListener() {
         binding.btnGetCarData.setOnClickListener {
-            if(binding.etPlate.text.toString().length == 7) {
-            viewModel.getCarData(binding.etPlate.text.toString())
-//                Log.d("***btnGetCarData", "${binding.etPlate.text}")
+            if (binding.etPlate.text.toString().length == 7) {
+                viewModel.getCarData(binding.etPlate.text.toString())
             } else {
-                Toast.makeText(requireContext(), "A placa deve ter 7 caracteres", Toast.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.root,
+                    "A placa deve ter 7 caracteres",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -57,5 +67,15 @@ class NewCarFragment : Fragment() {
             binding.etMarca.setText(it.marca)
             binding.etModel.setText(it.modelo)
         }
+        lifecycleScope.launch {
+            viewModel.carsListData.observe(viewLifecycleOwner) {
+                adapter.updateCarList(it)
+            }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvHistoric.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvHistoric.adapter = adapter
     }
 }
