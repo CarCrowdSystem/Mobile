@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.R
+import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.databinding.FragmentNewVehicleBinding
 import com.example.driver_ccs.extensions.viewBinding
 import com.google.android.material.snackbar.Snackbar
@@ -49,16 +50,39 @@ class NewCarFragment : Fragment() {
     }
 
     private fun setListener() {
-        binding.btnGetCarData.setOnClickListener {
-            if (binding.etPlate.text.toString().length == 7) {
-                viewModel.getCarData(binding.etPlate.text.toString())
-            } else {
-                Snackbar.make(
-                    binding.root,
-                    "A placa deve ter 7 caracteres",
-                    Snackbar.LENGTH_LONG
-                ).show()
-            }
+//        binding.btnGetCarData.setOnClickListener {
+//            if (binding.etPlate.text.toString().length == 7) {
+//                val placa = binding.etPlate.text.toString()
+//                viewModel.getCarData(placa)
+//            } else {
+//                Snackbar.make(
+//                    binding.root,
+//                    "A placa deve ter 7 caracteres",
+//                    Snackbar.LENGTH_LONG
+//                ).show()
+//            }
+//        }
+        binding.btnAddCar.setOnClickListener {
+//            if (binding.etPlate.text.toString().length == 7 &&
+//                binding.etModel.text.isNotEmpty() &&
+//                binding.etMarca.text.isNotEmpty()) {
+
+//            val placa = binding.etPlate.text.toString()
+//            val modelo = binding.etModel.text.toString()
+//            val marca = binding.etMarca.text.toString()
+
+            val placa = "DDDD000"
+            val modelo = "Skyline"
+            val marca = "Nissan"
+
+            viewModel.registerCar(placa, modelo, marca)
+//            } else {
+//                Snackbar.make(
+//                    binding.root,
+//                    "Os campos devem estar preechidos!",
+//                    Snackbar.LENGTH_LONG
+//                ).show()
+//            }
         }
     }
 
@@ -70,6 +94,21 @@ class NewCarFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.carsListData.observe(viewLifecycleOwner) {
                 adapter.updateCarList(it)
+            }
+        }
+        viewModel.alert.observe(viewLifecycleOwner) {
+            if(it.showStatus()) {
+                Snackbar.make(
+                    binding.root,
+                    "Carro adicionado com sucesso!",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "Erro ao adicionar carro!",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }

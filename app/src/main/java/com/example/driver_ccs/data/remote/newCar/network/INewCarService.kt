@@ -1,5 +1,6 @@
 package com.example.driver_ccs.data.remote.newCar.network
 
+import com.example.driver_ccs.data.remote.model.CarModel
 import com.example.driver_ccs.data.remote.model.CarResponseModel
 import com.example.driver_ccs.data.remote.model.LoginModel
 import retrofit2.Call
@@ -15,4 +16,9 @@ interface INewCarService {
     fun getCarData(
         @Path("placa") placa: String
     ): Call<CarResponseModel>
+
+    @POST("veiculo/mobile")
+    fun registerCar(
+        @Body car: CarModel
+    ): Call<Unit>
 }

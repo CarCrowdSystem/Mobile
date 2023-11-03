@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.model.CarResponseModel
 import com.example.driver_ccs.data.remote.model.ValidationModel
@@ -14,6 +15,7 @@ class NewCarViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
+    private val securityPreferences = SecurityPreferences(application.applicationContext)
     private val newCarRepository = NewCarRepository(application.applicationContext)
 
     private var _carData = MutableLiveData<CarResponseModel>()
@@ -22,6 +24,9 @@ class NewCarViewModel(
     private var _carsListData = MutableLiveData<List<Cars>>()
     val carsListData : LiveData<List<Cars>> = _carsListData
 
+    private var _alert  = MutableLiveData<ValidationModel>()
+    val alert : LiveData<ValidationModel> = _alert
+
     fun getCarData(plate: String) {
         newCarRepository.getCarData(plate, object : ApiListener<CarResponseModel> {
             override fun onSuccess(result: CarResponseModel) {
@@ -29,7 +34,21 @@ class NewCarViewModel(
             }
 
             override fun onFailure(message: String) {
-                Log.d("***onFailure", message)
+                _alert.value = ValidationModel(message)
+            }
+        })
+    }
+
+    fun registerCar(placa: String, modelo: String, marca: String){
+        val id = securityPreferences.get("id")
+        Log.d("***registeCar vm","$placa, $modelo, $marca, $id")
+        newCarRepository.registeCar(placa, modelo, marca, id, object : ApiListener<Unit> {
+            override fun onSuccess(result: Unit) {
+                _alert.value = ValidationModel()
+            }
+
+            override fun onFailure(message: String) {
+                _alert.value = ValidationModel(message)
             }
         })
     }
