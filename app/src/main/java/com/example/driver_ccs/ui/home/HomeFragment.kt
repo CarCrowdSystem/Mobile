@@ -52,11 +52,11 @@ class HomeFragment : Fragment() {
                 adapter.update(it)
             }
 
-//            viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
-//                if(!logged) {
-//                    findNavController().navigate(R.id.action_nav_home_to_nav_login)
-//                }
-//            }
+            viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
+                if(!logged) {
+                    findNavController().navigate(R.id.action_nav_home_to_nav_login)
+                }
+            }
         }
     }
 }

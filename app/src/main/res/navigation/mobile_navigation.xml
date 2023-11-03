@@ -93,6 +93,8 @@
         tools:layout="@layout/fragment_register_error" >
         <action
             android:id="@+id/action_nav_error_register_to_nav_cadastro"
-            app:destination="@id/nav_cadastro" />
+            app:destination="@id/nav_cadastro"
+            app:popUpTo="@id/nav_cadastro"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

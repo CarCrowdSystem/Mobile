@@ -10,6 +10,7 @@ import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.login.LoginRepository
 import com.example.driver_ccs.data.remote.model.LoginModel
 import com.example.driver_ccs.data.remote.model.ValidationModel
+import com.example.driver_ccs.data.remote.model.response.LoginResponseModel
 
 class LoginViewModel(
     application: Application
@@ -27,19 +28,18 @@ class LoginViewModel(
     fun doLogin(email: String, password: String) {
         _isLoading.value = true
 
-        loginRepository.login(email, password, object : ApiListener<LoginModel> {
-            override fun onSuccess(result: LoginModel) {
+        loginRepository.login(email, password, object : ApiListener<LoginResponseModel> {
+            override fun onSuccess(result: LoginResponseModel) {
                 _isLoading.value = false
 
-                securityPreferences.store("email", email)
-                securityPreferences.store("senha", password)
+                securityPreferences.store("nome", result.nome)
+                securityPreferences.store("id", result.id)
 
                 _login.value = ValidationModel()
             }
 
             override fun onFailure(message: String) {
                 _isLoading.value = false
-
                 _login.value = ValidationModel(message)
             }
         })

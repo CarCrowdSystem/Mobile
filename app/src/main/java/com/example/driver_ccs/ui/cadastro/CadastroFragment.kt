@@ -8,21 +8,25 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentCadastroBinding
 import com.example.driver_ccs.extensions.viewBinding
+import com.example.driver_ccs.ui.login.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 
-class CadastroFragment: Fragment() {
+class CadastroFragment : Fragment() {
 
     private val binding: FragmentCadastroBinding by viewBinding()
-    private val viewModel: CadastroViewModel by viewModels()
+    private lateinit var viewModel: CadastroViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel = ViewModelProvider(this)[CadastroViewModel::class.java]
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         return binding.root
     }
@@ -39,9 +43,9 @@ class CadastroFragment: Fragment() {
         }
     }
 
-    private fun observe(){
-        viewModel.user.observe(viewLifecycleOwner) {
-            if(it.showStatus()) {
+    private fun observe() {
+        viewModel.user.observe(viewLifecycleOwner) { userStatus ->
+            if (userStatus.showStatus()) {
                 findNavController().navigate(R.id.action_nav_cadastro_to_nav_success)
             } else {
                 findNavController().navigate(R.id.action_nav_cadastro_to_nav_error_register)
@@ -55,12 +59,20 @@ class CadastroFragment: Fragment() {
                 binding.pbLoading.visibility = View.GONE
             }
         }
-     }
+    }
 
     private fun handleSave() {
         val name = binding.etName.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        viewModel.register(name, email, password)
+        if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+            viewModel.register(name, email, password)
+        } else {
+            Snackbar.make(
+                binding.root,
+                "Todos os campos devem estar preenchidos!",
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 }

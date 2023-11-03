@@ -29,10 +29,10 @@ class   HomeViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun verifyLoggedUser() {
-        val email = securityPreferences.get("email")
-        val password = securityPreferences.get("senha")
+        val nome = securityPreferences.get("nome")
+        val id = securityPreferences.get("id")
 
-        _userLogged.value = (email.isNotEmpty() && password.isNotEmpty())
+        _userLogged.value = (nome.isNotEmpty() && id.isNotEmpty())
     }
 
 }

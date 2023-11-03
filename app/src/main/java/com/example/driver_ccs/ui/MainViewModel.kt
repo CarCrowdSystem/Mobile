@@ -11,7 +11,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val securityPreferences = SecurityPreferences(application.applicationContext)
 
     fun logout() {
-        securityPreferences.remove("email")
-        securityPreferences.remove("senha")
+        securityPreferences.remove("nome")
+        securityPreferences.remove("id")
     }
 }

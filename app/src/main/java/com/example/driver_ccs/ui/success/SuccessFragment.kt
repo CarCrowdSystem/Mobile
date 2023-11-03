@@ -29,7 +29,7 @@ class SuccessFragment(): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window: Window = requireActivity().window
-        window.statusBarColor = resources.getColor(R.color.white)
+        window.statusBarColor = resources.getColor(R.color.component)
         setListener()
     }
 

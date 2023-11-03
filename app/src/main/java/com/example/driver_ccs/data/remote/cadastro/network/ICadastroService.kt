@@ -10,5 +10,5 @@ interface ICadastroService {
     @POST("clientes")
     fun register (
         @Body person: CadastroModel
-    ): Call<CadastroModel>
+    ): Call<Unit>
 }

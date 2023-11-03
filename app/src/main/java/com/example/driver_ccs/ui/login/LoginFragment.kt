@@ -23,17 +23,13 @@ class LoginFragment : Fragment() {
     private val binding: FragmentLoginBinding by viewBinding()
     private lateinit var viewModel: LoginViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         return binding.root
     }
 
@@ -51,7 +47,6 @@ class LoginFragment : Fragment() {
             val password = binding.etPassword.text.toString()
             viewModel.doLogin(email, password)
         }
-
         binding.btRegister.setOnClickListener {
             findNavController().navigate(R.id.action_nav_login_to_nav_cadastro)
         }
@@ -60,19 +55,9 @@ class LoginFragment : Fragment() {
     private fun observe() {
         viewModel.login.observe(viewLifecycleOwner) { userStatus ->
             if(userStatus.showStatus()) {
-//                goNextScreen()
                 findNavController().navigate(R.id.action_nav_login_to_nav_home)
             } else {
                 findNavController().navigate(R.id.action_nav_login_to_nav_error)
-//                val snackbar = Snackbar.make(
-//                    binding.root,
-//                    "Erro no login",
-//                    Snackbar.LENGTH_LONG
-//                )
-//
-//                snackbar.setAction("Tentar novamente") {  }
-//
-//                snackbar.show()
                 displayView(true)
             }
         }
@@ -84,10 +69,6 @@ class LoginFragment : Fragment() {
                 binding.pbLoading.toggle(false)
             }
         }
-    }
-
-    private fun goNextScreen() {
-        findNavController().navigate(R.id.action_nav_login_to_nav_home)
     }
 
     private fun displayView(isVisible: Boolean){
