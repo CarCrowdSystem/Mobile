@@ -36,6 +36,18 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/bg_user_pic" />
 
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@style/DriverProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/et_user_name"
         android:layout_width="match_parent"
@@ -43,9 +55,10 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
+        android:hint="@string/label_full_name"
         android:padding="16dp"
         android:paddingHorizontal="22sp"
-        android:text="@string/label_full_name"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bg_user_pic" />
@@ -57,9 +70,10 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
+        android:hint="@string/label_cpf"
         android:padding="16dp"
         android:paddingHorizontal="22sp"
-        android:text="@string/label_cpf"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_name" />
@@ -71,9 +85,10 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
+        android:hint="@string/label_email"
         android:padding="16dp"
         android:paddingHorizontal="22sp"
-        android:text="@string/label_email"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_cpf" />
@@ -85,9 +100,10 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/edit_style"
+        android:hint="@string/label_phone"
         android:padding="16dp"
         android:paddingHorizontal="22sp"
-        android:text="@string/label_phone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_email" />
@@ -100,6 +116,7 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="14dp"
         android:text="@string/label_save"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_user_telefone" />
@@ -112,6 +129,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="2dp"
         android:text="@string/label_add_car"
+        android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@id/btn_edit_password"
         app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
         app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
@@ -124,8 +142,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="14dp"
         android:text="@string/label_change_password"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@id/btn_user_save_info"
         app:layout_constraintStart_toEndOf="@id/btn_add_car"
         app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

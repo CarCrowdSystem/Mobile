@@ -72,11 +72,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun displayView(isVisible: Boolean){
-        binding.ivLogo.toggle(isVisible)
-        binding.etEmail.toggle(isVisible)
-        binding.etPassword.toggle(isVisible)
-        binding.tvForgetPassword.toggle(isVisible)
-        binding.btDoLogin.toggle(isVisible)
-        binding.btRegister.toggle(isVisible)
+        binding.apply {
+            ivLogo.toggle(isVisible)
+            etEmail.toggle(isVisible)
+            etPassword.toggle(isVisible)
+            tvForgetPassword.toggle(isVisible)
+            btDoLogin.toggle(isVisible)
+            btRegister.toggle(isVisible)
+        }
     }
 }

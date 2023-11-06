@@ -5,17 +5,27 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.data.remote.listener.ApiListener
-import com.example.driver_ccs.data.remote.model.CarResponseModel
-import com.example.driver_ccs.data.remote.profilePicture.ProfileRepository
+import com.example.driver_ccs.data.remote.model.ValidationModel
+import com.example.driver_ccs.data.remote.profile.ProfileRepository
 
 class UserProfileViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userProfileRepository = ProfileRepository(application.applicationContext)
+    private val securityPreferences = SecurityPreferences(application.applicationContext)
 
     private var _defaultPicture = MutableLiveData<String>()
     val defaultPicture: LiveData<String> = _defaultPicture
+
+    private var _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
+    private var _alert = MutableLiveData<ValidationModel>()
+    val alert: LiveData<ValidationModel> = _alert
+
+    private var _userName = MutableLiveData<String>()
+    val userName: LiveData<String> = _userName
 
     fun getDefaultPicture(name: String) {
         userProfileRepository.getProfilePicture(name, object : ApiListener<Any> {
@@ -27,5 +37,25 @@ class UserProfileViewModel(application: Application) : AndroidViewModel(applicat
                 Log.d("***error", message)
             }
         })
+    }
+
+    fun updateProfile(nome: String, email: String, telefone: String, cpf: String) {
+        _isLoading.value = true
+        val id = securityPreferences.get("id").toInt()
+        userProfileRepository.updateProfile(nome, telefone, cpf, email, id, object : ApiListener<Unit> {
+            override fun onSuccess(result: Unit) {
+                _isLoading.value = false
+                _alert.value = ValidationModel()
+            }
+
+            override fun onFailure(message: String) {
+                _isLoading.value = false
+                _alert.value = ValidationModel(message)
+            }
+        })
+    }
+
+    fun getUserName() {
+        _userName.value = securityPreferences.get("nome")
     }
 }

@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             if(menuItem.itemId == R.id.nav_logout) {
                 mainViewModel.logout()
-                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_nav_home_to_nav_login)
+                findNavController(R.id.nav_host_fragment_content_main).popBackStack()
                 NavigationUI.onNavDestinationSelected(menuItem, navController)
                 drawerLayout.closeDrawer(GravityCompat.START)
             } else {

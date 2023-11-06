@@ -39,7 +39,18 @@ class CadastroFragment : Fragment() {
 
     private fun setListener() {
         binding.btDoCadastro.setOnClickListener {
-            handleSave()
+            val name = binding.etName.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+                viewModel.register(name, email, password)
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "Todos os campos devem estar preenchidos!",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
@@ -58,21 +69,6 @@ class CadastroFragment : Fragment() {
             } else {
                 binding.pbLoading.visibility = View.GONE
             }
-        }
-    }
-
-    private fun handleSave() {
-        val name = binding.etName.text.toString()
-        val email = binding.etEmail.text.toString()
-        val password = binding.etPassword.text.toString()
-        if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-            viewModel.register(name, email, password)
-        } else {
-            Snackbar.make(
-                binding.root,
-                "Todos os campos devem estar preenchidos!",
-                Snackbar.LENGTH_LONG
-            ).show()
         }
     }
 }
