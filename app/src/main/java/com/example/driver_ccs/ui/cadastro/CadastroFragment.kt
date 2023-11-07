@@ -52,6 +52,9 @@ class CadastroFragment : Fragment() {
                 ).show()
             }
         }
+        binding.btGoToLogin.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun observe() {

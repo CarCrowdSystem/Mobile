@@ -12,9 +12,9 @@
     <string name="error">Error</string>
     <string name="login">Login</string>
     <string name="register">Cadastro</string>
-    <string name="historic">Historic</string>
-    <string name="user_profile">Profile</string>
-    <string name="new_vehicle">New vehicle</string>
+    <string name="historic">Histórico</string>
+    <string name="user_profile">Perfil</string>
+    <string name="new_vehicle">Novo veículo</string>
     <string name="logout">Logout</string>
 
     <string name="label_user_name">Dave Mustaine</string>
