@@ -5,8 +5,8 @@ import com.example.driver_ccs.data.remote.BaseRepository
 import com.example.driver_ccs.data.remote.RetrofitClient
 import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.model.CarModel
-import com.example.driver_ccs.data.remote.model.CarResponseModel
-import com.example.driver_ccs.data.remote.model.LoginModel
+import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
+import com.example.driver_ccs.data.remote.model.response.CarResponseModel
 import com.example.driver_ccs.data.remote.newCar.network.INewCarService
 
 class NewCarRepository(context: Context) : BaseRepository(context) {
@@ -19,5 +19,9 @@ class NewCarRepository(context: Context) : BaseRepository(context) {
 
     fun registeCar(placa: String, marca: String, modelo: String, id_cliente: String, listener: ApiListener<Unit>) {
         executeCall(remote.registerCar(CarModel(placa, marca, modelo, id_cliente)), listener )
+    }
+
+    fun getCars(id_cliente: Int, listener: ApiListener<List<CarListResponseModel>>) {
+        executeCall(remote.getCars(id_cliente), listener)
     }
 }

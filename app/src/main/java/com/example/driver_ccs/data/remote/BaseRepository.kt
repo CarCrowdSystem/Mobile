@@ -18,9 +18,11 @@ open class BaseRepository(val context: Context) {
                 if (response.code() in 200..299) {
                     response.body()?.let { listener.onSuccess(it) }
                 } else if (response.code() in 400..499){
-                    listener.onFailure(failResponse("Error"))
-                } else {
+                    listener.onFailure(failResponse("Client Error"))
+                } else if (response.code() in 500..599){
                     listener.onFailure(failResponse("Server error"))
+                } else {
+                    listener.onFailure(failResponse("Error"))
                 }
             }
 

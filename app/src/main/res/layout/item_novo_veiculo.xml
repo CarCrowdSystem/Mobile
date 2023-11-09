@@ -38,7 +38,7 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@id/iv_lixo"
         app:layout_constraintStart_toEndOf="@id/tv_marca"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/tv_marca" />
 
     <TextView
         android:id="@+id/tv_placa"
@@ -66,11 +66,11 @@
     <View
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
         android:background="@color/component_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_marca"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_lixo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -90,7 +90,6 @@ class UserProfileFragment : Fragment() {
             etUserEmail.toggle(isVisible)
             etUserTelefone.toggle(isVisible)
             etUserCpf.toggle(isVisible)
-            btnAddCar.toggle(isVisible)
             btnEditPassword.toggle(isVisible)
             btnUserSaveInfo.toggle(isVisible)
         }

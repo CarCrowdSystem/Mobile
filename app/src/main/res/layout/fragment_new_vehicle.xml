@@ -41,7 +41,7 @@
         style="@style/DriverButton.default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buscar"
+        android:text="@string/label_search"
         app:layout_constraintBottom_toBottomOf="@id/et_plate"
         app:layout_constraintEnd_toEndOf="@id/et_marca"
         app:layout_constraintStart_toEndOf="@id/et_plate"
