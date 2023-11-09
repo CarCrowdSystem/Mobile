@@ -3,11 +3,12 @@ package com.example.driver_ccs.ui.novo_veiculo
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
 import com.example.driver_ccs.databinding.ItemNovoVeiculoBinding
 
 class NewCarAdapter() : RecyclerView.Adapter<NewCarAdapter.NewCarViewHolder>() {
 
-    private var carsList = listOf<Cars>()
+    private var carsList = listOf<CarListResponseModel>()
 
     class NewCarViewHolder(val binding: ItemNovoVeiculoBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -29,7 +30,7 @@ class NewCarAdapter() : RecyclerView.Adapter<NewCarAdapter.NewCarViewHolder>() {
 
     override fun getItemCount() = carsList.size
 
-    fun updateCarList(list: List<Cars>) {
+    fun updateCarList(list: List<CarListResponseModel>) {
         this.carsList = list
         notifyDataSetChanged()
     }

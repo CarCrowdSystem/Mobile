@@ -16,6 +16,10 @@ import androidx.navigation.ui.NavigationUI
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.ActivityMainBinding
 import com.example.driver_ccs.ui.home.HomeViewModel
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,10 +28,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var homeViewModel: HomeViewModel
 
+
+    // -23.5868031,-46.6847268
+    // Av. Brig. Faria Lima, 3477 - 18º Andar - Itaim Bibi, São Paulo - SP, 04538-133
+
+    private val places = arrayListOf(
+        Place(
+            "Google",
+            LatLng(-23.5868031, -46.6843406),
+            "Av. Brig. Faria Lima, 3477 - 18º Andar - Itaim Bibi, São Paulo - SP, 04538-133"
+        )
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.fc_map) as? SupportMapFragment
+        mapFragment?.getMapAsync { googleMap ->
+            addMarkers(googleMap)
+        }
 
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
@@ -72,8 +93,8 @@ class MainActivity : AppCompatActivity() {
             if(menuItem.itemId == R.id.nav_logout) {
                 mainViewModel.logout()
                 findNavController(R.id.nav_host_fragment_content_main).popBackStack()
-                NavigationUI.onNavDestinationSelected(menuItem, navController)
-                drawerLayout.closeDrawer(GravityCompat.START)
+//                NavigationUI.onNavDestinationSelected(menuItem, navController)
+//                drawerLayout.closeDrawer(GravityCompat.START)
             } else {
                 NavigationUI.onNavDestinationSelected(menuItem, navController)
                 drawerLayout.closeDrawer(GravityCompat.START)
@@ -81,4 +102,21 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
+    private fun addMarkers(googleMap: GoogleMap) {
+        places.forEach {
+            val marker = googleMap.addMarker(
+                MarkerOptions()
+                    .title(it.name)
+                    .snippet(it.address)
+                    .position(it.latLng)
+            )
+        }
+    }
 }
+
+data class Place(
+    val name: String,
+    val latLng: LatLng,
+    val address: String
+)

@@ -24,6 +24,7 @@ class NewCarFragment : Fragment() {
     private val binding: FragmentNewVehicleBinding by viewBinding()
     private lateinit var viewModel: NewCarViewModel
     private val adapter: NewCarAdapter by lazy { NewCarAdapter() }
+    var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +64,19 @@ class NewCarFragment : Fragment() {
 //            }
 //        }
         binding.btnAddCar.setOnClickListener {
+            val placa = "EEFF111"
+            val modelo = "Skyline"
+            val marca = "Nissan"
+
+            viewModel.registerCar(placa, modelo, marca)
+
+            viewModel.isLoading.observe(viewLifecycleOwner) {
+                if(!it && count < 1) {
+                    count++
+                    viewModel.getCarsList()
+                }
+            }
+
 //            if (binding.etPlate.text.toString().length == 7 &&
 //                binding.etModel.text.isNotEmpty() &&
 //                binding.etMarca.text.isNotEmpty()) {
@@ -71,11 +85,10 @@ class NewCarFragment : Fragment() {
 //            val modelo = binding.etModel.text.toString()
 //            val marca = binding.etMarca.text.toString()
 
-            val placa = "DDDD000"
-            val modelo = "Skyline"
-            val marca = "Nissan"
-
-            viewModel.registerCar(placa, modelo, marca)
+//            val placa = "DDDD000"
+//            val modelo = "Skyline"
+//            val marca = "Nissan"
+//            viewModel.registerCar(placa, modelo, marca)
 //            } else {
 //                Snackbar.make(
 //                    binding.root,
@@ -97,16 +110,16 @@ class NewCarFragment : Fragment() {
             }
         }
         viewModel.alert.observe(viewLifecycleOwner) {
-            if(it.showStatus()) {
+            if (it.showStatus()) {
                 Snackbar.make(
                     binding.root,
-                    "Carro adicionado com sucesso!",
+                    "Sucesso!",
                     Snackbar.LENGTH_LONG
                 ).show()
             } else {
                 Snackbar.make(
                     binding.root,
-                    "Erro ao adicionar carro!",
+                    it.showMessage(),
                     Snackbar.LENGTH_LONG
                 ).show()
             }

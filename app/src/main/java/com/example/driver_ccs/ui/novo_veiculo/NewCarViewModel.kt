@@ -7,8 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.data.remote.listener.ApiListener
-import com.example.driver_ccs.data.remote.model.CarResponseModel
+import com.example.driver_ccs.data.remote.model.response.CarResponseModel
 import com.example.driver_ccs.data.remote.model.ValidationModel
+import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
 import com.example.driver_ccs.data.remote.newCar.NewCarRepository
 
 class NewCarViewModel(
@@ -21,11 +22,14 @@ class NewCarViewModel(
     private var _carData = MutableLiveData<CarResponseModel>()
     val carData: LiveData<CarResponseModel> = _carData
 
-    private var _carsListData = MutableLiveData<List<Cars>>()
-    val carsListData : LiveData<List<Cars>> = _carsListData
+    private var _carsListData = MutableLiveData<List<CarListResponseModel>>()
+    val carsListData : LiveData<List<CarListResponseModel>> = _carsListData
 
-    private var _alert  = MutableLiveData<ValidationModel>()
+    private var _alert = MutableLiveData<ValidationModel>()
     val alert : LiveData<ValidationModel> = _alert
+
+    private var _isLoading = MutableLiveData<Boolean>()
+    val isLoading : LiveData<Boolean> = _isLoading
 
     fun getCarData(plate: String) {
         newCarRepository.getCarData(plate, object : ApiListener<CarResponseModel> {
@@ -40,27 +44,33 @@ class NewCarViewModel(
     }
 
     fun registerCar(placa: String, modelo: String, marca: String){
+        _isLoading.value = true
         val id = securityPreferences.get("id")
-        Log.d("***registeCar vm","$placa, $modelo, $marca, $id")
         newCarRepository.registeCar(placa, modelo, marca, id, object : ApiListener<Unit> {
             override fun onSuccess(result: Unit) {
+                _isLoading.value = false
                 _alert.value = ValidationModel()
             }
 
             override fun onFailure(message: String) {
+                _isLoading.value = false
                 _alert.value = ValidationModel(message)
             }
         })
     }
 
     fun getCarsList() {
-        _carsListData.value =
-            listOf(
-                Cars("Nissan","Skyline","1234567"),
-                Cars("Mitsubishi","Lancer","6969xxx"),
-                Cars("Audi","R8","7654321")
-            )
+        _isLoading.value = true
+        val id = securityPreferences.get("id")
+        newCarRepository.getCars(id.toInt(), object : ApiListener<List<CarListResponseModel>> {
+            override fun onSuccess(result: List<CarListResponseModel>) {
+                _isLoading.value = false
+                _carsListData.value = result
+            }
+
+            override fun onFailure(message: String) {
+                _isLoading.value = false
+            }
+        })
     }
 }
-
-data class Cars(val marca: String, val modelo: String, val placa: String)

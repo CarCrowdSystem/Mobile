@@ -15,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentHomeBinding
 import com.example.driver_ccs.extensions.viewBinding
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -42,13 +46,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.rvEstacionamento.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
+        binding.rvEstacionamento.layoutManager =
+            LinearLayoutManager(requireContext(), HORIZONTAL, false)
         binding.rvEstacionamento.adapter = adapter
     }
 
     private fun observe() {
         lifecycleScope.launch {
-            viewModel.listParking.observe(viewLifecycleOwner){
+            viewModel.listParking.observe(viewLifecycleOwner) {
                 adapter.update(it)
             }
 

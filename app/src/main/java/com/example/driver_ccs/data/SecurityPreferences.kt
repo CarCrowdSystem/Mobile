@@ -3,7 +3,7 @@ package com.example.driver_ccs.data
 import android.content.Context
 import android.content.SharedPreferences
 
-class SecurityPreferences(context: Context) {
+class SecurityPreferences   (context: Context) {
 
     private val preferences: SharedPreferences = context.getSharedPreferences("drive-ccs", Context.MODE_PRIVATE)
 

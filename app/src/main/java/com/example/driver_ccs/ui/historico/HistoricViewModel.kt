@@ -1,24 +1,32 @@
 package com.example.driver_ccs.ui.historico
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.driver_ccs.data.SecurityPreferences
+import com.example.driver_ccs.data.remote.historic.HistoricRepository
+import com.example.driver_ccs.data.remote.listener.ApiListener
+import com.example.driver_ccs.data.remote.model.response.HistoricResponseModel
 
-class HistoricViewModel: ViewModel() {
+class HistoricViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var _historicList = MutableLiveData<List<ParkinglLot>>()
-    val historicList : LiveData<List<ParkinglLot>> = _historicList
+    private val securityPreferences = SecurityPreferences(application.applicationContext)
+    private val historicRepository = HistoricRepository(application.applicationContext)
+
+    private var _historicList = MutableLiveData<List<HistoricResponseModel>>()
+    val historicList : LiveData<List<HistoricResponseModel>> = _historicList
 
     fun getHistoric() {
-        _historicList.value =
-            listOf(
-                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
-                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
-                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
-                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00"),
-                ParkinglLot("Car park","Rua consolação, 123 - Bairro, Cidade, SP", "06h00","A01","R$ 20,00")
-            )
+        val id = securityPreferences.get("id").toInt()
+        historicRepository.getHistoric(id, object : ApiListener<List<HistoricResponseModel>> {
+            override fun onSuccess(result: List<HistoricResponseModel>) {
+                _historicList.value = result
+            }
+
+            override fun onFailure(message: String) {
+            }
+        })
     }
 }
-
-data class ParkinglLot(val nome: String, val endereco: String, val tempo: String, val vaga: String, val total: String)

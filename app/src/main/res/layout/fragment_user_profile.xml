@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -111,7 +110,7 @@
     <Button
         android:id="@+id/btn_user_save_info"
         style="@style/DriverButton.green"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="14dp"
@@ -122,28 +121,15 @@
         app:layout_constraintTop_toBottomOf="@id/et_user_telefone" />
 
     <Button
-        android:id="@+id/btn_add_car"
-        style="@style/DriverButton.default"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="2dp"
-        android:text="@string/label_add_car"
-        android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@id/btn_edit_password"
-        app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
-        app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
-
-    <Button
         android:id="@+id/btn_edit_password"
         style="@style/DriverButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginTop="14dp"
         android:text="@string/label_change_password"
         android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
         app:layout_constraintEnd_toEndOf="@id/btn_user_save_info"
-        app:layout_constraintStart_toEndOf="@id/btn_add_car"
         app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

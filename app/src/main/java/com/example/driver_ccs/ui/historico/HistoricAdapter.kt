@@ -3,11 +3,12 @@ package com.example.driver_ccs.ui.historico
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.driver_ccs.data.remote.model.response.HistoricResponseModel
 import com.example.driver_ccs.databinding.ItemHistoricBinding
 
 class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolder>() {
 
-    private var historicList = emptyList<ParkinglLot>()
+    private var historicList = emptyList<HistoricResponseModel>()
 
     class HistoricViewHolder(val binding: ItemHistoricBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -21,17 +22,17 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
         holder.binding.apply {
             if (historicList.isNotEmpty()) {
                 tvName.text = historicList[position].nome
-                tvAddress.text = historicList[position].endereco
-                tvTimeSpendIn.text = historicList[position].tempo
-                tvSpotTag.text = historicList[position].vaga
-                tvTotal.text = historicList[position].total
+                tvAddress.text = historicList[position].rua
+                tvTimeSpendIn.text = historicList[position].hora
+                tvSpotTag.text = historicList[position].status
+                tvTotalValue.text = historicList[position].valor
             }
         }
     }
 
     override fun getItemCount() = historicList.size
 
-    fun updateHistoric(list: List<ParkinglLot>) {
+    fun updateHistoric(list: List<HistoricResponseModel>) {
         this.historicList = list
         notifyDataSetChanged()
     }
