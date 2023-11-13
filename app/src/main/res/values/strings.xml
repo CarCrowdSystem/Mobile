@@ -25,7 +25,7 @@
     <string name="label_save">Salvar</string>
     <string name="label_add_car">Adicionar veículo</string>
     <string name="label_change_password">Alterar senha</string>
-    <string name="label_address">Rua consolação Rua consolação, 123 - Bairro, Cidade, SP</string>
+    <string name="label_address">Rua consolação, 123 - Bairro, Cidade, SP</string>
     <string name="label_password">Senha</string>
     <string name="label_marca">Marca</string>
     <string name="label_model">Modelo</string>
@@ -43,9 +43,11 @@
     <string name="label_total">Total</string>
     <string name="label_park_name">Car parking lot</string>
     <string name="label_spot">A08</string>
+    <string name="label_date">28/10/2023</string>
     <string name="label_spot_in_use">Vaga utilizada</string>
     <string name="label_hour">07h55</string>
-    <string name="label_enter">Entrada</string>
+    <string name="label_enter_time_day">Data</string>
+    <string name="label_enter_time_hour">Hora</string>
     <string name="label_value_per_hour">Valor até 1h</string>
     <string name="label_spots_available">Vagas disponíveis</string>
     <string name="label_amount_of_spots">10/100</string>
@@ -54,5 +56,7 @@
     <string name="label_km_distance">2km</string>
     <string name="label_distance">Distância</string>
     <string name="label_search">Buscar</string>
+    <string name="label_entrance">Entrada</string>
+    <string name="label_exit">Saida</string>
 
 </resources>

@@ -18,14 +18,20 @@ class HistoricViewModel(application: Application) : AndroidViewModel(application
     private var _historicList = MutableLiveData<List<HistoricResponseModel>>()
     val historicList : LiveData<List<HistoricResponseModel>> = _historicList
 
+    private var _isLoading = MutableLiveData<Boolean>()
+    val isLoading : LiveData<Boolean> = _isLoading
+
     fun getHistoric() {
+        _isLoading.value = true
         val id = securityPreferences.get("id").toInt()
         historicRepository.getHistoric(id, object : ApiListener<List<HistoricResponseModel>> {
             override fun onSuccess(result: List<HistoricResponseModel>) {
+                _isLoading.value = false
                 _historicList.value = result
             }
 
             override fun onFailure(message: String) {
+                _isLoading.value = false
             }
         })
     }

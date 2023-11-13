@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.databinding.FragmentHistoricBinding
+import com.example.driver_ccs.extensions.toggle
 import com.example.driver_ccs.extensions.viewBinding
 import kotlinx.coroutines.launch
 
@@ -31,7 +32,7 @@ class HistoricFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getHistoric()
         setupRecyclerView()
-        requestData()
+        observe()
     }
 
     private fun setupRecyclerView() {
@@ -39,10 +40,17 @@ class HistoricFragment : Fragment() {
         binding.rvHistoric.adapter = adapter
     }
 
-    private fun requestData() {
+    private fun observe() {
         lifecycleScope.launch {
-            viewModel.historicList.observe(viewLifecycleOwner){
+            viewModel.historicList.observe(viewLifecycleOwner) {
                 adapter.updateHistoric(it)
+            }
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if(isLoading) {
+                binding.apply {
+                    rvHistoric.toggle(true)
+                }
             }
         }
     }

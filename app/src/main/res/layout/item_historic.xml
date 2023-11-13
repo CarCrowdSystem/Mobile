@@ -8,100 +8,92 @@
     <View
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
-        android:layout_height="208dp"
+        android:layout_height="188dp"
         android:background="@drawable/item_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_location_preview"
-        android:layout_width="124dp"
-        android:layout_height="80dp"
-        android:layout_margin="12dp"
-        android:src="@drawable/ic_label_location"
-        app:layout_constraintStart_toStartOf="@id/v_layout"
-        app:layout_constraintTop_toTopOf="@id/v_layout" />
-
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="12dp"
         android:text="@string/label_park_name"
         android:textAlignment="center"
         android:textColor="@color/component_text"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintBottom_toTopOf="@id/tv_address"
-        app:layout_constraintStart_toEndOf="@id/iv_location_preview"
-        app:layout_constraintTop_toTopOf="@id/iv_location_preview" />
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_at_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
         android:src="@drawable/ic_at_location"
-        app:layout_constraintBottom_toBottomOf="@id/iv_location_preview"
-        app:layout_constraintStart_toEndOf="@id/iv_location_preview" />
+        app:layout_constraintBottom_toBottomOf="@id/tv_address"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_address"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/label_address"
         android:textColor="@color/component_text"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintStart_toEndOf="@id/iv_at_location"
-        app:layout_constraintTop_toTopOf="@id/iv_at_location" />
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
     <TextView
-        android:id="@+id/tv_entrance"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/label_enter"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_enter_time_day"
         android:textColor="@color/component_text"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/tv_spot_used"
+        app:layout_constraintEnd_toStartOf="@id/tv_time"
         app:layout_constraintStart_toStartOf="@id/v_layout"
-        app:layout_constraintTop_toBottomOf="@id/iv_location_preview" />
+        app:layout_constraintTop_toBottomOf="@id/tv_address" />
 
     <TextView
-        android:id="@+id/tv_time_spend_in"
+        android:id="@+id/tv_date_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_date"
+        android:textColor="@color/component_text"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_date"
+        app:layout_constraintStart_toStartOf="@id/tv_date"
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_enter_time_hour"
+        android:textColor="@color/component_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_total"
+        app:layout_constraintStart_toEndOf="@id/tv_date"
+        app:layout_constraintTop_toTopOf="@id/tv_date" />
+
+    <TextView
+        android:id="@+id/tv_time_spent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_hour"
         android:textColor="@color/component_text"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@id/tv_entrance"
-        app:layout_constraintStart_toStartOf="@id/tv_entrance"
-        app:layout_constraintTop_toBottomOf="@id/tv_entrance" />
-
-    <TextView
-        android:id="@+id/tv_spot_used"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_spot_in_use"
-        android:textColor="@color/component_text"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/tv_total"
-        app:layout_constraintStart_toEndOf="@id/tv_entrance"
-        app:layout_constraintTop_toTopOf="@id/tv_entrance" />
-
-    <TextView
-        android:id="@+id/tv_spot_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_spot"
-        android:textColor="@color/component_text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@id/tv_spot_used"
-        app:layout_constraintStart_toStartOf="@id/tv_spot_used"
-        app:layout_constraintTop_toBottomOf="@id/tv_spot_used" />
+        app:layout_constraintEnd_toEndOf="@id/tv_time"
+        app:layout_constraintStart_toStartOf="@id/tv_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_time" />
 
     <TextView
         android:id="@+id/tv_total"
@@ -111,8 +103,8 @@
         android:textColor="@color/component_text"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
-        app:layout_constraintStart_toEndOf="@id/tv_spot_used"
-        app:layout_constraintTop_toTopOf="@id/tv_spot_used" />
+        app:layout_constraintStart_toEndOf="@id/tv_time"
+        app:layout_constraintTop_toTopOf="@id/tv_time" />
 
     <TextView
         android:id="@+id/tv_total_value"
@@ -129,10 +121,34 @@
         style="@style/DriverButton.default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="@string/label_check_out"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/v_layout"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
-        app:layout_constraintStart_toStartOf="@id/v_layout" />
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_entrada"
+        style="@style/DriverButton.feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_entrance"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_saida"
+        style="@style/DriverButton.feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_exit"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
