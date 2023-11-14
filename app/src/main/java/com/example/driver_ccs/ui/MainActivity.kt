@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.ui.NavigationUI
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
     private lateinit var homeViewModel: HomeViewModel
-
 
     // -23.5868031,-46.6847268
     // Av. Brig. Faria Lima, 3477 - 18º Andar - Itaim Bibi, São Paulo - SP, 04538-133
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.color.component))
+        supportActionBar?.setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.component))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -93,8 +93,12 @@ class MainActivity : AppCompatActivity() {
             if(menuItem.itemId == R.id.nav_logout) {
                 mainViewModel.logout()
                 findNavController(R.id.nav_host_fragment_content_main).popBackStack()
-//                NavigationUI.onNavDestinationSelected(menuItem, navController)
-//                drawerLayout.closeDrawer(GravityCompat.START)
+
+//                Testar depois
+                NavigationUI.onNavDestinationSelected(menuItem, navController)
+                drawerLayout.closeDrawer(GravityCompat.START)
+
+//                finish()
             } else {
                 NavigationUI.onNavDestinationSelected(menuItem, navController)
                 drawerLayout.closeDrawer(GravityCompat.START)
