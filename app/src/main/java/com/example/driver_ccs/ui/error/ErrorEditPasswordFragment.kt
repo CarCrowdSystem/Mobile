@@ -12,7 +12,7 @@ import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentErrorBinding
 import com.example.driver_ccs.extensions.viewBinding
 
-class ErrorFragment: Fragment() {
+class ErrorEditPasswordFragment: Fragment(){
 
     private val binding: FragmentErrorBinding by viewBinding()
 
@@ -29,12 +29,13 @@ class ErrorFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val window: Window = requireActivity().window
         window.statusBarColor = resources.getColor(R.color.component)
+        binding.tvError.text = "Erro ao alterar senha!"
         setListener()
     }
 
     private fun setListener() {
         binding.btWithdrawTryAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_error_to_nav_login)
+            findNavController().popBackStack()
         }
     }
 }

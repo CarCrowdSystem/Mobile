@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentUserProfileBinding
 import com.example.driver_ccs.extensions.toggle
 import com.example.driver_ccs.extensions.viewBinding
@@ -81,6 +83,9 @@ class UserProfileFragment : Fragment() {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
+        }
+        binding.btnEditPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_user_profile_to_nav_edit_password)
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.driver_ccs.ui.novo_veiculo
+package com.example.driver_ccs.ui.novoVeiculo
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentSuccessBinding
 import com.example.driver_ccs.extensions.viewBinding
 
-class SuccessFragment(): Fragment() {
+class SuccessEditPasswordFragment: Fragment() {
 
     private val binding: FragmentSuccessBinding by viewBinding()
 
@@ -29,13 +28,14 @@ class SuccessFragment(): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window: Window = requireActivity().window
+        binding.tvSuccess.text = resources.getText(R.string.label_success_password_edited)
         window.statusBarColor = resources.getColor(R.color.component)
         setListener()
     }
 
     private fun setListener() {
         binding.btWithdrawSuccess.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_success_to_nav_login)
+            findNavController().navigate(R.id.action_nav_success_edit_password_to_nav_user_profile)
         }
     }
 }

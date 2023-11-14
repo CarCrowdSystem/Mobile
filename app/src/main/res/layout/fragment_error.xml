@@ -22,7 +22,7 @@
         android:layout_marginTop="32dp"
         android:textSize="22sp"
         android:textAlignment="center"
-        android:text="Error ao efetuar o login"
+        android:text="@string/label_error"
         android:textColor="@color/component_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,19 +1,16 @@
-package com.example.driver_ccs.ui.novo_veiculo
+package com.example.driver_ccs.ui.novoVeiculo
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.R
-import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.databinding.FragmentNewVehicleBinding
 import com.example.driver_ccs.extensions.viewBinding
 import com.google.android.material.snackbar.Snackbar
