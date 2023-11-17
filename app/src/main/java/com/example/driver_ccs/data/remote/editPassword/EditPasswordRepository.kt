@@ -10,7 +10,7 @@ class EditPasswordRepository(context: Context): BaseRepository(context){
 
     private val remote = RetrofitClient.getService(IEditPasswordService::class.java)
 
-    fun editPassWord(newPassWord: String, listener: ApiListener<Unit>) {
-        executeCall(remote.editPassword(), listener)
+    fun editPassword(oldPassword: String,newPassword: String, id: Int, listener: ApiListener<Unit>) {
+        executeCall(remote.editPassword(id, oldPassword, newPassword), listener)
     }
 }

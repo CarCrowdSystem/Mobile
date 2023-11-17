@@ -1,14 +1,15 @@
 package com.example.driver_ccs.data.remote.editPassword.network
 
-import com.example.driver_ccs.data.remote.model.CadastroModel
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.PATCH
+import retrofit2.http.Query
 
 interface IEditPasswordService {
 
-    @POST("clientes")
+    @PATCH("clientes/alterar-senha")
     fun editPassword (
-//        Algum metodo
+        @Query("id") id : Int,
+        @Query("oldPass") oldPassword : String,
+        @Query("newPass") newPassword : String
     ): Call<Unit>
 }
