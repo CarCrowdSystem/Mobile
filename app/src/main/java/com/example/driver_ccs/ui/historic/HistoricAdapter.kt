@@ -1,7 +1,6 @@
-package com.example.driver_ccs.ui.historico
+package com.example.driver_ccs.ui.historic
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.driver_ccs.data.remote.model.response.HistoricResponseModel
@@ -24,7 +23,7 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
         holder.binding.apply {
             if (historicList.isNotEmpty()) {
                 when(historicList[position].status) {
-                    "1" ->  mbtSaida.toggle(true)
+                    "1" -> mbtSaida.toggle(true)
                     "2" -> mbtCheckOut.toggle(true)
                     else -> mbtEntrada.toggle(true)
                 }

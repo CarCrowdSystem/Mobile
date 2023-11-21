@@ -21,7 +21,11 @@ class NewCarRepository(context: Context) : BaseRepository(context) {
         executeCall(remote.registerCar(CarModel(placa, marca, modelo, id_cliente)), listener )
     }
 
-    fun getCars(id_cliente: Int, listener: ApiListener<List<CarListResponseModel>>) {
-        executeCall(remote.getCars(id_cliente), listener)
+    fun getCars(idCliente: Int, listener: ApiListener<List<CarListResponseModel>>) {
+        executeCall(remote.getCars(idCliente), listener)
+    }
+
+    fun deleteCar(idCar: Int, listener: ApiListener<Unit>) {
+        executeCall(remote.deleteCar(idCar), listener)
     }
 }

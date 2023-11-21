@@ -1,12 +1,13 @@
 package com.example.driver_ccs.ui.novoVeiculo
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
 import com.example.driver_ccs.databinding.ItemNovoVeiculoBinding
 
-class NewCarAdapter() : RecyclerView.Adapter<NewCarAdapter.NewCarViewHolder>() {
+class NewCarAdapter(private val viewModel: NewCarViewModel) : RecyclerView.Adapter<NewCarAdapter.NewCarViewHolder>() {
 
     private var carsList = listOf<CarListResponseModel>()
 
@@ -24,6 +25,11 @@ class NewCarAdapter() : RecyclerView.Adapter<NewCarAdapter.NewCarViewHolder>() {
                 tvMarca.text = carsList[position].marca
                 tvModelo.text = carsList[position].modelo
                 tvPlaca.text = carsList[position].placa
+
+                ivLixo.setOnClickListener {
+                    viewModel.deleteCar(carsList[position].id_carro)
+                    viewModel.getCarsList()
+                }
             }
         }
     }
@@ -34,4 +40,5 @@ class NewCarAdapter() : RecyclerView.Adapter<NewCarAdapter.NewCarViewHolder>() {
         this.carsList = list
         notifyDataSetChanged()
     }
+
 }

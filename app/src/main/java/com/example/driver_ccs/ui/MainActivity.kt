@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -17,10 +18,14 @@ import androidx.navigation.ui.NavigationUI
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.ActivityMainBinding
 import com.example.driver_ccs.ui.home.HomeViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.tasks.OnSuccessListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         setSupportActionBar(binding.appBarMain.toolbar)
-
+//        obterLocalizacao()
         setupNavigation()
     }
 
@@ -117,6 +122,44 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+
+//    private fun obterLocalizacao() {
+//        val fusedLocationClient: FusedLocationProviderClient =
+//            LocationServices.getFusedLocationProviderClient(this)
+//
+//        // Configurar a solicitação de localização
+//        val locationRequest = LocationRequest()
+//        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+//        locationRequest.interval = 10000 // 10 segundos
+//
+//        // Obter a localização atual
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return
+//        }
+//        fusedLocationClient.requestLocationUpdates(locationRequest, null)
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener(this, OnSuccessListener { location ->
+//                if (location != null) {
+//                    val latitude = location.latitude
+//                    val longitude = location.longitude
+//                    // Faça algo com a latitude e a longitude
+//                }
+//            })
+//    }
 }
 
 data class Place(
