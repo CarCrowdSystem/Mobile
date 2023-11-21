@@ -9,6 +9,6 @@ data class CarListResponseModel(
     val marca: String,
     @SerializedName("modelo")
     val modelo: String,
-    @SerializedName("id_carro")
-    val id_carro: String
+    @SerializedName("id_veiculo")
+    val id_carro: Int
 )

@@ -15,11 +15,24 @@
             app:destination="@id/nav_login"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_parking"
+            app:destination="@id/nav_parking" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_parking"
+        android:name="com.example.driver_ccs.ui.parkingLot.ParkingLotFragment"
+        android:label="Estacionamento"
+        tools:layout="@layout/fragment_parking_lot_detail">
+        <argument
+            android:name="parking_info"
+            app:argType="com.example.driver_ccs.data.remote.model.ParkingLotModel"/>
     </fragment>
 
     <fragment
         android:id="@+id/nav_historic"
-        android:name="com.example.driver_ccs.ui.historico.HistoricFragment"
+        android:name="com.example.driver_ccs.ui.historic.HistoricFragment"
         android:label="@string/historic"
         tools:layout="@layout/fragment_historic" />
 

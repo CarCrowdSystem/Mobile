@@ -20,7 +20,7 @@ class NewCarFragment : Fragment() {
 
     private val binding: FragmentNewVehicleBinding by viewBinding()
     private lateinit var viewModel: NewCarViewModel
-    private val adapter: NewCarAdapter by lazy { NewCarAdapter() }
+    private val adapter: NewCarAdapter by lazy { NewCarAdapter(viewModel) }
     var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

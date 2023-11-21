@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentEditPasswordBinding
-import com.example.driver_ccs.databinding.FragmentUserProfileBinding
 import com.example.driver_ccs.extensions.toggle
 import com.example.driver_ccs.extensions.viewBinding
-import com.example.driver_ccs.ui.user_profile.UserProfileViewModel
 
 class EditPasswordFragment : Fragment() {
 
@@ -38,13 +36,18 @@ class EditPasswordFragment : Fragment() {
 
     private fun setListener() {
         binding.btnEditPassword.setOnClickListener {
+            val oldPassword = binding.etPassword.text.toString()
+            val newPassword = binding.etConfirmPassword.text.toString()
+
+            viewModel.editPassword(oldPassword, newPassword)
+
 //            viewModel.editPassword(binding.etPassword.text.toString())
             // Teste
-            if(binding.etPassword.text.isNotEmpty() && binding.etConfirmPassword.text.isNotEmpty()) {
-                findNavController().navigate(R.id.action_nav_edit_password_to_nav_success_edit_password)
-            } else {
-                findNavController().navigate(R.id.action_nav_edit_password_to_nav_edit_error)
-            }
+//            if(binding.etPassword.text.isNotEmpty() && binding.etConfirmPassword.text.isNotEmpty()) {
+//                findNavController().navigate(R.id.action_nav_edit_password_to_nav_success_edit_password)
+//            } else {
+//                findNavController().navigate(R.id.action_nav_edit_password_to_nav_edit_error)
+//            }
         }
     }
 
@@ -52,10 +55,10 @@ class EditPasswordFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             if(isLoading) {
                 binding.pbLoading.toggle(true)
-                displaView(false)
+                displayView(false)
             } else {
                 binding.pbLoading.toggle(false)
-                displaView(true)
+                displayView(true)
             }
         }
         viewModel.status.observe(viewLifecycleOwner) {
@@ -67,7 +70,7 @@ class EditPasswordFragment : Fragment() {
         }
     }
 
-    private fun displaView(isVisible: Boolean) {
+    private fun displayView(isVisible: Boolean) {
         binding.apply {
             ivLogo.toggle(isVisible)
             etPassword.toggle(isVisible)

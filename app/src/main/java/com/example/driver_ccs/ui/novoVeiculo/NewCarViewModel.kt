@@ -72,4 +72,17 @@ class NewCarViewModel(
             }
         })
     }
+
+    fun deleteCar(idCar: Int) {
+        _isLoading.value = true
+        newCarRepository.deleteCar(idCar, object : ApiListener<Unit> {
+            override fun onSuccess(result: Unit) {
+                _alert.value = ValidationModel()
+            }
+
+            override fun onFailure(message: String) {
+                _alert.value = ValidationModel("Erro ao remover o carro!")
+            }
+        })
+    }
 }

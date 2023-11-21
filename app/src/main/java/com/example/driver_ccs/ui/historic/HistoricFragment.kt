@@ -1,4 +1,4 @@
-package com.example.driver_ccs.ui.historico
+package com.example.driver_ccs.ui.historic
 
 import android.os.Bundle
 import android.view.LayoutInflater

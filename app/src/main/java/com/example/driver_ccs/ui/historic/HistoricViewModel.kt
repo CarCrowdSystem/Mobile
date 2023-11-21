@@ -1,10 +1,9 @@
-package com.example.driver_ccs.ui.historico
+package com.example.driver_ccs.ui.historic
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.data.remote.historic.HistoricRepository
 import com.example.driver_ccs.data.remote.listener.ApiListener

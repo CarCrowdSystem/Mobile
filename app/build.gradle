@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
+    // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.4'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.4'
 
@@ -56,11 +57,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //Google maps
+    // Google maps
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
-    //Koin
+    // Koin
     implementation 'io.insert-koin:koin-android:3.4.3'
 
     // Retrofit
@@ -68,7 +69,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
 
-    //okhttp
+    // okhttp
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
 
     // Serialization
@@ -84,6 +85,4 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-
-    implementation 'com.caverock:androidsvg:1.4'
 }

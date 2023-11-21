@@ -51,10 +51,11 @@
     <string name="label_hour">07h55</string>
     <string name="label_enter_time_day">Data</string>
     <string name="label_enter_time_hour">Hora</string>
-    <string name="label_value_per_hour">Valor até 1h</string>
+    <string name="label_value_per_hour">Valor 1h</string>
     <string name="label_spots_available">Vagas disponíveis</string>
     <string name="label_amount_of_spots">10/100</string>
     <string name="label_book_now">Agendar agora</string>
+    <string name="label_see_more">Ver mais</string>
     <string name="label_go_to">Ir até lá</string>
     <string name="label_km_distance">2km</string>
     <string name="label_distance">Distância</string>
@@ -67,4 +68,6 @@
     <string name="label_error_while_register">Erro ao cadastrar usuário!</string>
     <string name="label_error_while_login">Erro ao fazer login!</string>
     <string name="label_error">Erro!</string>
+    <string name="label_values">Valores:</string>
+    <string name="label_values_details">Até 1h: R$ 00,00\nDemais horas: R$ 00,00\nDiaria: R$ 00,00</string>
 </resources>

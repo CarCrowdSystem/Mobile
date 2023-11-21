@@ -5,6 +5,7 @@ import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
 import com.example.driver_ccs.data.remote.model.response.CarResponseModel
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -24,6 +25,11 @@ interface INewCarService {
 
     @GET("veiculo/all")
     fun getCars(
-        @Query("idVeiculo") id: Int
+        @Query("id") id: Int
     ): Call<List<CarListResponseModel>>
+
+    @DELETE("veiculo")
+    fun deleteCar(
+        @Query("id") id: Int
+    ) : Call<Unit>
 }
