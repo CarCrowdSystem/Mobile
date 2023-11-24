@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_add_car" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_historic"
+        android:id="@+id/rv_car_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"

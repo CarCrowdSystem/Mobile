@@ -2,8 +2,10 @@ package com.example.driver_ccs.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.driver_ccs.ui.MainViewModel
 import com.example.driver_ccs.ui.cadastro.CadastroViewModel
 import com.example.driver_ccs.ui.login.LoginViewModel
+import com.example.driver_ccs.ui.parkingLot.ParkingLotViewModel
 import com.example.driver_ccs.ui.user_profile.UserProfileViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -13,6 +15,8 @@ object DependencyModule {
     val moduleApp = module {
         viewModel { LoginViewModel(get()) }
         viewModel { CadastroViewModel(get()) }
-        viewModel { UserProfileViewModel(get())}
+        viewModel { UserProfileViewModel(get()) }
+        viewModel { ParkingLotViewModel(get()) }
+        viewModel { MainViewModel(get()) }
     }
 }

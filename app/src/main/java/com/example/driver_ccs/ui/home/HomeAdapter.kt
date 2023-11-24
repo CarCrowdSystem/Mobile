@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.driver_ccs.R
-import com.example.driver_ccs.data.remote.model.ParkingLotModel
+import com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel
 import com.example.driver_ccs.databinding.ItemEstacionamantosBinding
 
 class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.ParkingLotViewHolder>() {
 
-    private var parkingLotsList = emptyList<ParkingLotModel>()
+    private var parkingLotsList = emptyList<ParkingLotResponseModel>()
 
     class ParkingLotViewHolder(val binding: ItemEstacionamantosBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,9 +22,8 @@ class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.ParkingLotViewHolder>() {
         holder.binding.apply {
             tvName.text = parkingLotsList[position].nome
             tvAddress.text = parkingLotsList[position].endereco
-            tvPriceValue.text = parkingLotsList[position].valorHora
-            tvSpotsAvailableValue.text = parkingLotsList[position].vagasDisponiveis
-            tvDistanceValue.text = parkingLotsList[position].distancia
+            tvPriceValue.text = parkingLotsList[position].primeira_hora
+            tvSpotsAvailableValue.text = parkingLotsList[position].vagas_cheias
 
             mbtSeeMore.setOnClickListener {
                 val action = HomeFragmentDirections.actionNavHomeToNavParking(parkingLotsList[position])
@@ -41,7 +39,7 @@ class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.ParkingLotViewHolder>() {
 
     override fun getItemCount() = parkingLotsList.size
 
-    fun update(list: List<ParkingLotModel>) {
+    fun update(list: List<ParkingLotResponseModel>) {
         this.parkingLotsList = list
         notifyDataSetChanged()
     }

@@ -9,7 +9,7 @@ import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.model.response.CarResponseModel
 import com.example.driver_ccs.data.remote.model.ValidationModel
 import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
-import com.example.driver_ccs.data.remote.newCar.NewCarRepository
+import com.example.driver_ccs.data.remote.cars.NewCarRepository
 
 class NewCarViewModel(
     application: Application

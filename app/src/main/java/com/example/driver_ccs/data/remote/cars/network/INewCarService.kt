@@ -1,4 +1,4 @@
-package com.example.driver_ccs.data.remote.newCar.network
+package com.example.driver_ccs.data.remote.cars.network
 
 import com.example.driver_ccs.data.remote.model.CarModel
 import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
@@ -31,5 +31,5 @@ interface INewCarService {
     @DELETE("veiculo")
     fun deleteCar(
         @Query("id") id: Int
-    ) : Call<Unit>
+    ): Call<Unit>
 }

@@ -1,4 +1,4 @@
-package com.example.driver_ccs.data.remote.newCar
+package com.example.driver_ccs.data.remote.cars
 
 import android.content.Context
 import com.example.driver_ccs.data.remote.BaseRepository
@@ -7,7 +7,7 @@ import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.model.CarModel
 import com.example.driver_ccs.data.remote.model.response.CarListResponseModel
 import com.example.driver_ccs.data.remote.model.response.CarResponseModel
-import com.example.driver_ccs.data.remote.newCar.network.INewCarService
+import com.example.driver_ccs.data.remote.cars.network.INewCarService
 
 class NewCarRepository(context: Context) : BaseRepository(context) {
 

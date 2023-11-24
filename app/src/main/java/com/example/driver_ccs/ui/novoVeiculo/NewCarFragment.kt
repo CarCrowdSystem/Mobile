@@ -124,7 +124,7 @@ class NewCarFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.rvHistoric.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvHistoric.adapter = adapter
+        binding.rvCarList.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCarList.adapter = adapter
     }
 }

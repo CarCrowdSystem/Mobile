@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="15dp"
     android:padding="10dp">
 
@@ -20,10 +21,11 @@
 
     <TextView
         android:id="@+id/tv_marca"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
         android:text="@string/label_marca"
-        android:textAlignment="center"
+        android:textColor="@color/component_text"
         android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@id/tv_modelo"
         app:layout_constraintStart_toEndOf="@id/iv_car"
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:text="@string/label_model"
         android:textAlignment="center"
+        android:textColor="@color/component_text"
         android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@id/iv_lixo"
         app:layout_constraintStart_toEndOf="@id/tv_marca"
@@ -42,12 +45,11 @@
 
     <TextView
         android:id="@+id/tv_placa"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_plate"
-        android:textAlignment="center"
+        android:textColor="@color/component_text"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@id/tv_marca"
         app:layout_constraintStart_toStartOf="@id/tv_marca"
         app:layout_constraintTop_toBottomOf="@id/tv_marca" />
 
@@ -63,14 +65,25 @@
         app:layout_constraintStart_toEndOf="@id/tv_modelo"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <CheckBox
+        android:id="@+id/cb_car_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginVertical="16dp"
         android:background="@color/component_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_lixo"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_placa" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

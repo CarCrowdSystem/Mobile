@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_parking_lot_detail">
         <argument
             android:name="parking_info"
-            app:argType="com.example.driver_ccs.data.remote.model.ParkingLotModel"/>
+            app:argType="com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel"/>
     </fragment>
 
     <fragment

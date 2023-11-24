@@ -53,7 +53,7 @@
     <string name="label_enter_time_hour">Hora</string>
     <string name="label_value_per_hour">Valor 1h</string>
     <string name="label_spots_available">Vagas disponíveis</string>
-    <string name="label_amount_of_spots">10/100</string>
+    <string name="label_amount_of_spots">%s/%s</string>
     <string name="label_book_now">Agendar agora</string>
     <string name="label_see_more">Ver mais</string>
     <string name="label_go_to">Ir até lá</string>
@@ -69,5 +69,5 @@
     <string name="label_error_while_login">Erro ao fazer login!</string>
     <string name="label_error">Erro!</string>
     <string name="label_values">Valores:</string>
-    <string name="label_values_details">Até 1h: R$ 00,00\nDemais horas: R$ 00,00\nDiaria: R$ 00,00</string>
+    <string name="label_values_details">Até 1h: R$ %s\nDemais horas: R$ %s\nDiaria: R$ %s</string>
 </resources>
