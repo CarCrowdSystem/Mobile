@@ -49,7 +49,13 @@ class HistoricFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             if(isLoading) {
                 binding.apply {
+                    rvHistoric.toggle(false)
+                    pbLoading.toggle(true)
+                }
+            } else {
+                binding.apply {
                     rvHistoric.toggle(true)
+                    pbLoading.toggle(false)
                 }
             }
         }

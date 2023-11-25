@@ -70,4 +70,6 @@
     <string name="label_error">Erro!</string>
     <string name="label_values">Valores:</string>
     <string name="label_values_details">Até 1h: R$ %s\nDemais horas: R$ %s\nDiaria: R$ %s</string>
+    <string name="label_current_password">Senha atual</string>
+    <string name="label_newest_password">Nova senha</string>
 </resources>

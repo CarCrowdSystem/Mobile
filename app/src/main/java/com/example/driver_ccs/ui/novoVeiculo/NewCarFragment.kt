@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentNewVehicleBinding
+import com.example.driver_ccs.extensions.toggle
 import com.example.driver_ccs.extensions.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
@@ -21,7 +22,6 @@ class NewCarFragment : Fragment() {
     private val binding: FragmentNewVehicleBinding by viewBinding()
     private lateinit var viewModel: NewCarViewModel
     private val adapter: NewCarAdapter by lazy { NewCarAdapter(viewModel) }
-    var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,13 +67,7 @@ class NewCarFragment : Fragment() {
 
             viewModel.registerCar(placa, modelo, marca)
 
-            viewModel.isLoading.observe(viewLifecycleOwner) {
-                if(!it && count < 1) {
-                    count++
-                    viewModel.getCarsList()
-                }
-            }
-
+            viewModel.getCarsList()
 //            if (binding.etPlate.text.toString().length == 7 &&
 //                binding.etModel.text.isNotEmpty() &&
 //                binding.etMarca.text.isNotEmpty()) {
@@ -119,6 +113,23 @@ class NewCarFragment : Fragment() {
                     it.showMessage(),
                     Snackbar.LENGTH_LONG
                 ).show()
+            }
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+//            if(!isLoading && count < 1) {
+//                count++
+//                viewModel.getCarsList()
+//            }
+            if(isLoading) {
+                binding.apply {
+                    rvCarList.toggle(false)
+                    pbLoading.toggle(true)
+                }
+            } else {
+                binding.apply {
+                    rvCarList.toggle(true)
+                    pbLoading.toggle(false)
+                }
             }
         }
     }

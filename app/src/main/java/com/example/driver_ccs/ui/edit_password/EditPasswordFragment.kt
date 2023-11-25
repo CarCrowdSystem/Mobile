@@ -40,14 +40,6 @@ class EditPasswordFragment : Fragment() {
             val newPassword = binding.etConfirmPassword.text.toString()
 
             viewModel.editPassword(oldPassword, newPassword)
-
-//            viewModel.editPassword(binding.etPassword.text.toString())
-            // Teste
-//            if(binding.etPassword.text.isNotEmpty() && binding.etConfirmPassword.text.isNotEmpty()) {
-//                findNavController().navigate(R.id.action_nav_edit_password_to_nav_success_edit_password)
-//            } else {
-//                findNavController().navigate(R.id.action_nav_edit_password_to_nav_edit_error)
-//            }
         }
     }
 

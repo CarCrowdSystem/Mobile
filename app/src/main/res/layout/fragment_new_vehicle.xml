@@ -102,6 +102,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_add_car" />
 
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@style/DriverProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_your_cars" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_car_list"
         android:layout_width="match_parent"
