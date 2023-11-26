@@ -23,9 +23,13 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
         holder.binding.apply {
             if (historicList.isNotEmpty()) {
                 when(historicList[position].status) {
-                    "1" -> mbtSaida.toggle(true)
-                    "2" -> mbtCheckOut.toggle(true)
-                    else -> mbtEntrada.toggle(true)
+                    "1" -> mbtSaida.toggle(true) // Indica saida do user
+                    "2" -> mbtDoCheckOut.toggle(true) // Pode pedir para retirar o carro
+                    "3" -> {
+                        mbtReserva.toggle(true)
+                        mbtCancel.toggle(true)
+                    } // Indica reserva realizada
+                    "0" -> mbtCheckIn.toggle(true) // Indica checkin realizado
                 }
 
                 tvName.text = historicList[position].nome

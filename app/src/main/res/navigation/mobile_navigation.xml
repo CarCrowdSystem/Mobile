@@ -23,11 +23,38 @@
     <fragment
         android:id="@+id/nav_parking"
         android:name="com.example.driver_ccs.ui.parkingLot.ParkingLotFragment"
-        android:label="Estacionamento"
+        android:label="@string/parking_lot"
         tools:layout="@layout/fragment_parking_lot_detail">
         <argument
             android:name="parking_info"
             app:argType="com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel"/>
+        <action
+            android:id="@+id/action_nav_parking_to_nav_edit_reservation"
+            app:destination="@id/nav_edit_reservation" />
+        <action
+            android:id="@+id/action_nav_parking_to_nav_success_edit_reservation"
+            app:destination="@id/nav_success_reservation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_success_reservation"
+        android:label="@string/success"
+        tools:layout="@layout/fragment_success">
+        <action
+            android:id="@+id/action_nav_success_reservation_to_nav_parking"
+            app:destination="@id/nav_parking" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_edit_reservation"
+        android:name="com.example.driver_ccs.ui.error.ErrorReservationFragment"
+        android:label="@string/error"
+        tools:layout="@layout/fragment_error">
+        <action
+            android:id="@+id/action_nav_edit_reservation_to_nav_parking"
+            app:destination="@id/nav_parking"
+            app:popUpTo="@id/nav_parking"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -113,7 +140,11 @@
         android:id="@+id/nav_edit_error"
         android:name="com.example.driver_ccs.ui.error.ErrorEditPasswordFragment"
         android:label="@string/error"
-        tools:layout="@layout/fragment_error" />
+        tools:layout="@layout/fragment_error" >
+        <action
+            android:id="@+id/action_nav_edit_error_to_nav_edit_password"
+            app:destination="@id/nav_edit_password" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_success_register"

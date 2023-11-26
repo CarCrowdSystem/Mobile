@@ -9,7 +9,7 @@
 
     <string name="menu_home">Home</string>
     <string name="success">Success</string>
-    <string name="error">Error</string>
+    <string name="error">Erro</string>
     <string name="login">Login</string>
     <string name="register">Cadastro</string>
     <string name="historic">Histórico</string>
@@ -17,6 +17,7 @@
     <string name="new_vehicle">Novo veículo</string>
     <string name="logout">Logout</string>
     <string name="edit_password">Alterar senha</string>
+    <string name="parking_lot">Estacionamento</string>
 
     <string name="label_user_name">Dave Mustaine</string>
     <string name="label_full_name">Nome Completo</string>
@@ -38,10 +39,11 @@
     <string name="label_try_again">Tentar novamente</string>
     <string name="label_success_register">Cadastro realizado com sucesso!</string>
     <string name="label_success_password_edited">Senha alterada com sucesso!</string>
+    <string name="label_success_reservation">Reserva feita com sucesso!</string>
     <string name="label_success">Sucesso!</string>
     <string name="label_right">Beleza</string>
     <string name="label_error_message">Erro ao tentar cadastrar</string>
-    <string name="label_check_out">Check out</string>
+    <string name="label_check_out">Fazer check out</string>
     <string name="label_total_value">R$ 20,00</string>
     <string name="label_total">Total</string>
     <string name="label_park_name">Car parking lot</string>
@@ -67,9 +69,14 @@
     <string name="label_forget_password">Esqueci a senha</string>
     <string name="label_error_while_register">Erro ao cadastrar usuário!</string>
     <string name="label_error_while_login">Erro ao fazer login!</string>
+    <string name="label_error_while_reservation">Erro ao fazer a reserva!</string>
     <string name="label_error">Erro!</string>
     <string name="label_values">Valores:</string>
     <string name="label_values_details">Até 1h: R$ %s\nDemais horas: R$ %s\nDiaria: R$ %s</string>
     <string name="label_current_password">Senha atual</string>
     <string name="label_newest_password">Nova senha</string>
+    <string name="label_reservation">Reserva realizada!</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_check_in_done">Check in realizado!</string>
+    <string name="label_check_out_done">Check out realizado!</string>
 </resources>

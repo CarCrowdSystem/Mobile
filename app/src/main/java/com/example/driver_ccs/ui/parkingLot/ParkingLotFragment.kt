@@ -78,8 +78,9 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
                         "Você deve selecionar a data e hora da reserva!",
                         Snackbar.LENGTH_LONG
                     ).show()
+                } else {
+                    viewModel.makeReservation(plate, args.parkingInfo.id.toInt(), dueDate, selectedTime)
                 }
-                viewModel.makeReservation(plate, args.parkingInfo.id.toInt(), dueDate, selectedTime)
             }
         }
     }
