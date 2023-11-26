@@ -28,25 +28,27 @@
         <argument
             android:name="parking_info"
             app:argType="com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel"/>
+
         <action
-            android:id="@+id/action_nav_parking_to_nav_edit_reservation"
-            app:destination="@id/nav_edit_reservation" />
-        <action
-            android:id="@+id/action_nav_parking_to_nav_success_edit_reservation"
+            android:id="@+id/action_nav_parking_to_nav_success_reservation"
             app:destination="@id/nav_success_reservation" />
+        <action
+            android:id="@+id/action_nav_parking_to_nav_error_reservation"
+            app:destination="@id/nav_error_reservation" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_success_reservation"
+        android:name="com.example.driver_ccs.ui.success.SuccessReservationFragment"
         android:label="@string/success"
         tools:layout="@layout/fragment_success">
         <action
-            android:id="@+id/action_nav_success_reservation_to_nav_parking"
-            app:destination="@id/nav_parking" />
+            android:id="@+id/action_nav_success_reservation_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_edit_reservation"
+        android:id="@+id/nav_error_reservation"
         android:name="com.example.driver_ccs.ui.error.ErrorReservationFragment"
         android:label="@string/error"
         tools:layout="@layout/fragment_error">

@@ -35,7 +35,7 @@ class SuccessReservationFragment: Fragment() {
 
     private fun setListener() {
         binding.btWithdrawSuccess.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_success_reservation_to_nav_parking)
+            findNavController().navigate(R.id.action_nav_success_reservation_to_nav_home)
         }
     }
 }
