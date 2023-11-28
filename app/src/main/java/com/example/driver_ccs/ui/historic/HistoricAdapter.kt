@@ -7,7 +7,7 @@ import com.example.driver_ccs.data.remote.model.response.HistoricResponseModel
 import com.example.driver_ccs.databinding.ItemHistoricBinding
 import com.example.driver_ccs.extensions.toggle
 
-class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolder>() {
+class HistoricAdapter(private val viewModel: HistoricViewModel) : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolder>() {
 
     private var historicList = emptyList<HistoricResponseModel>()
 
@@ -38,6 +38,9 @@ class HistoricAdapter() : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolde
                 tvDateValue.text = historicList[position].data
                 tvTotalValue.text = historicList[position].valor
             }
+        }
+        holder.binding.mbtCancel.setOnClickListener {
+            viewModel.cancelReservation(historicList[position].placa)
         }
     }
 

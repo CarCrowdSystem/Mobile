@@ -18,7 +18,7 @@ class HistoricFragment : Fragment() {
 
     private val binding: FragmentHistoricBinding by viewBinding()
     private val viewModel: HistoricViewModel by viewModels()
-    private val adapter: HistoricAdapter by lazy { HistoricAdapter() }
+    private val adapter: HistoricAdapter by lazy { HistoricAdapter(viewModel) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

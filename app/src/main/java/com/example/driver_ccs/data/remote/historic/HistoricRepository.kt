@@ -15,4 +15,8 @@ class HistoricRepository(context: Context) : BaseRepository(context){
     fun getHistoric(id_cliente: Int, listener: ApiListener<List<HistoricResponseModel>>) {
         executeCall(remote.getHistoric(id_cliente), listener)
     }
+
+    fun cancelReservation(plate: String, listener: ApiListener<Unit>) {
+        executeCall(remote.cancelReservation(plate), listener)
+    }
 }

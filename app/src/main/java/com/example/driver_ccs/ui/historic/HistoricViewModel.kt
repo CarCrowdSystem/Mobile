@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.data.remote.historic.HistoricRepository
 import com.example.driver_ccs.data.remote.listener.ApiListener
+import com.example.driver_ccs.data.remote.model.ValidationModel
 import com.example.driver_ccs.data.remote.model.response.HistoricResponseModel
 
 class HistoricViewModel(application: Application) : AndroidViewModel(application) {
@@ -20,6 +21,9 @@ class HistoricViewModel(application: Application) : AndroidViewModel(application
     private var _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> = _isLoading
 
+    private var _alert = MutableLiveData<ValidationModel>()
+    val alert : LiveData<ValidationModel> = _alert
+
     fun getHistoric() {
         _isLoading.value = true
         val id = securityPreferences.get("id").toInt()
@@ -32,6 +36,19 @@ class HistoricViewModel(application: Application) : AndroidViewModel(application
             override fun onFailure(message: String) {
                 _isLoading.value = false
             }
+        })
+    }
+
+    fun cancelReservation(plate: String) {
+        historicRepository.cancelReservation(plate, object : ApiListener<Unit> {
+            override fun onSuccess(result: Unit) {
+                _alert.value = ValidationModel()
+            }
+
+            override fun onFailure(message: String) {
+                _alert.value = ValidationModel("Erro ao cancelar a reserva")
+            }
+
         })
     }
 }

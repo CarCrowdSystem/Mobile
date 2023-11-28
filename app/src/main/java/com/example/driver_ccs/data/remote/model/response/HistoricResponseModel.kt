@@ -14,5 +14,7 @@ data class HistoricResponseModel(
     @SerializedName("valor")
     val valor: String,
     @SerializedName("status")
-    val status: String
+    val status: String,
+    @SerializedName("placa")
+    val placa: String,
 )
