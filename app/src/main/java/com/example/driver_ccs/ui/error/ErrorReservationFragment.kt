@@ -12,7 +12,7 @@ import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentErrorBinding
 import com.example.driver_ccs.extensions.viewBinding
 
-class ErrorEditPasswordFragment: Fragment(){
+class ErrorReservationFragment: Fragment() {
 
     private val binding: FragmentErrorBinding by viewBinding()
 
@@ -27,15 +27,15 @@ class ErrorEditPasswordFragment: Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvError.text = resources.getText(R.string.label_error_while_reservation)
         val window: Window = requireActivity().window
         window.statusBarColor = resources.getColor(R.color.component)
-        binding.tvError.text = "Erro ao alterar senha!"
         setListener()
     }
 
     private fun setListener() {
         binding.btWithdrawTryAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_edit_error_to_nav_edit_password)
+            findNavController().navigate(R.id.action_nav_edit_reservation_to_nav_parking)
         }
     }
 }

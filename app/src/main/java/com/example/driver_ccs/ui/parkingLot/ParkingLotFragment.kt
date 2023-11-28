@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.R
@@ -78,8 +79,9 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
                         "Você deve selecionar a data e hora da reserva!",
                         Snackbar.LENGTH_LONG
                     ).show()
+                } else {
+                    viewModel.makeReservation(plate, args.parkingInfo.id.toInt(), dueDate, selectedTime)
                 }
-                viewModel.makeReservation(plate, args.parkingInfo.id.toInt(), dueDate, selectedTime)
             }
         }
     }
@@ -110,8 +112,12 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
         carViewModel.carsListData.observe(viewLifecycleOwner) {
             adapter.updateCarList(it)
         }
-        viewModel.alert.observe(viewLifecycleOwner) {
-            Log.d("***alert", it.showMessage())
+        viewModel.status.observe(viewLifecycleOwner) {
+            if(it.showStatus()) {
+                findNavController().navigate(R.id.action_nav_parking_to_nav_success_reservation)
+            } else {
+                findNavController().navigate(R.id.action_nav_parking_to_nav_error_reservation)
+            }
         }
     }
 

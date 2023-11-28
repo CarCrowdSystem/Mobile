@@ -18,7 +18,7 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/label_park_name"
         android:textAlignment="center"
         android:textColor="@color/component_text"
@@ -117,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_total" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/mbt_check_out"
+        android:id="@+id/mbt_do_check_out"
         style="@style/DriverButton.default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -129,11 +129,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/mbt_entrada"
-        style="@style/DriverButton.feedback"
+        android:id="@+id/mbt_check_in"
+        style="@style/DriverButton.transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/label_entrance"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="@string/label_check_in_done"
+        android:textColor="@color/component_success"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/v_layout"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
@@ -142,13 +145,43 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbt_saida"
-        style="@style/DriverButton.feedback"
+        style="@style/DriverButton.transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/label_exit"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="@string/label_check_out_done"
+        android:textColor="@color/component_success"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/v_layout"
         app:layout_constraintEnd_toEndOf="@id/v_layout"
         app:layout_constraintStart_toStartOf="@id/v_layout"
         app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_reserva"
+        style="@style/DriverButton.transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="@string/label_reservation"
+        android:textColor="@color/component_success"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toStartOf="@id/mbt_cancel"
+        app:layout_constraintStart_toStartOf="@id/v_layout"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbt_cancel"
+        style="@style/DriverButton.default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_cancel"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="@id/v_layout"
+        app:layout_constraintStart_toEndOf="@id/mbt_reserva"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_spent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

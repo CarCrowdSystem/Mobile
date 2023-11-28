@@ -1,7 +1,6 @@
 package com.example.driver_ccs.data.remote.parkingLots.network
 
 import com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel
-import com.example.driver_ccs.ui.Place
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST

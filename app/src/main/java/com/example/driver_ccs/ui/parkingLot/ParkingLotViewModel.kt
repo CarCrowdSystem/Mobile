@@ -15,17 +15,24 @@ class ParkingLotViewModel(
 
     private val parkingLotRepository = ParkingLotRepository(application.applicationContext)
 
-    private var _alert = MutableLiveData<ValidationModel>()
-    val alert : LiveData<ValidationModel> = _alert
+    private var _isLoading = MutableLiveData<Boolean>()
+    val isLoading : LiveData<Boolean> = _isLoading
+
+    private var _status = MutableLiveData<ValidationModel>()
+    val status: LiveData<ValidationModel> = _status
 
     fun makeReservation(plate: String, idEstacionamento: Int, dataReserva: String, horaReserva: String) {
-        Log.d("***makeReservation" ,"$plate, $idEstacionamento, $dataReserva, $horaReserva")
+        _isLoading.value = true
         parkingLotRepository.makeReservation(plate, idEstacionamento, dataReserva, horaReserva, object : ApiListener<Unit> {
             override fun onSuccess(result: Unit) {
-                _alert.value = ValidationModel("Reserva feita com sucesso!")
+                _isLoading.value = false
+                _status.value = ValidationModel()
             }
 
-            override fun onFailure(message: String) {}
+            override fun onFailure(message: String) {
+                _isLoading.value = false
+                _status.value = ValidationModel(message)
+            }
         })
     }
 
