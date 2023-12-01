@@ -3,6 +3,8 @@ package com.example.driver_ccs.data.remote.model.response
 import com.google.gson.annotations.SerializedName
 
 data class HistoricResponseModel(
+    @SerializedName("idReserva")
+    val idReserva: String,
     @SerializedName("nome")
     val nome: String,
     @SerializedName("rua")
@@ -17,4 +19,6 @@ data class HistoricResponseModel(
     val status: String,
     @SerializedName("placa")
     val placa: String,
+    @SerializedName("checkinDone")
+    val isCheckinDone: Boolean
 )

@@ -11,8 +11,6 @@ import retrofit2.Response
 
 open class BaseRepository(val context: Context) {
 
-//    private fun failResponse(str: String): String = Gson().fromJson(str, String::class.java)
-
     private fun failResponse(str: String): String {
         return try {
             Gson().fromJson(str, String::class.java)

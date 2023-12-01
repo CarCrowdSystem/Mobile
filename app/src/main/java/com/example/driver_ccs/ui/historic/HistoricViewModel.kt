@@ -39,16 +39,28 @@ class HistoricViewModel(application: Application) : AndroidViewModel(application
         })
     }
 
-    fun cancelReservation(plate: String) {
-        historicRepository.cancelReservation(plate, object : ApiListener<Unit> {
+    fun checkout(plate: String) {
+        historicRepository.checkout(plate, object : ApiListener<Unit> {
             override fun onSuccess(result: Unit) {
                 _alert.value = ValidationModel()
             }
 
             override fun onFailure(message: String) {
-                _alert.value = ValidationModel("Erro ao cancelar a reserva")
+                _alert.value = ValidationModel("Erro ao pedir checkout!")
             }
 
+        })
+    }
+
+    fun delete(idReserva: Int) {
+        historicRepository.deleteReservation(idReserva, object : ApiListener<Unit> {
+            override fun onSuccess(result: Unit) {
+                _alert.value = ValidationModel()
+            }
+
+            override fun onFailure(message: String) {
+                _alert.value = ValidationModel("Erro ao cancelar reserva!")
+            }
         })
     }
 }

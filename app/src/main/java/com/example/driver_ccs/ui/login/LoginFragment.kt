@@ -76,7 +76,6 @@ class LoginFragment : Fragment() {
             ivLogo.toggle(isVisible)
             etEmail.toggle(isVisible)
             etPassword.toggle(isVisible)
-            tvForgetPassword.toggle(isVisible)
             btDoLogin.toggle(isVisible)
             btRegister.toggle(isVisible)
         }

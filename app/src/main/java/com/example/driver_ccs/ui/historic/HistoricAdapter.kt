@@ -1,13 +1,15 @@
 package com.example.driver_ccs.ui.historic
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.driver_ccs.data.remote.model.response.HistoricResponseModel
 import com.example.driver_ccs.databinding.ItemHistoricBinding
-import com.example.driver_ccs.extensions.toggle
+import com.example.driver_ccs.extensions.showOrHide
 
-class HistoricAdapter(private val viewModel: HistoricViewModel) : RecyclerView.Adapter<HistoricAdapter.HistoricViewHolder>() {
+class HistoricAdapter(private val viewModel: HistoricViewModel) :
+    RecyclerView.Adapter<HistoricAdapter.HistoricViewHolder>() {
 
     private var historicList = emptyList<HistoricResponseModel>()
 
@@ -22,15 +24,13 @@ class HistoricAdapter(private val viewModel: HistoricViewModel) : RecyclerView.A
     override fun onBindViewHolder(holder: HistoricViewHolder, position: Int) {
         holder.binding.apply {
             if (historicList.isNotEmpty()) {
-                when(historicList[position].status) {
-                    "1" -> mbtSaida.toggle(true) // Indica saida do user
-                    "2" -> mbtDoCheckOut.toggle(true) // Pode pedir para retirar o carro
-                    "3" -> {
-                        mbtReserva.toggle(true)
-                        mbtCancel.toggle(true)
-                    } // Indica reserva realizada
-                    "0" -> mbtCheckIn.toggle(true) // Indica checkin realizado
-                }
+
+                mbtSaida.showOrHide(historicList[position].status == "1")
+                mbtDoCheckOut.showOrHide(historicList[position].status == "0" && !historicList[position].isCheckinDone)
+                mbtReserva.showOrHide(historicList[position].status == "3")
+                mbtCancel.showOrHide(historicList[position].status == "3")
+                mbtCheckIn.showOrHide(historicList[position].status == "2")
+                mbtCheckInDone.showOrHide(historicList[position].status == "0" && historicList[position].isCheckinDone)
 
                 tvName.text = historicList[position].nome
                 tvAddress.text = historicList[position].rua
@@ -39,8 +39,15 @@ class HistoricAdapter(private val viewModel: HistoricViewModel) : RecyclerView.A
                 tvTotalValue.text = historicList[position].valor
             }
         }
+        holder.binding.mbtDoCheckOut.setOnClickListener {
+            viewModel.checkout(historicList[position].placa)
+            viewModel.getHistoric()
+            notifyDataSetChanged()
+        }
         holder.binding.mbtCancel.setOnClickListener {
-            viewModel.cancelReservation(historicList[position].placa)
+            viewModel.delete(historicList[position].idReserva.toInt())
+            viewModel.getHistoric()
+            notifyDataSetChanged()
         }
     }
 

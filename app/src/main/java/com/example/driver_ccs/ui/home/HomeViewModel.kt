@@ -1,14 +1,19 @@
 package com.example.driver_ccs.ui.home
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import com.example.driver_ccs.data.SecurityPreferences
 import com.example.driver_ccs.data.remote.listener.ApiListener
 import com.example.driver_ccs.data.remote.model.ParkingLotModel
+import com.example.driver_ccs.data.remote.model.response.ParkingLotLatLongResponseModel
 import com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel
 import com.example.driver_ccs.data.remote.parkingLots.ParkingLotRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeViewModel(
     application: Application
@@ -22,18 +27,47 @@ class HomeViewModel(
     private var _userLogged = MutableLiveData<Boolean>()
     val userLogged: LiveData<Boolean> = _userLogged
 
+    private var _parkingLotPosition = MutableLiveData<List<ParkingLotLatLongResponseModel>>()
+    val parkingLotPosition: LiveData<List<ParkingLotLatLongResponseModel>> = _parkingLotPosition
+
+    var parkingLotCepList: List<String> = emptyList()
+
     private val securityPreferences = SecurityPreferences(application.applicationContext)
 
-    fun getParkingLots() {
+   fun getParkingLots() {
         parkingLotRepository.getParkingLots(object : ApiListener<List<ParkingLotResponseModel>> {
             override fun onSuccess(result: List<ParkingLotResponseModel>) {
                 _listParking.value = result
+                var count = 0
+                while (count < result.size) {
+                    if (result.isNotEmpty()) {
+                        parkingLotCepList = listOf(result[count].cep)
+                    }
+                    count++
+                }
+
             }
 
             override fun onFailure(message: String) {
-
             }
         })
+    }
+
+    suspend fun getParkingLotLatLong() {
+//        var parkingLotCepList = arrayListOf("01310-928", "01311-940", "01418-970", "01311-300", "01310-928")
+
+        for(cep in parkingLotCepList) {
+            delay(5000)
+            parkingLotRepository.getParkingLotLatLong(cep, object : ApiListener<List<ParkingLotLatLongResponseModel>> {
+                    override fun onSuccess(result: List<ParkingLotLatLongResponseModel>) {
+                        _parkingLotPosition.value = result
+                    }
+
+                    override fun onFailure(message: String) {
+                        Log.d("***failure maps", "$message")
+                    }
+            })
+        }
     }
 
     fun verifyLoggedUser() {

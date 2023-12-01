@@ -15,11 +15,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_refresh_map"
+        style="@style/DriverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/label_refresh_map"
+        app:icon="@drawable/ic_refresh"
+        app:iconTint="@color/component_success"
+        app:layout_constraintBottom_toTopOf="@id/rv_estacionamento"
+        app:layout_constraintStart_toStartOf="@id/rv_estacionamento"
+        app:layout_constraintEnd_toEndOf="@id/rv_estacionamento"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_estacionamento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="32dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

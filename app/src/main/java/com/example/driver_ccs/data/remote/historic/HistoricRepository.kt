@@ -12,11 +12,15 @@ class HistoricRepository(context: Context) : BaseRepository(context){
 
     private val remote = RetrofitClient.getService(IHistoricService::class.java)
 
-    fun getHistoric(id_cliente: Int, listener: ApiListener<List<HistoricResponseModel>>) {
-        executeCall(remote.getHistoric(id_cliente), listener)
+    fun getHistoric(idCliente: Int, listener: ApiListener<List<HistoricResponseModel>>) {
+        executeCall(remote.getHistoric(idCliente), listener)
     }
 
-    fun cancelReservation(plate: String, listener: ApiListener<Unit>) {
-        executeCall(remote.cancelReservation(plate), listener)
+    fun checkout(plate: String, listener: ApiListener<Unit>) {
+        executeCall(remote.checkout(plate), listener)
+    }
+
+    fun deleteReservation(idReserva: Int, listener: ApiListener<Unit>) {
+        executeCall(remote.deleteReservation(idReserva), listener)
     }
 }

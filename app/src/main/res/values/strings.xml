@@ -79,4 +79,8 @@
     <string name="label_cancel">Cancelar</string>
     <string name="label_check_in_done">Check in realizado!</string>
     <string name="label_check_out_done">Check out realizado!</string>
+    <string name="label_check_out_order_done">Pedido de checkout realizado!</string>
+    <string name="label_edit_password">Alterar senha</string>
+    <string name="label_refresh_map">Altualizar mapa</string>
+    <string name="warning_text">*</string>
 </resources>

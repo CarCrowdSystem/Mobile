@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.map
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
@@ -64,10 +65,18 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         mapFragment.getMapAsync { googleMap ->
             setupMarkers(googleMap)
         }
+
         viewModel.getParkingLots()
         viewModel.verifyLoggedUser()
+
+        lifecycleScope.launch {
+            delay(2000)
+            viewModel.getParkingLotLatLong()
+        }
+
         setupRecyclerView()
         observe()
+        setListener()
     }
 
     private fun setupRecyclerView() {
@@ -76,23 +85,26 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         binding.rvEstacionamento.adapter = adapter
     }
 
-    private fun observe() {
-        lifecycleScope.launch {
-            viewModel.listParking.observe(viewLifecycleOwner) {
-                adapter.update(it)
-            }
 
-            viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
-                if(!logged) {
-                    findNavController().navigate(R.id.action_nav_home_to_nav_login)
-                }
+    private fun setListener() {
+        binding.btnRefreshMap.setOnClickListener {
+            getDeviceLocation(mMap)
+        }
+    }
+
+    private fun observe() {
+        viewModel.listParking.observe(viewLifecycleOwner) {
+            adapter.update(it)
+        }
+        viewModel.userLogged.observe(viewLifecycleOwner) { logged ->
+            if (!logged) {
+                findNavController().navigate(R.id.action_nav_home_to_nav_login)
             }
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         Log.d("***HomeFragment", "onMapReady called")
-
         mMap = googleMap
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -123,40 +135,48 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             }
 
         lifecycleScope.launch {
-            var count = 0
-            while (count < 1) {
-                Log.d("***HomeFragment", "Vezes atualizadas: $count")
-                delay(10000)
-                getDeviceLocation()
-                count++
-            }
-
+            getDeviceLocation(googleMap)
         }
     }
 
     @SuppressLint("MissingPermission")
-    private fun getDeviceLocation() {
+    private fun getDeviceLocation(googleMap: GoogleMap) {
+        Log.d("***HomeFragment", "Mapa Atualizado")
         try {
+            mMap.clear()
+            setupMarkers(googleMap)
             val locationResult = fusedLocationClient.lastLocation
             locationResult.addOnCompleteListener(TaskExecutors.MAIN_THREAD) { task ->
                 if (task.isSuccessful) {
                     val lastKnownLocation = task.result
                     if (lastKnownLocation != null) {
                         mMap.addMarker(
-                            MarkerOptions().position(LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)).title("Você está aqui!")
+                            MarkerOptions().position(
+                                LatLng(
+                                    lastKnownLocation.latitude,
+                                    lastKnownLocation.longitude
+                                )
+                            ).title("Você está aqui!")
                         )
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                            LatLng(
-                                lastKnownLocation.latitude,
-                                lastKnownLocation.longitude), 16f))
+                        mMap.moveCamera(
+                            CameraUpdateFactory.newLatLngZoom(
+                                LatLng(
+                                    lastKnownLocation.latitude,
+                                    lastKnownLocation.longitude
+                                ), 16f
+                            )
+                        )
                     }
+
                     Log.d("***HomeFragment", "LATITUDE: ${lastKnownLocation.latitude}")
                     Log.d("***HomeFragment", "LONGITUDE: ${lastKnownLocation.longitude}")
                 } else {
                     Log.d("***HomeFragment", "Current location is null. Using defaults.")
                     Log.e("***HomeFragment", "Exception: %s", task.exception)
-                    mMap.moveCamera(CameraUpdateFactory
-                        .newLatLngZoom(defaultLocation, 16f))
+                    mMap.moveCamera(
+                        CameraUpdateFactory
+                            .newLatLngZoom(defaultLocation, 16f)
+                    )
                     mMap.uiSettings.isMyLocationButtonEnabled = true
                 }
             }
@@ -168,21 +188,30 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupMarkers(googleMap: GoogleMap) {
-        val parkingLatLng = LatLng(-23.5582769,-46.662038)
-        val parkingTwoLatLng = LatLng(-23.5590366,-46.6635035)
+        lifecycleScope.launch {
+            viewModel.getParkingLotLatLong()
+        }
+        viewModel.parkingLotPosition.observe(viewLifecycleOwner) { parkingLotList ->
+            if (parkingLotList != null) {
+                Log.d("***setupMarkers", "$parkingLotList")
 
-        val hotelMarkerOptions = MarkerOptions()
-            .position(parkingLatLng)
-            .title("Estacionamento um")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                val markers = parkingLotList.map { parkingLot ->
+                    LatLng(parkingLot.lat.toDouble(), parkingLot.long.toDouble())
+                }
 
-        val restaurantMarkerOptions = MarkerOptions()
-            .position(parkingTwoLatLng)
-            .title("Estacionamento dois")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                markers.forEachIndexed { index, markerPosition ->
+                    val parkingMarkerOptions = MarkerOptions()
+                        .position(markerPosition)
+                        .title(parkingLotList[index].place_id.toString())
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
 
-        // Add markers to the map
-        googleMap.addMarker(hotelMarkerOptions)
-        googleMap.addMarker(restaurantMarkerOptions)
+                    googleMap.addMarker(parkingMarkerOptions)
+                }
+
+                if (markers.isNotEmpty()) {
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers[0], 16.0f))
+                }
+            }
+        }
     }
 }
