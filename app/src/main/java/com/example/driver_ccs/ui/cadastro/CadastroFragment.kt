@@ -39,11 +39,21 @@ class CadastroFragment : Fragment() {
     }
 
     val textWatcher = object : TextWatcher {
-        override fun beforeTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+        override fun beforeTextChanged(
+            charSequence: CharSequence?,
+            start: Int,
+            before: Int,
+            count: Int
+        ) {
             // Not needed
         }
 
-        override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+        override fun onTextChanged(
+            charSequence: CharSequence?,
+            start: Int,
+            before: Int,
+            count: Int
+        ) {
             // Not needed
         }
 
@@ -82,18 +92,16 @@ class CadastroFragment : Fragment() {
             val password = binding.etPassword.text.toString()
             val confirmPassword = binding.etConfirmPassword.text.toString()
 
-            if (password == confirmPassword) {
+            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && password == confirmPassword) {
+                viewModel.register(name, email, password)
                 binding.tvWarningPassword.hide()
                 binding.tvWarningPasswordConfirmation.hide()
-                if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-                    viewModel.register(name, email, password)
-                } else {
-                    Snackbar.make(
-                        binding.root,
-                        "Todos os campos devem estar preenchidos!",
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                }
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "Todos os campos devem estar preenchidos!",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
         binding.btGoToLogin.setOnClickListener {

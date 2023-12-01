@@ -69,10 +69,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         viewModel.getParkingLots()
         viewModel.verifyLoggedUser()
 
-        lifecycleScope.launch {
-            delay(2000)
-            viewModel.getParkingLotLatLong()
-        }
+//        lifecycleScope.launch {
+//            delay(2000)
+//            viewModel.getParkingLotLatLong()
+//        }
 
         setupRecyclerView()
         observe()
@@ -188,9 +188,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupMarkers(googleMap: GoogleMap) {
-        lifecycleScope.launch {
-            viewModel.getParkingLotLatLong()
-        }
+//        lifecycleScope.launch {
+//            viewModel.getParkingLotLatLong()
+//        }
         viewModel.parkingLotPosition.observe(viewLifecycleOwner) { parkingLotList ->
             if (parkingLotList != null) {
                 Log.d("***setupMarkers", "$parkingLotList")

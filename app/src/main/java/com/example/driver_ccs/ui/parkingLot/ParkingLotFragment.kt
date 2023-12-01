@@ -19,6 +19,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentParkingLotDetailBinding
+import com.example.driver_ccs.extensions.hide
+import com.example.driver_ccs.extensions.show
+import com.example.driver_ccs.extensions.showOrHide
 import com.example.driver_ccs.extensions.viewBinding
 import com.example.driver_ccs.ui.novoVeiculo.NewCarViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -37,6 +40,7 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
     private val viewModel: ParkingLotViewModel by viewModels()
     private val binding: FragmentParkingLotDetailBinding by viewBinding()
     private val adapter: CarAdapter by lazy { CarAdapter(this) }
+
     private var plate: String = ""
     private var dueDate = ""
     private var selectedTime = ""
@@ -119,6 +123,15 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
                 findNavController().navigate(R.id.action_nav_parking_to_nav_error_reservation)
             }
         }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if(isLoading) {
+                binding.pbLoading.show()
+                makeView(isLoading)
+            } else {
+                binding.pbLoading.hide()
+                makeView(isLoading)
+            }
+        }
     }
 
     private fun handleDate() {
@@ -165,5 +178,22 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
     private fun setupRecyclerView() {
         binding.rvCarList.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCarList.adapter = adapter
+    }
+
+    private fun makeView(isLoading: Boolean){
+        binding.apply {
+            tvParkingName.showOrHide(isLoading)
+            tvParkingAddress.showOrHide(isLoading)
+            vLayoutTop.showOrHide(isLoading)
+            tvLabelValues.showOrHide(isLoading)
+            tvHoursAndValues.showOrHide(isLoading)
+            vLayoutMiddle.showOrHide(isLoading)
+            tvSpotsAvailableValue.showOrHide(isLoading)
+            tvLabelSpotAvailable.showOrHide(isLoading)
+            rvCarList.showOrHide(isLoading)
+            btnMakeReservation.showOrHide(isLoading)
+            btnHourEntrance.showOrHide(isLoading)
+            btnSelectDate.showOrHide(isLoading)
+        }
     }
 }

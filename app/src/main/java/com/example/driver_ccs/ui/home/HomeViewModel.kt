@@ -42,6 +42,7 @@ class HomeViewModel(
                 while (count < result.size) {
                     if (result.isNotEmpty()) {
                         parkingLotCepList = listOf(result[count].cep)
+                        getParkingLotLatLong(result[count].cep)
                     }
                     count++
                 }
@@ -53,21 +54,23 @@ class HomeViewModel(
         })
     }
 
-    suspend fun getParkingLotLatLong() {
+    fun getParkingLotLatLong(cep: String) {
 //        var parkingLotCepList = arrayListOf("01310-928", "01311-940", "01418-970", "01311-300", "01310-928")
 
-        for(cep in parkingLotCepList) {
-            delay(5000)
+//        for(cep in parkingLotCepList) {
+//            delay(5000)
             parkingLotRepository.getParkingLotLatLong(cep, object : ApiListener<List<ParkingLotLatLongResponseModel>> {
                     override fun onSuccess(result: List<ParkingLotLatLongResponseModel>) {
                         _parkingLotPosition.value = result
+                        Log.d("***success maps", "$cep - ${_parkingLotPosition.value}")
                     }
 
                     override fun onFailure(message: String) {
                         Log.d("***failure maps", "$message")
                     }
             })
-        }
+//            delay(2000)
+//        }
     }
 
     fun verifyLoggedUser() {

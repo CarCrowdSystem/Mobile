@@ -48,45 +48,45 @@ class NewCarFragment : Fragment() {
     }
 
     private fun setListener() {
-//        binding.btnGetCarData.setOnClickListener {
-//            if (binding.etPlate.text.toString().length == 7) {
-//                val placa = binding.etPlate.text.toString()
-//                viewModel.getCarData(placa)
-//            } else {
-//                Snackbar.make(
-//                    binding.root,
-//                    "A placa deve ter 7 caracteres",
-//                    Snackbar.LENGTH_LONG
-//                ).show()
-//            }
-//        }
+        binding.btnGetCarData.setOnClickListener {
+            if (binding.etPlate.text.toString().length == 7) {
+                val placa = binding.etPlate.text.toString()
+                viewModel.getCarData(placa)
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "A placa deve ter 7 caracteres",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
         binding.btnAddCar.setOnClickListener {
-            val placa = "EEFF111"
-            val modelo = "Skyline"
-            val marca = "Nissan"
+//            val placa = "EEFF111"
+//            val modelo = "Skyline"
+//            val marca = "Nissan"
 
-            viewModel.registerCar(placa, modelo, marca)
+//            viewModel.registerCar(placa, modelo, marca)
 
             viewModel.getCarsList()
-//            if (binding.etPlate.text.toString().length == 7 &&
-//                binding.etModel.text.isNotEmpty() &&
-//                binding.etMarca.text.isNotEmpty()) {
+            if (binding.etPlate.text.toString().length == 7 &&
+                binding.etModel.text.isNotEmpty() &&
+                binding.etMarca.text.isNotEmpty()) {
 
-//            val placa = binding.etPlate.text.toString()
-//            val modelo = binding.etModel.text.toString()
-//            val marca = binding.etMarca.text.toString()
+            val placa = binding.etPlate.text.toString()
+            val modelo = binding.etModel.text.toString()
+            val marca = binding.etMarca.text.toString()
 
 //            val placa = "DDDD000"
 //            val modelo = "Skyline"
 //            val marca = "Nissan"
-//            viewModel.registerCar(placa, modelo, marca)
-//            } else {
-//                Snackbar.make(
-//                    binding.root,
-//                    "Os campos devem estar preechidos!",
-//                    Snackbar.LENGTH_LONG
-//                ).show()
-//            }
+            viewModel.registerCar(placa, modelo, marca)
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "Os campos devem estar preechidos!",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
