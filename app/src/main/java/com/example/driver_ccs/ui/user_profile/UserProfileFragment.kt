@@ -54,6 +54,7 @@ class UserProfileFragment : Fragment() {
         }
         viewModel.alert.observe(viewLifecycleOwner) { alert ->
             if (alert.showStatus()) {
+                binding.tvUserName.text = binding.etUserName.text
                 Snackbar.make(
                     binding.root,
                     "Dados atualizados com sucesso!",
@@ -75,10 +76,6 @@ class UserProfileFragment : Fragment() {
                 Log.d("***userPicture", it)
                 Glide.with(this)
                     .load(it.toUri())
-                    .into(binding.ivPhoto)
-            } else {
-                Glide.with(this)
-                    .load(R.drawable.ic_person)
                     .into(binding.ivPhoto)
             }
         }
@@ -128,7 +125,6 @@ class UserProfileFragment : Fragment() {
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val selectedImageUri = result.data?.data
-            Log.d("***galleryLauncher", "$selectedImageUri")
             Glide.with(this)
                 .load(selectedImageUri)
                 .into(binding.ivPhoto)

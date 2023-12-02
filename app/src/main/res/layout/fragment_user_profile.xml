@@ -56,7 +56,7 @@
         android:text="@string/label_user_name"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/bg_user_pic" />
 

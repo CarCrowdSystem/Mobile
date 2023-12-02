@@ -70,16 +70,17 @@ class NewCarFragment : Fragment() {
             viewModel.getCarsList()
             if (binding.etPlate.text.toString().length == 7 &&
                 binding.etModel.text.isNotEmpty() &&
-                binding.etMarca.text.isNotEmpty()) {
+                binding.etMarca.text.isNotEmpty()
+            ) {
 
-            val placa = binding.etPlate.text.toString()
-            val modelo = binding.etModel.text.toString()
-            val marca = binding.etMarca.text.toString()
+                val placa = binding.etPlate.text.toString()
+                val modelo = binding.etModel.text.toString()
+                val marca = binding.etMarca.text.toString()
 
 //            val placa = "DDDD000"
 //            val modelo = "Skyline"
 //            val marca = "Nissan"
-            viewModel.registerCar(placa, modelo, marca)
+                viewModel.registerCar(placa, modelo, marca)
             } else {
                 Snackbar.make(
                     binding.root,
@@ -99,10 +100,8 @@ class NewCarFragment : Fragment() {
             binding.etMarca.setText(it.marca)
             binding.etModel.setText(it.modelo)
         }
-        lifecycleScope.launch {
-            viewModel.carsListData.observe(viewLifecycleOwner) {
-                adapter.updateCarList(it)
-            }
+        viewModel.carsListData.observe(viewLifecycleOwner) {
+            adapter.updateCarList(it)
         }
         viewModel.alert.observe(viewLifecycleOwner) {
             if (it.showStatus()) {
@@ -121,7 +120,7 @@ class NewCarFragment : Fragment() {
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            if(isLoading) {
+            if (isLoading) {
                 binding.apply {
                     rvCarList.toggle(isLoading)
                     pbLoading.toggle(!isLoading)
@@ -134,7 +133,7 @@ class NewCarFragment : Fragment() {
             }
         }
         viewModel.isLoadingCarData.observe(viewLifecycleOwner) { isLoading ->
-            if(isLoading) {
+            if (isLoading) {
                 binding.apply {
                     pbLoadingAddCar.toggle(isLoading)
                 }
