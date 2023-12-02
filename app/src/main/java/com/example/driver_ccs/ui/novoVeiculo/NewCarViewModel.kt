@@ -27,16 +27,22 @@ class NewCarViewModel(
     private var _alert = MutableLiveData<ValidationModel>()
     val alert : LiveData<ValidationModel> = _alert
 
+    private var _isLoadingCarData = MutableLiveData<Boolean>()
+    val isLoadingCarData : LiveData<Boolean> = _isLoadingCarData
+
     private var _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> = _isLoading
 
     fun getCarData(plate: String) {
+        _isLoadingCarData.value = true
         newCarRepository.getCarData(plate, object : ApiListener<CarResponseModel> {
             override fun onSuccess(result: CarResponseModel) {
+                _isLoadingCarData.value = false
                 _carData.value = result
             }
 
             override fun onFailure(message: String) {
+                _isLoadingCarData.value = false
                 _alert.value = ValidationModel(message)
             }
         })

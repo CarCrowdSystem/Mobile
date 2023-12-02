@@ -1,13 +1,19 @@
 package com.example.driver_ccs.ui.user_profile
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentUserProfileBinding
 import com.example.driver_ccs.extensions.toggle
@@ -31,7 +37,6 @@ class UserProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[UserProfileViewModel::class.java]
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-//        viewModel.getDefaultPicture("Gabriel Romao")
         viewModel.getUserName()
         setListener()
         observe()
@@ -65,6 +70,18 @@ class UserProfileFragment : Fragment() {
         viewModel.userName.observe(viewLifecycleOwner) { name ->
             binding.tvUserName.text = name.ifEmpty { "Nome user" }
         }
+        viewModel.userPicture.let {
+            if (it.isNotEmpty()) {
+                Log.d("***userPicture", it)
+                Glide.with(this)
+                    .load(it.toUri())
+                    .into(binding.ivPhoto)
+            } else {
+                Glide.with(this)
+                    .load(R.drawable.ic_person)
+                    .into(binding.ivPhoto)
+            }
+        }
     }
 
     private fun setListener() {
@@ -87,6 +104,9 @@ class UserProfileFragment : Fragment() {
         binding.btnEditPassword.setOnClickListener {
             findNavController().navigate(R.id.action_nav_user_profile_to_nav_edit_password)
         }
+        binding.btnAddPhoto.setOnClickListener {
+            openGallery()
+        }
     }
 
     private fun displayView(isVisible: Boolean) {
@@ -99,4 +119,27 @@ class UserProfileFragment : Fragment() {
             btnUserSaveInfo.toggle(isVisible)
         }
     }
+
+    private fun openGallery() {
+        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        galleryLauncher.launch(galleryIntent)
+    }
+
+    private val galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val selectedImageUri = result.data?.data
+            Log.d("***galleryLauncher", "$selectedImageUri")
+            Glide.with(this)
+                .load(selectedImageUri)
+                .into(binding.ivPhoto)
+
+            if (selectedImageUri != null) {
+                viewModel.saveImageUri(selectedImageUri)
+                Snackbar.make(
+                    binding.root,
+                    "Foto atualizada!",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
 }

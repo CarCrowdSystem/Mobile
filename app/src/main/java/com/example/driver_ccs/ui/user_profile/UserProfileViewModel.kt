@@ -1,6 +1,7 @@
 package com.example.driver_ccs.ui.user_profile
 
 import android.app.Application
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -27,6 +28,8 @@ class UserProfileViewModel(application: Application) : AndroidViewModel(applicat
     private var _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
+    var userPicture = securityPreferences.get("uri")
+
     fun getDefaultPicture(name: String) {
         userProfileRepository.getProfilePicture(name, object : ApiListener<Any> {
             override fun onSuccess(result: Any) {
@@ -37,6 +40,10 @@ class UserProfileViewModel(application: Application) : AndroidViewModel(applicat
                 Log.d("***error", message)
             }
         })
+    }
+
+    fun saveImageUri(selectedImageUri : Uri) {
+        securityPreferences.store("uri", selectedImageUri.toString())
     }
 
     fun updateProfile(nome: String, email: String, telefone: String, cpf: String) {

@@ -33,11 +33,19 @@ class HistoricFragment : Fragment() {
         viewModel.getHistoric()
         setupRecyclerView()
         observe()
+        setListener()
     }
 
     private fun setupRecyclerView() {
         binding.rvHistoric.layoutManager = LinearLayoutManager(requireContext())
         binding.rvHistoric.adapter = adapter
+    }
+
+    private fun setListener() {
+        binding.swipeHistoric.setOnRefreshListener {
+            viewModel.getHistoric()
+            binding.swipeHistoric.isRefreshing = false
+        }
     }
 
     private fun observe() {

@@ -13,15 +13,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:id="@+id/cv_photo"-->
+    <!--        android:layout_width="140dp"-->
+    <!--        android:layout_height="140dp"-->
+    <!--        app:cardCornerRadius="80dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/tv_user_name"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_chainStyle="packed">-->
+
     <ImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:id="@+id/iv_photo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/tv_user_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bg_user_pic"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_person" />
+    <!--    </androidx.cardview.widget.CardView>-->
+
+    <ImageView
+        android:id="@+id/btn_add_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_add_photo"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginHorizontal="6dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_photo"
+        app:layout_constraintStart_toEndOf="@id/iv_photo" />
 
     <TextView
         android:id="@+id/tv_user_name"
@@ -129,7 +154,7 @@
         android:layout_marginTop="14dp"
         android:text="@string/label_change_password"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
         app:layout_constraintEnd_toEndOf="@id/btn_user_save_info"
+        app:layout_constraintStart_toStartOf="@id/btn_user_save_info"
         app:layout_constraintTop_toBottomOf="@id/btn_user_save_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

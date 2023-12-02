@@ -88,6 +88,10 @@ class NewCarFragment : Fragment() {
                 ).show()
             }
         }
+        binding.swipeCarList.setOnRefreshListener {
+            viewModel.getCarsList()
+            binding.swipeCarList.isRefreshing = false
+        }
     }
 
     private fun observe() {
@@ -102,6 +106,7 @@ class NewCarFragment : Fragment() {
         }
         viewModel.alert.observe(viewLifecycleOwner) {
             if (it.showStatus()) {
+                viewModel.getCarsList()
                 Snackbar.make(
                     binding.root,
                     "Sucesso!",
@@ -110,25 +115,32 @@ class NewCarFragment : Fragment() {
             } else {
                 Snackbar.make(
                     binding.root,
-                    it.showMessage(),
+                    "Erro ao tentar cadastrar",
                     Snackbar.LENGTH_LONG
                 ).show()
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-//            if(!isLoading && count < 1) {
-//                count++
-//                viewModel.getCarsList()
-//            }
             if(isLoading) {
                 binding.apply {
-                    rvCarList.toggle(false)
-                    pbLoading.toggle(true)
+                    rvCarList.toggle(isLoading)
+                    pbLoading.toggle(!isLoading)
                 }
             } else {
                 binding.apply {
-                    rvCarList.toggle(true)
-                    pbLoading.toggle(false)
+                    rvCarList.toggle(!isLoading)
+                    pbLoading.toggle(isLoading)
+                }
+            }
+        }
+        viewModel.isLoadingCarData.observe(viewLifecycleOwner) { isLoading ->
+            if(isLoading) {
+                binding.apply {
+                    pbLoadingAddCar.toggle(isLoading)
+                }
+            } else {
+                binding.apply {
+                    pbLoadingAddCar.toggle(isLoading)
                 }
             }
         }

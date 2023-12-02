@@ -41,7 +41,7 @@
     <string name="label_success_password_edited">Senha alterada com sucesso!</string>
     <string name="label_success_reservation">Reserva feita com sucesso!</string>
     <string name="label_success">Sucesso!</string>
-    <string name="label_right">Beleza</string>
+    <string name="label_keep_going">Avançar</string>
     <string name="label_error_message">Erro ao tentar cadastrar</string>
     <string name="label_check_out">Fazer check out</string>
     <string name="label_total_value">R$ 20,00</string>
