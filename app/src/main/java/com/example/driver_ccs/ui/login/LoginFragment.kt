@@ -56,11 +56,15 @@ class LoginFragment : Fragment() {
     private fun observe() {
         viewModel.login.observe(viewLifecycleOwner) { userStatus ->
             if (userStatus.showStatus()) {
+                findNavController().navigate(R.id.action_nav_login_to_nav_home)
                 if (viewModel.passwordValue.value == "0000") {
-                    findNavController().navigate(R.id.action_nav_login_to_nav_success_edit_password_feedback)
-                } else {
-                    findNavController().navigate(R.id.action_nav_login_to_nav_home)
+                    Snackbar.make(
+                        binding.root,
+                        "Por favor, altere sua senha na aba de perfil!",
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
+
             } else {
                 findNavController().navigate(R.id.action_nav_login_to_nav_error)
                 displayView(true)
