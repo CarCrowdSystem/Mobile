@@ -84,4 +84,8 @@
     <string name="label_edit_password">Alterar senha</string>
     <string name="label_refresh_map">Altualizar mapa</string>
     <string name="warning_text">*</string>
+    <string name="label_make_a_register">Não tem conta? Registre se aqui!</string>
+    <string name="label_choose_date">Selecione uma data</string>
+    <string name="label_choose_hour">00h00</string>
+    <string name="label_make_reservation">Reservar</string>
 </resources>

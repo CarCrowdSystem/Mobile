@@ -128,7 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="32dp"
         android:gravity="center"
-        android:hint="Selecione uma data"
+        android:hint="@string/label_choose_date"
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toStartOf="@id/btn_hour_entrance"
         app:layout_constraintStart_toStartOf="@id/rv_car_list"
@@ -139,7 +139,7 @@
         style="@style/DriverButton.default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="00h00"
+        android:hint="@string/label_choose_hour"
         app:layout_constraintEnd_toEndOf="@id/rv_car_list"
         app:layout_constraintStart_toEndOf="@id/btn_select_date"
         app:layout_constraintTop_toTopOf="@id/btn_select_date" />
@@ -151,8 +151,8 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="32dp"
         android:paddingHorizontal="64dp"
-        android:text="Reservar"
-        android:textSize="22dp"
+        android:text="@string/label_make_reservation"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@id/btn_hour_entrance"
         app:layout_constraintStart_toStartOf="@id/btn_select_date"
         app:layout_constraintTop_toBottomOf="@id/btn_select_date" />
