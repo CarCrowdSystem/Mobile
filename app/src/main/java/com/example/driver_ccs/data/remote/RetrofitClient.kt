@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class RetrofitClient private constructor() {
 
@@ -27,11 +28,15 @@ class RetrofitClient private constructor() {
                 return@Interceptor it.proceed(request)
             })
 
+//            httpClient.connectTimeout(20, TimeUnit.SECONDS)
+//            httpClient.readTimeout(20, TimeUnit.SECONDS)
+//            httpClient.writeTimeout(20, TimeUnit.SECONDS)
+
             if (!::INSTANCE.isInitialized) {
                 synchronized(RetrofitClient::class) {
                     INSTANCE = Retrofit.Builder()
                         .baseUrl(BASE_URL)
-                        .client(httpClient.build()) // Use the configured OkHttpClient
+                        .client(httpClient.build())
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
                 }

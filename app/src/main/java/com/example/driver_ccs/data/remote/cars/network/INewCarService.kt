@@ -13,6 +13,8 @@ import retrofit2.http.Query
 
 interface INewCarService {
 
+    //new key
+    //4ec3fdb4ebe22e46e14b6443ba58283d
     @GET("https://wdapi2.com.br/consulta/{placa}/b15fd7bc1c6c3e641875aa093cbaf367")
     fun getCarData(
         @Path("placa") placa: String

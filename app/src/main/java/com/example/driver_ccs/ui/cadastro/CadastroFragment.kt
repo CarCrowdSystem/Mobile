@@ -111,10 +111,14 @@ class CadastroFragment : Fragment() {
 
     private fun observe() {
         viewModel.user.observe(viewLifecycleOwner) { userStatus ->
-            if (userStatus.showStatus()) {
-                findNavController().navigate(R.id.action_nav_cadastro_to_nav_success)
-            } else {
-                findNavController().navigate(R.id.action_nav_cadastro_to_nav_error_register)
+            if (userStatus != null) {
+                if (userStatus.showStatus()) {
+                    findNavController().navigate(R.id.action_nav_cadastro_to_nav_success)
+                    viewModel.clearUserStatus()
+                } else {
+                    findNavController().navigate(R.id.action_nav_cadastro_to_nav_error_register)
+                    viewModel.clearUserStatus()
+                }
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

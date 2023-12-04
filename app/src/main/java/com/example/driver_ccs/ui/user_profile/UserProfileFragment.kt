@@ -73,7 +73,6 @@ class UserProfileFragment : Fragment() {
         }
         viewModel.userPicture.let {
             if (it.isNotEmpty()) {
-                Log.d("***userPicture", it)
                 Glide.with(this)
                     .load(it.toUri())
                     .into(binding.ivPhoto)

@@ -14,8 +14,8 @@ class EditPasswordViewModel(application: Application) : AndroidViewModel(applica
     private val editPasswordRepository = EditPasswordRepository(application.applicationContext)
     private val securityPreferences = SecurityPreferences(application.applicationContext)
 
-    private var _status = MutableLiveData<ValidationModel>()
-    val status: LiveData<ValidationModel> = _status
+    private var _status = MutableLiveData<ValidationModel?>()
+    val status: LiveData<ValidationModel?> = _status
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -35,6 +35,10 @@ class EditPasswordViewModel(application: Application) : AndroidViewModel(applica
                 _status.value = ValidationModel(message)
             }
         })
+    }
+
+    fun clearStatus() {
+        _status.value = null
     }
 
 }

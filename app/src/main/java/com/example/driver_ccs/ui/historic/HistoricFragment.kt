@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.driver_ccs.databinding.FragmentHistoricBinding
 import com.example.driver_ccs.extensions.toggle
 import com.example.driver_ccs.extensions.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class HistoricFragment : Fragment() {
@@ -65,6 +66,21 @@ class HistoricFragment : Fragment() {
                     rvHistoric.toggle(!isLoading)
                     pbLoading.toggle(isLoading)
                 }
+            }
+        }
+        viewModel.alert.observe(viewLifecycleOwner) { alert ->
+            if(alert.showStatus()) {
+                Snackbar.make(
+                    binding.root,
+                    "Sucesso!",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "${alert.showMessage()}!",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }

@@ -54,10 +54,14 @@ class EditPasswordFragment : Fragment() {
             }
         }
         viewModel.status.observe(viewLifecycleOwner) {
-            if(it.showStatus()) {
-                findNavController().navigate(R.id.action_nav_edit_password_to_nav_success_edit_password)
-            } else {
-                findNavController().navigate(R.id.action_nav_edit_password_to_nav_edit_error)
+            if (it != null) {
+                if(it.showStatus()) {
+                    findNavController().navigate(R.id.action_nav_edit_password_to_nav_success_edit_password)
+                    viewModel.clearStatus()
+                } else {
+                    findNavController().navigate(R.id.action_nav_edit_password_to_nav_edit_error)
+                    viewModel.clearStatus()
+                }
             }
         }
     }

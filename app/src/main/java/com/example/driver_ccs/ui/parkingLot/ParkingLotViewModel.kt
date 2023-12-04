@@ -18,8 +18,8 @@ class ParkingLotViewModel(
     private var _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> = _isLoading
 
-    private var _status = MutableLiveData<ValidationModel>()
-    val status: LiveData<ValidationModel> = _status
+    private var _status = MutableLiveData<ValidationModel?>()
+    val status: LiveData<ValidationModel?> = _status
 
     fun makeReservation(plate: String, idEstacionamento: Int, dataReserva: String, horaReserva: String) {
         _isLoading.value = true
@@ -27,6 +27,7 @@ class ParkingLotViewModel(
             override fun onSuccess(result: Unit) {
                 _isLoading.value = false
                 _status.value = ValidationModel()
+                Log.d("***makeReservation", "success")
             }
 
             override fun onFailure(message: String) {
@@ -36,4 +37,7 @@ class ParkingLotViewModel(
         })
     }
 
+    fun clearStatus() {
+        _status.value = null
+    }
 }
