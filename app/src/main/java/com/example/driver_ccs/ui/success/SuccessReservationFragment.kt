@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentSuccessBinding
@@ -35,7 +36,7 @@ class SuccessReservationFragment: Fragment() {
 
     private fun setListener() {
         binding.btWithdrawSuccess.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_success_reservation_to_nav_home)
+            NavHostFragment.findNavController(this).popBackStack()
         }
     }
 }

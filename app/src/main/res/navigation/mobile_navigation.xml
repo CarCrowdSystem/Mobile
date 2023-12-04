@@ -27,37 +27,29 @@
         tools:layout="@layout/fragment_parking_lot_detail">
         <argument
             android:name="parking_info"
-            app:argType="com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel"/>
+            app:argType="com.example.driver_ccs.data.remote.model.response.ParkingLotResponseModel" />
 
         <action
             android:id="@+id/action_nav_parking_to_nav_success_reservation"
-            app:destination="@id/nav_success_reservation" />
+            app:destination="@id/nav_success_reservation"
+            app:popUpTo="@id/nav_home" />
         <action
             android:id="@+id/action_nav_parking_to_nav_error_reservation"
-            app:destination="@id/nav_error_reservation" />
+            app:destination="@id/nav_error_reservation"
+            app:popUpTo="@id/nav_parking" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_success_reservation"
         android:name="com.example.driver_ccs.ui.success.SuccessReservationFragment"
         android:label="@string/success"
-        tools:layout="@layout/fragment_success">
-        <action
-            android:id="@+id/action_nav_success_reservation_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        tools:layout="@layout/fragment_success" />
 
     <fragment
         android:id="@+id/nav_error_reservation"
         android:name="com.example.driver_ccs.ui.error.ErrorReservationFragment"
         android:label="@string/error"
-        tools:layout="@layout/fragment_error">
-        <action
-            android:id="@+id/action_nav_edit_reservation_to_nav_parking"
-            app:destination="@id/nav_parking"
-            app:popUpTo="@id/nav_parking"
-            app:popUpToInclusive="true"/>
-    </fragment>
+        tools:layout="@layout/fragment_error" />
 
     <fragment
         android:id="@+id/nav_historic"
@@ -96,7 +88,8 @@
             app:destination="@id/nav_cadastro" />
         <action
             android:id="@+id/action_nav_login_to_nav_error"
-            app:destination="@id/nav_error" />
+            app:destination="@id/nav_error"
+            app:popUpTo="@id/nav_login" />
     </fragment>
 
     <fragment
@@ -106,10 +99,12 @@
         tools:layout="@layout/fragment_cadastro">
         <action
             android:id="@+id/action_nav_cadastro_to_nav_success"
-            app:destination="@id/nav_success_register" />
+            app:destination="@id/nav_success_register"
+            app:popUpTo="@id/nav_login" />
         <action
             android:id="@+id/action_nav_cadastro_to_nav_error_register"
-            app:destination="@id/nav_error_register" />
+            app:destination="@id/nav_error_register"
+            app:popUpTo="@id/nav_cadastro" />
     </fragment>
 
     <fragment
@@ -119,66 +114,41 @@
         tools:layout="@layout/fragment_edit_password">
         <action
             android:id="@+id/action_nav_edit_password_to_nav_edit_error"
-            app:destination="@id/nav_edit_error" />
+            app:destination="@id/nav_edit_error"
+            app:popUpTo="@id/nav_edit_password" />
         <action
             android:id="@+id/action_nav_edit_password_to_nav_success_edit_password"
             app:destination="@id/nav_success_edit_password"
-            app:popUpTo="@id/nav_success_edit_password"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/nav_user_profile" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_success_edit_password"
         android:name="com.example.driver_ccs.ui.success.SuccessEditPasswordFragment"
         android:label="@string/success"
-        tools:layout="@layout/fragment_success">
-        <action
-            android:id="@+id/action_nav_success_edit_password_to_nav_user_profile"
-            app:destination="@id/nav_user_profile"
-            app:popUpTo="@id/nav_user_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_success" />
 
     <fragment
         android:id="@+id/nav_edit_error"
         android:name="com.example.driver_ccs.ui.error.ErrorEditPasswordFragment"
         android:label="@string/error"
-        tools:layout="@layout/fragment_error" >
-        <action
-            android:id="@+id/action_nav_edit_error_to_nav_edit_password"
-            app:destination="@id/nav_edit_password" />
-    </fragment>
+        tools:layout="@layout/fragment_error" />
 
     <fragment
         android:id="@+id/nav_success_register"
         android:name="com.example.driver_ccs.ui.success.SuccessRegisterFragment"
         android:label="@string/success"
-        tools:layout="@layout/fragment_success">
-        <action
-            android:id="@+id/action_nav_success_to_nav_login"
-            app:destination="@id/nav_login" />
-    </fragment>
+        tools:layout="@layout/fragment_success" />
 
     <fragment
         android:id="@+id/nav_error"
         android:name="com.example.driver_ccs.ui.error.ErrorLoginFragment"
         android:label="@string/error"
-        tools:layout="@layout/fragment_error">
-        <action
-            android:id="@+id/action_nav_error_to_nav_login"
-            app:destination="@id/nav_login"
-            app:popUpTo="@id/nav_login"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_error" />
 
     <fragment
         android:id="@+id/nav_error_register"
         android:name="com.example.driver_ccs.ui.error.ErrorRegisterFragment"
         android:label="@string/error"
-        tools:layout="@layout/fragment_error">
-        <action
-            android:id="@+id/action_nav_error_register_to_nav_cadastro"
-            app:destination="@id/nav_cadastro"
-            app:popUpTo="@id/nav_cadastro"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_error" />
 </navigation>

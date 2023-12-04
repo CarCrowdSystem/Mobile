@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.driver_ccs.R
 import com.example.driver_ccs.databinding.FragmentErrorBinding
@@ -35,7 +36,7 @@ class ErrorReservationFragment: Fragment() {
 
     private fun setListener() {
         binding.btWithdrawTryAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_edit_reservation_to_nav_parking)
+            NavHostFragment.findNavController(this).popBackStack()
         }
     }
 }

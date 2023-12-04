@@ -14,8 +14,8 @@ class CadastroViewModel(application: Application) : AndroidViewModel(application
 
     private val cadastroRepository = CadastroRepository(application.applicationContext)
 
-    private var _user = MutableLiveData<ValidationModel>()
-    val user: LiveData<ValidationModel> = _user
+    private var _user = MutableLiveData<ValidationModel?>()
+    val user: LiveData<ValidationModel?> = _user
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -34,5 +34,9 @@ class CadastroViewModel(application: Application) : AndroidViewModel(application
                 _user.value = ValidationModel(message)
             }
         })
+    }
+
+    fun clearUserStatus() {
+        _user.value = null
     }
 }

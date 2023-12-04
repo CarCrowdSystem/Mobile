@@ -117,16 +117,21 @@ class ParkingLotFragment : Fragment(), DatePickerDialog.OnDateSetListener, ICarA
             adapter.updateCarList(it)
         }
         viewModel.status.observe(viewLifecycleOwner) {
-            if(it.showStatus()) {
-                findNavController().navigate(R.id.action_nav_parking_to_nav_success_reservation)
-            } else {
-                findNavController().navigate(R.id.action_nav_parking_to_nav_error_reservation)
+            if (it != null) {
+                if(it.showStatus()) {
+                    Log.d("***status", "$it")
+                    findNavController().navigate(R.id.action_nav_parking_to_nav_success_reservation)
+//                    viewModel.clearStatus()
+                } else {
+                    findNavController().navigate(R.id.action_nav_parking_to_nav_error_reservation)
+//                    viewModel.clearStatus()
+                }
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             if(isLoading) {
                 binding.pbLoading.show()
-                makeView(isLoading)
+                makeView(!isLoading)
             } else {
                 binding.pbLoading.hide()
                 makeView(isLoading)
