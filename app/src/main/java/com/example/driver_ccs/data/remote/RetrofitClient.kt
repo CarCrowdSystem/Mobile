@@ -28,9 +28,9 @@ class RetrofitClient private constructor() {
                 return@Interceptor it.proceed(request)
             })
 
-            httpClient.connectTimeout(20, TimeUnit.SECONDS)
-            httpClient.readTimeout(20, TimeUnit.SECONDS)
-            httpClient.writeTimeout(20, TimeUnit.SECONDS)
+//            httpClient.connectTimeout(20, TimeUnit.SECONDS)
+//            httpClient.readTimeout(20, TimeUnit.SECONDS)
+//            httpClient.writeTimeout(20, TimeUnit.SECONDS)
 
             if (!::INSTANCE.isInitialized) {
                 synchronized(RetrofitClient::class) {
