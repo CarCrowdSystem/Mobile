@@ -97,6 +97,20 @@
         <action
             android:id="@+id/action_nav_login_to_nav_error"
             app:destination="@id/nav_error" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_success_edit_password_feedback"
+            app:destination="@id/nav_success_edit_password_feedback"
+            app:popUpTo="@id/nav_home"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_success_edit_password_feedback"
+        android:name="com.example.driver_ccs.ui.success.SuccessEditPasswordFeedbackFragment"
+        android:label="@string/success"
+        tools:layout="@layout/fragment_success">
+        <action
+            android:id="@+id/action_nav_success_edit_password_feedback_to_nav_home"
+            app:destination="@id/nav_home"/>
     </fragment>
 
     <fragment
@@ -115,7 +129,7 @@
     <fragment
         android:id="@+id/nav_edit_password"
         android:name="com.example.driver_ccs.ui.edit_password.EditPasswordFragment"
-        android:label="Alterar senha"
+        android:label="@string/edit_password"
         tools:layout="@layout/fragment_edit_password">
         <action
             android:id="@+id/action_nav_edit_password_to_nav_edit_error"

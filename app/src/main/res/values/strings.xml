@@ -39,6 +39,7 @@
     <string name="label_try_again">Tentar novamente</string>
     <string name="label_success_register">Cadastro realizado com sucesso!</string>
     <string name="label_success_password_edited">Senha alterada com sucesso!</string>
+    <string name="label_success_password_edit_feedback">Login feito com sucesso, para prosseguir atualize sua senha!</string>
     <string name="label_success_reservation">Reserva feita com sucesso!</string>
     <string name="label_success">Sucesso!</string>
     <string name="label_keep_going">Avançar</string>

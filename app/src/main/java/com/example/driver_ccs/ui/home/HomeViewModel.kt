@@ -20,6 +20,7 @@ class HomeViewModel(
 ) : AndroidViewModel(application) {
 
     private val parkingLotRepository = ParkingLotRepository(application.applicationContext)
+    private val securityPreferences = SecurityPreferences(application.applicationContext)
 
     private val _listParking = MutableLiveData<List<ParkingLotResponseModel>>()
     val listParking: LiveData<List<ParkingLotResponseModel>> = _listParking
@@ -32,9 +33,7 @@ class HomeViewModel(
 
     var parkingLotCepList: List<String> = emptyList()
 
-    private val securityPreferences = SecurityPreferences(application.applicationContext)
-
-   fun getParkingLots() {
+    fun getParkingLots() {
         parkingLotRepository.getParkingLots(object : ApiListener<List<ParkingLotResponseModel>> {
             override fun onSuccess(result: List<ParkingLotResponseModel>) {
                 _listParking.value = result
@@ -55,22 +54,18 @@ class HomeViewModel(
     }
 
     fun getParkingLotLatLong(cep: String) {
-//        var parkingLotCepList = arrayListOf("01310-928", "01311-940", "01418-970", "01311-300", "01310-928")
+        parkingLotRepository.getParkingLotLatLong(
+            cep,
+            object : ApiListener<List<ParkingLotLatLongResponseModel>> {
+                override fun onSuccess(result: List<ParkingLotLatLongResponseModel>) {
+                    _parkingLotPosition.value = result
+                    Log.d("***success maps", "$cep - ${_parkingLotPosition.value}")
+                }
 
-//        for(cep in parkingLotCepList) {
-//            delay(5000)
-            parkingLotRepository.getParkingLotLatLong(cep, object : ApiListener<List<ParkingLotLatLongResponseModel>> {
-                    override fun onSuccess(result: List<ParkingLotLatLongResponseModel>) {
-                        _parkingLotPosition.value = result
-                        Log.d("***success maps", "$cep - ${_parkingLotPosition.value}")
-                    }
-
-                    override fun onFailure(message: String) {
-                        Log.d("***failure maps", "$message")
-                    }
+                override fun onFailure(message: String) {
+                    Log.d("***failure maps", "$message")
+                }
             })
-//            delay(2000)
-//        }
     }
 
     fun verifyLoggedUser() {

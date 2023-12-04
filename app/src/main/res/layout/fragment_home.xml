@@ -25,12 +25,12 @@
         android:text="@string/label_refresh_map"
         app:icon="@drawable/ic_refresh"
         app:iconTint="@color/component_success"
-        app:layout_constraintBottom_toTopOf="@id/rv_estacionamento"
-        app:layout_constraintStart_toStartOf="@id/rv_estacionamento"
-        app:layout_constraintEnd_toEndOf="@id/rv_estacionamento"/>
+        app:layout_constraintBottom_toTopOf="@id/rv_parking"
+        app:layout_constraintStart_toStartOf="@id/rv_parking"
+        app:layout_constraintEnd_toEndOf="@id/rv_parking"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_estacionamento"
+        android:id="@+id/rv_parking"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -39,6 +39,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_estacionamantos" />
+        tools:listitem="@layout/item_parking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

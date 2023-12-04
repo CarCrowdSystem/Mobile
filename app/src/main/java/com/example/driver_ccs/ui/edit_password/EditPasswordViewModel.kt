@@ -36,4 +36,5 @@ class EditPasswordViewModel(application: Application) : AndroidViewModel(applica
             }
         })
     }
+
 }

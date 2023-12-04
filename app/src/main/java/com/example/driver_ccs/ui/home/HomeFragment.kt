@@ -69,20 +69,15 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         viewModel.getParkingLots()
         viewModel.verifyLoggedUser()
 
-//        lifecycleScope.launch {
-//            delay(2000)
-//            viewModel.getParkingLotLatLong()
-//        }
-
         setupRecyclerView()
         observe()
         setListener()
     }
 
     private fun setupRecyclerView() {
-        binding.rvEstacionamento.layoutManager =
+        binding.rvParking.layoutManager =
             LinearLayoutManager(requireContext(), HORIZONTAL, false)
-        binding.rvEstacionamento.adapter = adapter
+        binding.rvParking.adapter = adapter
     }
 
 
@@ -188,9 +183,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupMarkers(googleMap: GoogleMap) {
-//        lifecycleScope.launch {
-//            viewModel.getParkingLotLatLong()
-//        }
+        viewModel.getParkingLots()
         viewModel.parkingLotPosition.observe(viewLifecycleOwner) { parkingLotList ->
             if (parkingLotList != null) {
                 Log.d("***setupMarkers", "$parkingLotList")
@@ -208,9 +201,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     googleMap.addMarker(parkingMarkerOptions)
                 }
 
-                if (markers.isNotEmpty()) {
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers[0], 16.0f))
-                }
+//                if (markers.isNotEmpty()) {
+//                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers[0], 16.0f))
+//                }
             }
         }
     }

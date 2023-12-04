@@ -41,11 +41,12 @@ class LoginFragment : Fragment() {
         setListener()
     }
 
-    private fun setListener(){
+    private fun setListener() {
         binding.btDoLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             viewModel.doLogin(email, password)
+            viewModel.saveUserPassword(password)
         }
         binding.btRegister.setOnClickListener {
             findNavController().navigate(R.id.action_nav_login_to_nav_cadastro)
@@ -54,8 +55,12 @@ class LoginFragment : Fragment() {
 
     private fun observe() {
         viewModel.login.observe(viewLifecycleOwner) { userStatus ->
-            if(userStatus.showStatus()) {
-                findNavController().navigate(R.id.action_nav_login_to_nav_home)
+            if (userStatus.showStatus()) {
+                if (viewModel.passwordValue.value == "0000") {
+                    findNavController().navigate(R.id.action_nav_login_to_nav_success_edit_password_feedback)
+                } else {
+                    findNavController().navigate(R.id.action_nav_login_to_nav_home)
+                }
             } else {
                 findNavController().navigate(R.id.action_nav_login_to_nav_error)
                 displayView(true)
@@ -71,7 +76,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun displayView(isVisible: Boolean){
+    private fun displayView(isVisible: Boolean) {
         binding.apply {
             ivLogo.toggle(isVisible)
             etEmail.toggle(isVisible)

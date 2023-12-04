@@ -25,6 +25,9 @@ class LoginViewModel(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _passwordValue = MutableLiveData<String>()
+    val passwordValue: LiveData<String> = _passwordValue
+
     fun doLogin(email: String, password: String) {
         _isLoading.value = true
 
@@ -43,5 +46,10 @@ class LoginViewModel(
                 _login.value = ValidationModel(message)
             }
         })
+    }
+
+    fun saveUserPassword(password: String) {
+        _passwordValue.value = password
+        securityPreferences.store("password", password)
     }
 }

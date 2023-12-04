@@ -51,7 +51,7 @@ class NewCarViewModel(
     fun registerCar(placa: String, modelo: String, marca: String){
         _isLoading.value = true
         val id = securityPreferences.get("id")
-        newCarRepository.registeCar(placa, modelo, marca, id, object : ApiListener<Unit> {
+        newCarRepository.registeCar(placa, marca, modelo, id, object : ApiListener<Unit> {
             override fun onSuccess(result: Unit) {
                 _isLoading.value = false
                 _alert.value = ValidationModel()
