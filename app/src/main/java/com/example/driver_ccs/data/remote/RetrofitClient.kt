@@ -36,7 +36,7 @@ class RetrofitClient private constructor() {
                 synchronized(RetrofitClient::class) {
                     INSTANCE = Retrofit.Builder()
                         .baseUrl(BASE_URL)
-                        .client(httpClient.build()) // Use the configured OkHttpClient
+                        .client(httpClient.build())
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
                 }
